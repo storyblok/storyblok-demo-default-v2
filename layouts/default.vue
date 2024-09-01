@@ -31,7 +31,9 @@ const theme = reactive({
   ...defaultBorderRadiuses,
 })
 
-const story = ref()
+const story = await getSiteConfig()
+
+/* const story = ref()
 const storyblokApi = useStoryblokApi()
 
 const { data } = await storyblokApi.get('cdn/stories/site-config', {
@@ -39,7 +41,7 @@ const { data } = await storyblokApi.get('cdn/stories/site-config', {
   resolve_links: 'url',
 })
 
-story.value = data.story
+story.value = data.story */
 
 const cssVariables = computed(() => {
   if (story.value.content.use_custom_fonts) {
@@ -87,7 +89,7 @@ const autoNavFolder = computed(() => {
   return story.value.content.header_auto_nav_folder[0].slug
 })
 
-const viewingSiteConfig = await isSiteConfig()
+const viewingSiteConfig = await isSiteConfig() // TODO: change
 const { customParent } = useRuntimeConfig().public
 
 onMounted(() => {
