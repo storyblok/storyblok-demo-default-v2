@@ -16,7 +16,6 @@ watch(
   (selectedBaseMaterial) => {
     if (!selectedBaseMaterial) return
 
-    console.log(selectedBaseMaterial)
     paint.material = new MeshPhysicalMaterial({
       color: selectedBaseMaterial.color,
       metalness: selectedBaseMaterial.metalness,
@@ -31,7 +30,6 @@ watch(
   (selectedAccentMaterial) => {
     if (!selectedAccentMaterial) return
 
-    console.log(selectedAccentMaterial)
     detail.material = new MeshPhysicalMaterial({
       color: selectedAccentMaterial.color,
       metalness: selectedAccentMaterial.metalness,

@@ -31,49 +31,40 @@ const theme = reactive({
   ...defaultBorderRadiuses,
 })
 
-const story = await getSiteConfig()
-
-/* const story = ref()
-const storyblokApi = useStoryblokApi()
-
-const { data } = await storyblokApi.get('cdn/stories/site-config', {
-  version: getVersion(),
-  resolve_links: 'url',
-})
-
-story.value = data.story */
+const siteConfig = await getSiteConfig()
 
 const cssVariables = computed(() => {
-  if (story.value.content.use_custom_fonts) {
-    if (story.value.content.custom_font_display) {
-      theme['--font-family-display'] = story.value.content.custom_font_display
+  if (siteConfig.value.content.use_custom_fonts) {
+    if (siteConfig.value.content.custom_font_display) {
+      theme['--font-family-display'] =
+        siteConfig.value.content.custom_font_display
     }
-    if (story.value.content.custom_font_body) {
-      theme['--font-family-body'] = story.value.content.custom_font_body
+    if (siteConfig.value.content.custom_font_body) {
+      theme['--font-family-body'] = siteConfig.value.content.custom_font_body
     }
   } else {
     Object.assign(theme, defaultFontFamilies)
   }
-  if (story.value.content.use_custom_colors) {
-    theme['--primary'] = story.value.content.primary.color
-    theme['--secondary'] = story.value.content.secondary.color
-    theme['--light'] = story.value.content.light.color
-    theme['--medium'] = story.value.content.medium.color
-    theme['--dark'] = story.value.content.dark.color
-    if (story.value.content.colored_headlines) {
-      theme['--headline-color'] = story.value.content.primary.color
+  if (siteConfig.value.content.use_custom_colors) {
+    theme['--primary'] = siteConfig.value.content.primary.color
+    theme['--secondary'] = siteConfig.value.content.secondary.color
+    theme['--light'] = siteConfig.value.content.light.color
+    theme['--medium'] = siteConfig.value.content.medium.color
+    theme['--dark'] = siteConfig.value.content.dark.color
+    if (siteConfig.value.content.colored_headlines) {
+      theme['--headline-color'] = siteConfig.value.content.primary.color
     } else {
-      theme['--headline-color'] = story.value.content.dark.color
+      theme['--headline-color'] = siteConfig.value.content.dark.color
     }
   } else {
     Object.assign(theme, defaultColors)
-    if (story.value.content.colored_headlines) {
+    if (siteConfig.value.content.colored_headlines) {
       theme['--headline-color'] = defaultColors['--primary']
     } else {
       theme['--headline-color'] = defaultColors['--dark']
     }
   }
-  if (story.value.content.disable_rounded_corners) {
+  if (siteConfig.value.content.disable_rounded_corners) {
     for (const key in theme) {
       if (key.startsWith('--rounded_')) theme[key] = 0
     }
@@ -84,35 +75,49 @@ const cssVariables = computed(() => {
 })
 
 const autoNavFolder = computed(() => {
-  if (!story.value.content.header_auto_nav_folder) return ''
-  if (!story.value.content.header_auto_nav_folder[0]?.slug) return ''
-  return story.value.content.header_auto_nav_folder[0].slug
+  if (!siteConfig.value.content.header_auto_nav_folder) return ''
+  if (!siteConfig.value.content.header_auto_nav_folder[0]?.slug) return ''
+  return siteConfig.value.content.header_auto_nav_folder[0].slug
 })
 
-const viewingSiteConfig = await isSiteConfig() // TODO: change
+const defineEnableBreadcrumbsState = useState(
+  'enableBreadcrumbs',
+  () => siteConfig.value.content.enable_breadcrumbs,
+)
+
+const defineBreadcrumbsExcludedStoriesState = useState(
+  'breadcrumbsExcludedStories',
+  () => siteConfig.value.content.breadcrumbs_excluded_stories,
+)
+
+const viewingSiteConfig = useState('viewingSiteConfig')
 const { customParent } = useRuntimeConfig().public
 
 onMounted(() => {
-  useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory), {
-    preventClicks: true,
-    customParent,
-  })
+  useStoryblokBridge(
+    siteConfig.value.id,
+    (evStory) => (siteConfig.value = evStory),
+    {
+      preventClicks: true,
+      customParent,
+    },
+  )
 })
 </script>
 
 <template>
   <main :style="cssVariables" class="font-body">
     <Header
-      :logo="story.content.header_logo"
-      :disable_transparency="story.content.header_disable_transparency"
-      :auto_nav="story.content.header_auto_nav"
+      :logo="siteConfig.content.header_logo"
+      :disable_transparency="siteConfig.content.header_disable_transparency"
+      :auto_nav="siteConfig.content.header_auto_nav"
       :auto_nav_folder="autoNavFolder"
-      :nav="story.content.header_nav"
-      :buttons="story.content.header_buttons"
-      :light="story.content.header_light"
+      :nav="siteConfig.content.header_nav"
+      :buttons="siteConfig.content.header_buttons"
+      :light="siteConfig.content.header_light"
     />
     <div
-      v-if="viewingSiteConfig && story.content.use_custom_colors"
+      v-if="viewingSiteConfig && siteConfig.content.use_custom_colors"
       class="container py-12"
     >
       <Headline class="mb-8">Color Preview</Headline>
@@ -127,7 +132,7 @@ onMounted(() => {
       </div>
     </div>
     <div
-      v-if="viewingSiteConfig && story.content.use_custom_fonts"
+      v-if="viewingSiteConfig && siteConfig.content.use_custom_fonts"
       class="container py-12 text-dark"
     >
       <Headline>Typography Preview</Headline>
@@ -144,22 +149,22 @@ onMounted(() => {
     </div>
     <slot />
     <Footer
-      :text_color="story.content.footer_text_color"
-      :background_color="story.content.footer_background_color"
-      :logo="story.content.footer_logo"
-      :about="story.content.footer_about"
+      :text_color="siteConfig.content.footer_text_color"
+      :background_color="siteConfig.content.footer_background_color"
+      :logo="siteConfig.content.footer_logo"
+      :about="siteConfig.content.footer_about"
       :navs="{
-        nav_1_headline: story.content.footer_nav_1_headline,
-        nav_2_headline: story.content.footer_nav_2_headline,
-        nav_3_headline: story.content.footer_nav_3_headline,
-        nav_1: story.content.footer_nav_1,
-        nav_2: story.content.footer_nav_2,
-        nav_3: story.content.footer_nav_3,
+        nav_1_headline: siteConfig.content.footer_nav_1_headline,
+        nav_2_headline: siteConfig.content.footer_nav_2_headline,
+        nav_3_headline: siteConfig.content.footer_nav_3_headline,
+        nav_1: siteConfig.content.footer_nav_1,
+        nav_2: siteConfig.content.footer_nav_2,
+        nav_3: siteConfig.content.footer_nav_3,
       }"
-      :twitter="story.content.twitter"
-      :instagram="story.content.instagram"
-      :youtube="story.content.youtube"
-      :facebook="story.content.facebook"
+      :twitter="siteConfig.content.twitter"
+      :instagram="siteConfig.content.instagram"
+      :youtube="siteConfig.content.youtube"
+      :facebook="siteConfig.content.facebook"
     />
   </main>
 </template>
