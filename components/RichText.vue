@@ -1,11 +1,11 @@
 <script setup>
-const props = defineProps({ text: Object })
+const props = defineProps({ text: Object });
 
-const richText = computed(() => renderCustomRichText(props.text))
+const richText = computed(() => renderCustomRichText(props.text));
 </script>
 
 <template>
-  <div v-html="richText" class="prose prose-lg" />
+  <div class="prose prose-lg" v-html="richText"></div>
 </template>
 
 <style>

@@ -1,6 +1,7 @@
 <script setup>
-defineProps({ color: String })
+defineProps({ color: String });
 </script>
+
 <template>
   <div class="text-center">
     <div

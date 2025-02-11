@@ -1,28 +1,28 @@
 <script setup>
-const props = defineProps({ blok: Object })
+const props = defineProps({ blok: Object });
 
 const optimizedImages1 = computed(() => {
   return {
     mobile: getOptimizedImage(props.blok.image_1, 800, 600),
     tablet: getOptimizedImage(props.blok.image_1, 700, 600),
     desktop: getOptimizedImage(props.blok.image_1, 1200, 800),
-  }
-})
+  };
+});
 
 const optimizedImages2 = computed(() => {
   return {
     mobile: getOptimizedImage(props.blok.image_2, 800, 600),
     tablet: getOptimizedImage(props.blok.image_2, 500, 600),
     desktop: getOptimizedImage(props.blok.image_2, 600, 800),
-  }
-})
+  };
+});
 </script>
 
 <template>
   <section
     v-editable="blok"
     class="page-section two-col-image-text-section"
-    :class="'bg-' + blok.background_color"
+    :class="`bg-${blok.background_color}`"
   >
     <div class="container">
       <div
@@ -41,7 +41,7 @@ const optimizedImages2 = computed(() => {
       </div>
       <div
         class="my-12 h-[1px] w-full bg-gradient-to-r from-transparent via-medium to-transparent"
-      />
+      ></div>
       <div
         class="flex flex-col items-center space-y-6 md:flex-row md:space-x-12 md:space-y-0"
       >

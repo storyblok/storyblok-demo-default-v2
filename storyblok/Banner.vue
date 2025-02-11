@@ -1,65 +1,74 @@
 <script setup>
-const props = defineProps({ blok: Object, referenced: Boolean })
+const props = defineProps({ blok: Object, referenced: Boolean });
 
 const textColor = computed(() => {
-  return 'text-' + props.blok.text_color
-})
+  return `text-${props.blok.text_color}`;
+});
 
 const isSvg = computed(() => {
-  const detectFileExtension = props.blok.background_image?.filename.split('.')
-  return detectFileExtension[detectFileExtension.length - 1] === 'svg'
-})
+  const detectFileExtension = props.blok.background_image?.filename.split('.');
+  return detectFileExtension[detectFileExtension.length - 1] === 'svg';
+});
 
 const filters = computed(() => {
-  if (isSvg.value) return ''
-  const blur =
-    props.blok.background_blur.value > 0
-      ? 'blur(' + props.blok.background_blur.value + ')'
-      : ''
-  const brightness =
-    props.blok.background_brightness.value != 0
-      ? 'brightness(' + props.blok.background_brightness.value + ')'
-      : ''
-
-  let filters = '/filters:'
-  if (blur && !brightness) {
-    return filters + blur
-  } else if (!blur && brightness) {
-    return filters + brightness
-  } else if (blur && brightness) {
-    return filters + blur + ':' + brightness
-  } else {
-    return ''
+  if (isSvg.value) {
+    return '';
   }
-})
+  const blur
+    = props.blok.background_blur.value > 0
+      ? `blur(${props.blok.background_blur.value})`
+      : '';
+  const brightness
+    = props.blok.background_brightness.value !== 0
+      ? `brightness(${props.blok.background_brightness.value})`
+      : '';
+
+  const filters = '/filters:';
+  if (blur && !brightness) {
+    return filters + blur;
+  }
+  else if (!blur && brightness) {
+    return filters + brightness;
+  }
+  else if (blur && brightness) {
+    return `${filters + blur}:${brightness}`;
+  }
+  else {
+    return '';
+  }
+});
 
 const optimizedImage = computed(() => {
-  let filename = props.blok.background_image?.filename
-  if (!isSvg.value) filename += '/m/2000x0'
-  return filename
-})
+  let filename = props.blok.background_image?.filename;
+  if (!isSvg.value) {
+    filename += '/m/2000x0';
+  }
+  return filename;
+});
 
 const showVideo = computed(() => {
   if (
-    props.blok.background_image?.filename &&
-    !props.blok.background_video?.filename
+    props.blok.background_image?.filename
+    && !props.blok.background_video?.filename
   ) {
-    return false
-  } else if (props.blok.background_video.filename) {
-    return true
+    return false;
   }
-})
+  else if (props.blok.background_video.filename) {
+    return true;
+  }
+  return false;
+});
 </script>
 
 <template>
   <section
+    v-editable="blok"
     class="page-section banner-section"
     :class="[
       { 'no-padding': blok.full_width || referenced },
       { 'padding bg-white': !blok.full_width && !referenced },
       { 'pointer-events-none': referenced },
     ]"
-    v-editable="blok"
   >
     <div :class="{ container: !blok.full_width }">
       <div

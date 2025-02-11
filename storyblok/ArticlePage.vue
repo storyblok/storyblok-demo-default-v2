@@ -1,12 +1,12 @@
 <script setup>
-const props = defineProps({ blok: Object })
+const props = defineProps({ blok: Object });
 
 const optimizedArticleImage = computed(() =>
   getOptimizedImage(props.blok.image, 2000),
-)
+);
 const optimizedAuthorImage = computed(() =>
   getOptimizedImage(props.blok.author.content.profile_picture, 200),
-)
+);
 </script>
 
 <template>
@@ -46,7 +46,7 @@ const optimizedAuthorImage = computed(() =>
             <h4 class="font-display text-xl text-dark">Categories</h4>
             <ul class="flex flex-col space-y-1.5">
               <li v-for="cat in blok.categories" :key="cat.uuid">
-                <NuxtLink :to="'/' + cat.full_slug">
+                <NuxtLink :to="`/${cat.full_slug}`">
                   <span class="text-dark transition-all hover:text-secondary">
                     {{ cat.name }}
                   </span>

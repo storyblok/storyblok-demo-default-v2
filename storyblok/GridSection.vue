@@ -1,18 +1,18 @@
 <script setup>
-const props = defineProps({ blok: Object })
+const props = defineProps({ blok: Object });
 
 const gridCardColor = computed(() => {
-  return props.blok.background_color === 'light' ? 'bg-white' : 'bg-light'
-})
+  return props.blok.background_color === 'light' ? 'bg-white' : 'bg-light';
+});
 
-const gridClasses = computed(() => getGridClasses(props.blok.cols))
+const gridClasses = computed(() => getGridClasses(props.blok.cols));
 </script>
 
 <template>
   <section
     v-editable="blok"
     class="page-section grid-section"
-    :class="'bg-' + blok.background_color"
+    :class="`bg-${blok.background_color}`"
   >
     <div class="container text-center">
       <Headline v-if="blok.headline" class="mb-4">{{ blok.headline }}</Headline>

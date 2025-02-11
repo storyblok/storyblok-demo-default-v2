@@ -1,26 +1,26 @@
 <script setup>
-import ContactForm from '../components/ContactForm.vue'
-import NewsletterForm from '../components/NewsletterForm.vue'
+import ContactForm from '../components/ContactForm.vue';
+import NewsletterForm from '../components/NewsletterForm.vue';
 
-const props = defineProps({ blok: Object })
+const props = defineProps({ blok: Object });
 
 const textColor = computed(() => {
-  return props.blok.text_color === 'light' ? 'text-white' : 'text-dark'
-})
+  return props.blok.text_color === 'light' ? 'text-white' : 'text-dark';
+});
 
 const backgroundColor = computed(() => {
-  return 'bg-' + props.blok.background_color
-})
+  return `bg-${props.blok.background_color}`;
+});
 
 const selectedForm = computed(() => {
   switch (props.blok.form) {
     case 'newsletter':
-      return NewsletterForm
+      return NewsletterForm;
     case 'contact':
     default:
-      return ContactForm
+      return ContactForm;
   }
-})
+});
 </script>
 
 <template>
@@ -45,7 +45,7 @@ const selectedForm = computed(() => {
       <div class="w-full max-w-md">
         <component
           :is="selectedForm"
-          :textColor="textColor"
+          :text-color="textColor"
           :button="blok?.button && blok?.button[0]"
         />
       </div>

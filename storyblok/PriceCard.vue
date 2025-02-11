@@ -1,25 +1,28 @@
 <script setup>
-const props = defineProps({ card: Object, defaultColor: String })
+const props = defineProps({ card: Object, defaultColor: String });
 
 const price = computed(() => {
-  const priceText = String(props.card.price)
-  if (!priceText) return null
-  const priceArray = priceText.split('.')
-  return priceArray
-})
+  const priceText = String(props.card.price);
+  if (!priceText) {
+    return null;
+  }
+  const priceArray = priceText.split('.');
+  return priceArray;
+});
 
 const textBelowPrice = computed(() =>
   renderCustomRichText(props.card.text_below_price),
-)
+);
 const textBelowButton = computed(() =>
   renderCustomRichText(props.card.text_below_button),
-)
+);
 
-const currency = computed(() => props.card?.currency || '€')
+const currency = computed(() => props.card?.currency || '€');
 </script>
 
 <template>
   <div
+    v-editable="card"
     class="relative flex w-full max-w-md flex-col rounded-lg px-6 py-12 text-dark lg:max-w-none"
     :class="[
       card.background_color?.value ? '' : defaultColor,
@@ -27,10 +30,9 @@ const currency = computed(() => props.card?.currency || '€')
     ]"
     :style="
       card.background_color?.value
-        ? 'background-color: ' + card.background_color.value
+        ? `background-color: ${card.background_color.value}`
         : ''
     "
-    v-editable="card"
   >
     <div
       v-if="card.most_popular"
@@ -49,7 +51,7 @@ const currency = computed(() => props.card?.currency || '€')
         .{{ price[1] }}
       </span>
     </span>
-    <div v-html="textBelowPrice" class="prose mx-auto max-w-xs"></div>
+    <div class="prose mx-auto max-w-xs" v-html="textBelowPrice"></div>
     <div v-if="card.button.length" class="my-6">
       <Button
         v-for="button in card.button"
@@ -58,8 +60,8 @@ const currency = computed(() => props.card?.currency || '€')
       />
     </div>
     <div
-      v-html="textBelowButton"
       class="text-below-button prose mx-auto max-w-xs text-left prose-ul:list-none"
+      v-html="textBelowButton"
     ></div>
   </div>
 </template>

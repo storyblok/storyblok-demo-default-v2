@@ -1,14 +1,14 @@
 export default async function () {
-  const folderPathTest = await getFolderPath()
-  const releaseId = await getReleaseId()
-  const siteConfig = ref()
-  const storyblokApi = useStoryblokApi()
-  const nestedSiteConfig = ref(false)
+  const folderPathTest = await getFolderPath();
+  const releaseId = await getReleaseId();
+  const siteConfig = ref();
+  const storyblokApi = useStoryblokApi();
+  const nestedSiteConfig = ref(false);
   const apiParams = {
     version: getVersion(),
     resolve_links: 'url',
     from_release: releaseId,
-  }
+  };
 
   if (folderPathTest) {
     try {
@@ -16,11 +16,12 @@ export default async function () {
       const { data } = await storyblokApi.get(
         `cdn/stories/${folderPathTest}/site-config`,
         apiParams,
-      )
-      siteConfig.value = data.story
-      nestedSiteConfig.value = true
-    } catch (error) {
-      nestedSiteConfig.value = false
+      );
+      siteConfig.value = data.story;
+      nestedSiteConfig.value = true;
+    }
+    catch {
+      nestedSiteConfig.value = false;
     }
   }
 
@@ -29,9 +30,9 @@ export default async function () {
     const { data } = await storyblokApi.get(
       'cdn/stories/site-config',
       apiParams,
-    )
-    siteConfig.value = data.story
+    );
+    siteConfig.value = data.story;
   }
 
-  return siteConfig
+  return siteConfig;
 }

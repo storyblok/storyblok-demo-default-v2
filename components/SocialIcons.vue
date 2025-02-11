@@ -4,12 +4,12 @@ defineProps({
   instagram: Object,
   youtube: Object,
   facebook: Object,
-  text_color: String,
-})
+  textColor: String,
+});
 </script>
 
 <template>
-  <ul class="flex space-x-8" :class="text_color">
+  <ul class="flex space-x-8" :class="textColor">
     <!-- Icons by https://simpleicons.org/ -->
     <li v-if="twitter.cached_url">
       <a :href="twitter.cached_url" target="_blank" class="group">

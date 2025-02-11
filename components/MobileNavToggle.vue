@@ -1,22 +1,22 @@
 <script setup>
-defineProps({ color: String })
+defineProps({ color: String });
 
-const active = ref(false)
+const active = ref(false);
 
 const toggle = () => {
-  active.value = !active.value
-}
+  active.value = !active.value;
+};
 
-const route = useRoute()
-watch(route, (to) => {
-  active.value = false
-})
+const route = useRoute();
+watch(route, () => {
+  active.value = false;
+});
 </script>
 
 <template>
   <button
     class="cursor-pointer lg:invisible lg:hidden"
-    :class="{ active: active }"
+    :class="{ active }"
     @click="toggle"
   >
     <div

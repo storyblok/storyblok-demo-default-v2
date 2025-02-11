@@ -1,98 +1,81 @@
 <script setup>
-defineProps({ blok: Object })
+defineProps({ blok: Object });
 
-let { slug } = useRoute().params
-let language = 'default'
+const { slug } = useRoute().params;
+let language = 'default';
 
-if (slug) language = await getLanguage(slug)
+if (slug) {
+  language = await getLanguage(slug);
+}
 
-const searchTerm = ref('')
-const checkedCategories = ref([])
-const checkedAuthor = ref('')
+const searchTerm = ref('');
+const checkedCategories = ref([]);
+const checkedAuthor = ref('');
 
 const filterQuery = computed(() => {
-  let query = {}
+  const query = {};
 
   if (checkedCategories.value.length > 0) {
     query.categories = {
       in_array: checkedCategories.value.join(','),
-    }
+    };
   }
 
   if (checkedAuthor.value !== '') {
     query.author = {
       in: checkedAuthor.value,
-    }
+    };
   }
 
-  return query
-})
+  return query;
+});
 
-const resetFilters = () => {
-  searchTerm.value = ''
-  checkedCategories.value = []
-  checkedAuthor.value = ''
-  fetchArticles()
-}
+const storyblokApi = useStoryblokApi();
 
-watch(searchTerm, () => {
-  fetchArticles()
-})
+const loading = ref(true);
 
-watch(checkedCategories, () => {
-  fetchArticles()
-})
-
-watch(checkedAuthor, () => {
-  fetchArticles()
-})
-
-const storyblokApi = useStoryblokApi()
-
-const loading = ref(true)
-
-const articles = ref(null)
+const articles = ref(null);
 
 const fetchArticles = async () => {
-  loading.value = true
-  articles.value = null
+  loading.value = true;
+  articles.value = null;
   const { data } = await storyblokApi.get('cdn/stories/', {
     version: getVersion(),
     starts_with: 'articles',
-    language: language,
+    language,
     fallback_lang: 'default',
     search_term: searchTerm.value,
     filter_query: filterQuery.value,
-  })
-  articles.value = data.stories.filter((story) => story.is_startpage !== true)
-  loading.value = false
-}
+  });
+  articles.value = data.stories.filter(story => story.is_startpage !== true);
+  loading.value = false;
+};
 
-fetchArticles()
+fetchArticles();
 
-const authors = ref(null)
+const authors = ref(null);
 
 const getAuthors = async () => {
   const { data } = await storyblokApi.get('cdn/stories/', {
     version: getVersion(),
     starts_with: 'authors',
-  })
-  authors.value = data.stories
-}
+  });
+  authors.value = data.stories;
+};
 
-getAuthors()
+getAuthors();
 
-const categories = ref(null)
+const categories = ref(null);
 
 const getCategories = async () => {
   const { data } = await storyblokApi.get('cdn/stories/', {
     version: getVersion(),
     starts_with: 'categories',
-  })
-  categories.value = data.stories.filter((story) => story.is_startpage !== true)
-}
+  });
+  categories.value = data.stories.filter(story => story.is_startpage !== true);
+};
 
-getCategories()
+getCategories();
 
 const button = {
   link: {
@@ -102,11 +85,30 @@ const button = {
   style: 'ghost',
   text_color: 'light',
   background_color: 'dark',
-}
+};
+
+const resetFilters = () => {
+  searchTerm.value = '';
+  checkedCategories.value = [];
+  checkedAuthor.value = '';
+  fetchArticles();
+};
+
+watch(searchTerm, () => {
+  fetchArticles();
+});
+
+watch(checkedCategories, () => {
+  fetchArticles();
+});
+
+watch(checkedAuthor, () => {
+  fetchArticles();
+});
 </script>
 
 <template>
-  <main class="container py-12 md:py-16" v-editable="blok">
+  <main v-editable="blok" class="container py-12 md:py-16">
     <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
     <section class="my-16 flex text-dark">
       <aside
@@ -117,10 +119,10 @@ const button = {
             Search for a term
           </label>
           <input
-            type="search"
-            name="search"
             id="search"
             v-model="searchTerm"
+            type="search"
+            name="search"
             class="rounded-full border border-dark px-4 py-2 focus:outline-none"
             @keypress.enter="fetchArticles()"
           />
@@ -135,11 +137,11 @@ const button = {
               class="checkbox flex"
             >
               <input
-                type="checkbox"
                 :id="category.uuid"
+                v-model="checkedCategories"
+                type="checkbox"
                 :name="category.uuid"
                 :value="category.uuid"
-                v-model="checkedCategories"
                 class="invisible hidden"
               />
               <Indicator />
@@ -158,10 +160,10 @@ const button = {
                 class="radio flex"
               >
                 <input
-                  type="radio"
                   :id="author.uuid"
-                  name="author"
                   v-model="checkedAuthor"
+                  type="radio"
+                  name="author"
                   :value="author.uuid"
                   class="invisible hidden"
                 />
@@ -172,7 +174,7 @@ const button = {
           </fieldset>
         </div>
         <div>
-          <Button :button="button" @click.prevent="resetFilters()" class="mt-4">
+          <Button :button="button" class="mt-4" @click.prevent="resetFilters()">
             Reset filters
           </Button>
         </div>

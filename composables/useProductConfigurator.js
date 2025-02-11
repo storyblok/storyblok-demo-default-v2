@@ -1,4 +1,4 @@
-import { useStorage } from '@vueuse/core'
+import { useStorage } from '@vueuse/core';
 
 export const useProductConfigurator = () =>
   useStorage('product', {
@@ -11,4 +11,4 @@ export const useProductConfigurator = () =>
     selectedDetailMaterial: {
       color: '#563EE7',
     },
-  })
+  });

@@ -1,24 +1,24 @@
 <script setup>
-const props = defineProps({ textColor: String, button: Object })
+const props = defineProps({ textColor: String, button: Object });
 
-const showMessage = ref(false)
+const showMessage = ref(false);
 
 const submit = () => {
-  showMessage.value = true
+  showMessage.value = true;
   setTimeout(() => {
-    showMessage.value = false
-  }, 4000)
-}
+    showMessage.value = false;
+  }, 4000);
+};
 
 const borderColor = computed(() => {
-  return props.textColor === 'text-white' ? 'border-light' : 'border-dark'
-})
+  return props.textColor === 'text-white' ? 'border-light' : 'border-dark';
+});
 
 const placeHolderColor = computed(() => {
   return props.textColor === 'text-white'
     ? 'placeholder-white'
-    : 'placeholder-dark'
-})
+    : 'placeholder-dark';
+});
 </script>
 
 <template>

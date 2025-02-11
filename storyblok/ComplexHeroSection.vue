@@ -1,13 +1,13 @@
 <script setup>
-const props = defineProps({ blok: Object, index: Number })
+const props = defineProps({ blok: Object, index: Number });
 
 const textColor = computed(() => {
-  return props.blok.text_color === 'light' ? 'text-white' : 'text-dark'
-})
+  return props.blok.text_color === 'light' ? 'text-white' : 'text-dark';
+});
 
 const optimizedImage = computed(() =>
   getOptimizedImage(props.blok.image_1, 800),
-)
+);
 
 const composedImages = computed(() => {
   return {
@@ -15,15 +15,15 @@ const composedImages = computed(() => {
     two: getOptimizedImage(props.blok.image_2, 600, 450),
     three: getOptimizedImage(props.blok.image_3, 600, 450),
     four: getOptimizedImage(props.blok.image_4, 300, 450),
-  }
-})
+  };
+});
 </script>
 
 <template>
   <section
-    class="page-section complex-hero-section"
-    :class="['bg-' + blok.background_color]"
     v-editable="blok"
+    class="page-section complex-hero-section"
+    :class="[`bg-${blok.background_color}`]"
   >
     <div
       class="group container relative grid items-center gap-12 overflow-x-visible md:grid-cols-2"

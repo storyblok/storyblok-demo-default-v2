@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
-  text_color: String,
-  background_color: String,
+  textColor: String,
+  backgroundColor: String,
   logo: Object,
   navs: Object,
   about: Object,
@@ -9,17 +9,17 @@ const props = defineProps({
   instagram: Object,
   youtube: Object,
   facebook: Object,
-})
+});
 
 const textColor = computed(() => {
-  return props.text_color === 'light' ? 'text-white' : 'text-dark'
-})
+  return props.textColor === 'light' ? 'text-white' : 'text-dark';
+});
 
 const backgroundColor = computed(() => {
-  return 'bg-' + props.background_color
-})
+  return `bg-${props.backgroundColor}`;
+});
 
-const showSeparator = computed(() => props.background_color === 'dark')
+const showSeparator = computed(() => props.backgroundColor === 'dark');
 </script>
 
 <template>
@@ -46,7 +46,7 @@ const showSeparator = computed(() => props.background_color === 'dark')
             :instagram="instagram"
             :youtube="youtube"
             :facebook="facebook"
-            :text_color="textColor"
+            :text-color="textColor"
           />
         </div>
       </div>
@@ -55,11 +55,11 @@ const showSeparator = computed(() => props.background_color === 'dark')
           class="mb-5 font-display text-xl font-medium xl:text-2xl"
           :class="textColor"
         >
-          {{ navs['nav_' + index + '_headline'] }}
+          {{ navs[`nav_${index}_headline`] }}
         </h3>
         <nav>
           <ul class="flex flex-col space-y-3 text-lg">
-            <li v-for="item in navs['nav_' + index]" :key="item._uid">
+            <li v-for="item in navs[`nav_${index}`]" :key="item._uid">
               <NavItem
                 class="hover:underline"
                 :class="textColor"

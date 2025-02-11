@@ -1,52 +1,55 @@
 <script setup>
-const props = defineProps({ blok: Object, index: Number })
+const props = defineProps({ blok: Object, index: Number });
 
 const height = computed(() => {
   if (props.blok.full_height) {
-    return props.index > 0 ? 'min-h-[calc(100vh-128px)]' : 'min-h-screen'
-  } else {
-    return 'min-h-[500px] md:min-h-[700px]'
+    return props.index > 0 ? 'min-h-[calc(100vh-128px)]' : 'min-h-screen';
   }
-})
+  else {
+    return 'min-h-[500px] md:min-h-[700px]';
+  }
+});
 
 const textColor = computed(() => {
-  return props.blok.text_color === 'light' ? 'text-white' : 'text-dark'
-})
+  return props.blok.text_color === 'light' ? 'text-white' : 'text-dark';
+});
 
 const horizontalAlignment = computed(() => {
-  return 'text-' + props.blok.horizontal_alignment
-})
+  return `text-${props.blok.horizontal_alignment}`;
+});
 
 const verticalAlignment = computed(() => {
-  return 'items-' + props.blok.vertical_alignment
-})
+  return `items-${props.blok.vertical_alignment}`;
+});
 
 const optimizedImage = computed(() =>
   getOptimizedImage(props.blok.background_image, 2000),
-)
+);
 
 const showVideo = computed(() => {
   if (
-    props.blok.background_image?.filename &&
-    !props.blok.background_video?.filename
+    props.blok.background_image?.filename
+    && !props.blok.background_video?.filename
   ) {
-    return false
-  } else if (props.blok.background_video.filename) {
-    return true
+    return false;
   }
-})
+  else if (props.blok.background_video.filename) {
+    return true;
+  }
+  return false;
+});
 </script>
 
 <template>
   <section
+    v-editable="blok"
     class="hero-section relative flex overflow-hidden py-36"
     :class="[
       height,
       verticalAlignment,
-      { '-mt-32': index == 0 },
+      { '-mt-32': index === 0 },
       blok.overlay !== 'no-overlay' ? blok.overlay : '',
     ]"
-    v-editable="blok"
   >
     <div class="container relative z-40">
       <h1

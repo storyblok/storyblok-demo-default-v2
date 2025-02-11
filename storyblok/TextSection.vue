@@ -1,11 +1,12 @@
 <script setup>
-const props = defineProps({ blok: Object })
+const props = defineProps({ blok: Object });
 
 const containerColor = computed(() => {
-  if (props.blok.single_color_background)
-    return 'bg-' + props.blok.background_color
-  return props.blok.background_color === 'light' ? 'bg-white' : 'bg-light'
-})
+  if (props.blok.single_color_background) {
+    return `bg-${props.blok.background_color}`;
+  }
+  return props.blok.background_color === 'light' ? 'bg-white' : 'bg-light';
+});
 </script>
 
 <template>
@@ -13,7 +14,7 @@ const containerColor = computed(() => {
     v-editable="blok"
     class="page-section text-section relative z-50"
     :class="[
-      'bg-' + blok.background_color,
+      `bg-${blok.background_color}`,
       {
         'overlap-preceding-hero':
           blok.overlap_preceding_hero && !blok.single_color_background,

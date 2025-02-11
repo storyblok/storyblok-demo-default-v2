@@ -1,29 +1,29 @@
 <script setup>
-const props = defineProps({ blok: Object })
+const props = defineProps({ blok: Object });
 
-const mobileTabsStates = ref(props.blok.entries.map((entry) => false))
+const mobileTabsStates = ref(props.blok.entries.map(() => false));
 
 // Mobile
 const setActiveTabMobile = (index) => {
-  mobileTabsStates.value[index] = !mobileTabsStates.value[index]
-}
+  mobileTabsStates.value[index] = !mobileTabsStates.value[index];
+};
 
 // Desktop
-const activeTab = ref(0)
+const activeTab = ref(0);
 
 const setActiveTab = (index) => {
-  activeTab.value = index
-}
+  activeTab.value = index;
+};
 
-const tabWidth = computed(() => 100 / props.blok.entries.length)
+const tabWidth = computed(() => 100 / props.blok.entries.length);
 
 const cssVars = computed(() => {
   return {
-    '--indicatorWidth': tabWidth.value + '%',
-    '--indicatorMarginLeft': activeTab.value * tabWidth.value + '%',
+    '--indicatorWidth': `${tabWidth.value}%`,
+    '--indicatorMarginLeft': `${activeTab.value * tabWidth.value}%`,
     '--activeTab': activeTab.value,
-  }
-})
+  };
+});
 
 // TODO: use focus point helper function for images, check padding/margin in mobile
 </script>
@@ -44,11 +44,11 @@ const cssVars = computed(() => {
       :class="{ 'md:invisible md:hidden': !blok.always_accordion }"
     >
       <ul class="relative flex flex-col">
-        <li v-for="(entry, index) in blok.entries" class="group">
+        <li v-for="(entry, index) in blok.entries" :key="entry._uid" class="group">
           <button
-            @click.prevent="setActiveTabMobile(index)"
-            class="border-1 flex w-full cursor-pointer justify-between border-t border-dark py-4 text-left text-lg text-dark group-first:border-0"
             ref="buttonRefs"
+            class="border-1 flex w-full cursor-pointer justify-between border-t border-dark py-4 text-left text-lg text-dark group-first:border-0"
+            @click.prevent="setActiveTabMobile(index)"
           >
             <span>{{ entry.headline }}</span>
             <span v-if="mobileTabsStates[index]">
@@ -89,19 +89,19 @@ const cssVars = computed(() => {
       </ul>
     </div>
     <div
+      v-if="!blok.always_accordion"
       class="tabbed-content-section-desktop invisible hidden md:visible md:block"
       :style="cssVars"
-      v-if="!blok.always_accordion"
     >
       <ul class="relative mb-8 flex border-b border-gray-900">
         <li
           v-for="(entry, index) in blok.entries"
           :key="entry._uid"
-          :style="'width:' + tabWidth + '%'"
+          :style="`width:${tabWidth}%`"
         >
           <button
-            @click.prevent="setActiveTab(index)"
             class="w-full cursor-pointer p-3 text-center text-lg text-dark"
+            @click.prevent="setActiveTab(index)"
           >
             {{ entry.headline }}
           </button>
@@ -109,8 +109,8 @@ const cssVars = computed(() => {
       </ul>
       <section
         v-for="(entry, index) in blok.entries"
+        :id="`entry-${entry._uid}`"
         :key="entry._uid"
-        :id="'entry-' + entry._uid"
       >
         <StoryblokComponent v-if="index === activeTab" :blok="entry" />
       </section>

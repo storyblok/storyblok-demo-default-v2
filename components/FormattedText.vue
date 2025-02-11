@@ -1,5 +1,5 @@
 <template>
   <div class="font-light uppercase leading-loose">
-    <slot />
+    <slot></slot>
   </div>
 </template>

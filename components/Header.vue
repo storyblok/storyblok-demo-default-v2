@@ -1,73 +1,74 @@
 <script setup>
 const props = defineProps({
   logo: Object,
-  disable_transparency: Boolean,
-  auto_nav: Boolean,
-  auto_nav_folder: String,
+  disableTransparency: Boolean,
+  autoNav: Boolean,
+  autoNavFolder: String,
   nav: Object,
   buttons: Object,
   light: Boolean,
-})
+});
 
-const folderStories = ref(null)
+const folderStories = ref(null);
 
 const getFolderStories = async () => {
-  const storyblokApi = useStoryblokApi()
+  const storyblokApi = useStoryblokApi();
   const { data } = await storyblokApi.get('cdn/stories', {
     version: getVersion(),
-    level: props.auto_nav_folder ? 2 : 1,
+    level: props.autoNavFolder ? 2 : 1,
     excluding_slugs: 'site-config,error-404',
     excluding_fields: 'body',
-    starts_with: props.auto_nav_folder,
+    starts_with: props.autoNavFolder,
     per_page: 5,
-  })
-  folderStories.value = !props.auto_nav_folder
+  });
+  folderStories.value = !props.autoNavFolder
     ? data.stories.filter(
-        (story) => story.parent_id === 0 || story.parent_id === null,
+        story => story.parent_id === 0 || story.parent_id === null,
       )
-    : data.stories
-}
+    : data.stories;
+};
 
-getFolderStories()
+getFolderStories();
 
 watch(
-  () => props.auto_nav_folder,
+  () => props.autoNavFolder,
   () => getFolderStories(),
-)
+);
 
-const mobileNavOpen = ref(false)
+const mobileNavOpen = ref(false);
 
 const toggleMobileNav = () => {
-  mobileNavOpen.value = !mobileNavOpen.value
-}
+  mobileNavOpen.value = !mobileNavOpen.value;
+};
 
-const route = useRoute()
+const route = useRoute();
 watch(route, () => {
-  mobileNavOpen.value = false
-})
+  mobileNavOpen.value = false;
+});
 
-const headerClasses = ref('h-32')
-const logoScale = ref('scale-100')
+const headerClasses = ref('h-32');
+const logoScale = ref('scale-100');
 
 const headerBg = computed(() => {
-  return props.light ? 'bg-white' : 'bg-neutral-900'
-})
+  return props.light ? 'bg-white' : 'bg-neutral-900';
+});
 
 const headerTransparency = computed(() => {
-  return props.disable_transparency ? '' : 'bg-opacity-80 backdrop-blur-lg'
-})
+  return props.disableTransparency ? '' : 'bg-opacity-80 backdrop-blur-lg';
+});
 
 onMounted(() => {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 60) {
-      headerClasses.value = ' shadow-md h-20'
-      logoScale.value = 'scale-75'
-    } else {
-      headerClasses.value = 'h-32'
-      logoScale.value = 'scale-100'
+      headerClasses.value = ' shadow-md h-20';
+      logoScale.value = 'scale-75';
     }
-  })
-})
+    else {
+      headerClasses.value = 'h-32';
+      logoScale.value = 'scale-100';
+    }
+  });
+});
 </script>
 
 <template>
@@ -118,16 +119,16 @@ onMounted(() => {
         </ul>
       </nav>
       <MobileNavToggle
-        @click="toggleMobileNav"
         :color="light ? 'bg-dark' : 'bg-light'"
+        @click="toggleMobileNav"
       />
     </div>
   </header>
   <MobileNav
-    :mobileNavOpen="mobileNavOpen"
-    :headerNav="nav"
-    :autoNav="auto_nav"
-    :folderStories="folderStories"
+    :mobile-nav-open="mobileNavOpen"
+    :header-nav="nav"
+    :auto-nav="auto_nav"
+    :folder-stories="folderStories"
   />
 </template>
 

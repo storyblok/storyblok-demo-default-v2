@@ -4,7 +4,7 @@ defineProps({
   headerNav: Object,
   autoNav: Boolean,
   folderStories: Object,
-})
+});
 </script>
 
 <template>

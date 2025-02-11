@@ -1,7 +1,7 @@
 <script setup>
-defineProps({ blok: Object, index: Number })
-const componentExists = (component) =>
-  typeof resolveComponent(component) !== 'string'
+defineProps({ blok: Object, index: Number });
+const componentExists = component =>
+  typeof resolveComponent(component) !== 'string';
 </script>
 
 <template>

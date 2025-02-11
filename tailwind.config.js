@@ -53,15 +53,15 @@ module.exports = {
       body: 'var(--font-family-body)',
     },
     borderRadius: {
-      none: '0',
-      sm: 'var(--rounded_sm)',
-      DEFAULT: 'var(--rounded_default)',
-      md: 'var(--rounded_md)',
-      lg: 'var(--rounded_lg)',
-      xl: 'var(--rounded_xl)',
+      'none': '0',
+      'sm': 'var(--rounded_sm)',
+      'DEFAULT': 'var(--rounded_default)',
+      'md': 'var(--rounded_md)',
+      'lg': 'var(--rounded_lg)',
+      'xl': 'var(--rounded_xl)',
       '2xl': 'var(--rounded_2xl)',
       '3xl': 'var(--rounded_3xl)',
-      full: 'var(--rounded_full)',
+      'full': 'var(--rounded_full)',
     },
     extend: {
       colors: {
@@ -74,4 +74,4 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/typography')],
-}
+};

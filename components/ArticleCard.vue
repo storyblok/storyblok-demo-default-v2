@@ -1,21 +1,21 @@
 <script setup>
-const props = defineProps({ article: Object, slug: String })
+const props = defineProps({ article: Object, slug: String });
 
-const { query } = useRoute()
+const { query } = useRoute();
 
 const inEditor = computed(() => {
-  return query._storyblok ? true : false
-})
+  return !!query._storyblok;
+});
 
 const optimizedImage = computed(() =>
   getOptimizedImage(props.article?.image, 400),
-)
+);
 </script>
 
 <template>
   <NuxtLink
-    :to="inEditor ? '' : '/' + slug"
     v-if="article"
+    :to="inEditor ? '' : `/${slug}`"
     class="group group flex h-full w-full max-w-md transform flex-col overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg lg:max-w-full"
   >
     <div class="h-[210px] w-full overflow-hidden xl:h-[300px]">

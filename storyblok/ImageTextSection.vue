@@ -1,23 +1,25 @@
 <script setup>
-const props = defineProps({ blok: Object })
+const props = defineProps({ blok: Object });
 
 const fixedHeightImages = computed(() => {
-  if (props.blok.image_layout !== 'fixed-height') return false
+  if (props.blok.image_layout !== 'fixed-height') {
+    return false;
+  }
   return {
     mobile: getOptimizedImage(props.blok.image, 600, 300),
     tablet: getOptimizedImage(props.blok.image, 1000, 500),
     desktop: getOptimizedImage(props.blok.image, 1000, 1250),
-  }
-})
+  };
+});
 
-const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000))
+const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000));
 </script>
 
 <template>
   <section
     v-editable="blok"
     class="page-section image-text-section"
-    :class="'bg-' + blok.background_color"
+    :class="`bg-${blok.background_color}`"
   >
     <div
       class="container grid items-center gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"

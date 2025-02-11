@@ -1,63 +1,67 @@
 <script setup>
-import Client from 'shopify-buy'
-const config = useRuntimeConfig()
-const props = defineProps({ blok: Object })
+import Client from 'shopify-buy';
 
+const props = defineProps({ blok: Object });
+const config = useRuntimeConfig();
 const shopifyClient = Client.buildClient({
   domain: config.public.shopifyDomain,
   storefrontAccessToken: config.public.shopifyToken,
-})
+});
 
-const product = ref(null)
-const pending = ref(true)
+const product = ref(null);
+const pending = ref(true);
 
 const fetchProduct = async (id) => {
-  if (!id) return
-  let productObject = {}
+  if (!id) {
+    return;
+  }
+  const productObject = {};
   await shopifyClient.product.fetch(id).then((fetchedProduct) => {
-    productObject.title = fetchedProduct.title
-    productObject.image = fetchedProduct.images[0].src
-    productObject.currency = fetchedProduct.variants[0].price.currencyCode
-    productObject.price = fetchedProduct.variants[0].price.amount
-    productObject.available = fetchedProduct.variants[0].available
-    productObject.description = fetchedProduct.description
-  })
-  return productObject
-}
+    productObject.title = fetchedProduct.title;
+    productObject.image = fetchedProduct.images[0].src;
+    productObject.currency = fetchedProduct.variants[0].price.currencyCode;
+    productObject.price = fetchedProduct.variants[0].price.amount;
+    productObject.available = fetchedProduct.variants[0].available;
+    productObject.description = fetchedProduct.description;
+  });
+  return productObject;
+};
 
 const useProduct = async () => {
   if (props.blok?.product?.items[0]?.id) {
     try {
-      product.value = await fetchProduct(props.blok?.product?.items[0]?.id)
-      pending.value = false
-    } catch (error) {
-      product.value = null
-      pending.value = false
+      product.value = await fetchProduct(props.blok?.product?.items[0]?.id);
+      pending.value = false;
     }
-  } else {
-    product.value = null
-    pending.value = false
+    catch {
+      product.value = null;
+      pending.value = false;
+    }
   }
-}
+  else {
+    product.value = null;
+    pending.value = false;
+  }
+};
 
-useProduct()
+useProduct();
 
 watch(
   () => props.blok,
   async () => {
-    useProduct()
+    useProduct();
   },
   {
     deep: true,
   },
-)
+);
 </script>
 
 <template>
   <section
     v-editable="blok"
     class="page-section single-product-section"
-    :class="'bg-' + blok.background_color"
+    :class="`bg-${blok.background_color}`"
   >
     <div
       class="container grid items-center gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"
@@ -71,10 +75,10 @@ watch(
         </Headline>
         <div
           v-if="
-            !pending &&
-            product &&
-            !blok.override_product_description &&
-            product.description
+            !pending
+              && product
+              && !blok.override_product_description
+              && product.description
           "
           class="prose prose-lg"
         >
@@ -105,7 +109,7 @@ watch(
           <div class="flex justify-between bg-light px-6 py-3 text-dark">
             <span>{{ product.title }}</span>
             <span v-if="product.available" class="font-bold">
-              {{ product.price + ' ' + product.currency }}
+              {{ `${product.price} ${product.currency}` }}
             </span>
             <span v-else class="font-bold">Currently out of stock</span>
           </div>

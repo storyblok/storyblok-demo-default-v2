@@ -1,29 +1,31 @@
 <script setup>
-const props = defineProps({ slug: String, altStyle: Boolean })
+const props = defineProps({ slug: String, altStyle: Boolean });
 
-const storyblokApi = useStoryblokApi()
+const storyblokApi = useStoryblokApi();
 
-const allLinks = ref()
+const allLinks = ref();
 
-const links = await storyblokApi.getAll('cdn/links', { version: getVersion() })
-allLinks.value = links
+const links = await storyblokApi.getAll('cdn/links', { version: getVersion() });
+allLinks.value = links;
 
 const breadcrumbs = computed(() => {
-  let breadcrumbs = []
+  const breadcrumbs = [];
 
-  const slugArray = props.slug.split('/')
+  const slugArray = props.slug.split('/');
 
   for (let i = 1; i <= slugArray.length; i++) {
-    const processedSlug = slugArray.slice(0, i).join('/')
+    const processedSlug = slugArray.slice(0, i).join('/');
     const matchingLink = allLinks.value.find(
-      (link) => link.slug === processedSlug,
-    )
-    if (!matchingLink) continue
-    breadcrumbs.push({ name: matchingLink.name, slug: '/' + processedSlug })
+      link => link.slug === processedSlug,
+    );
+    if (!matchingLink) {
+      continue;
+    }
+    breadcrumbs.push({ name: matchingLink.name, slug: `/${processedSlug}` });
   }
 
-  return breadcrumbs
-})
+  return breadcrumbs;
+});
 </script>
 
 <template>

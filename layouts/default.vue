@@ -1,10 +1,8 @@
 <script setup>
-const props = defineProps({ uuid: String })
-
 const defaultFontFamilies = {
   '--font-family-display': 'Roboto, sans-serif',
   '--font-family-body': 'Roboto, sans-serif',
-}
+};
 
 const defaultColors = {
   '--primary': '#395ECE',
@@ -12,7 +10,7 @@ const defaultColors = {
   '--light': '#F8F8F8',
   '--medium': '#435366',
   '--dark': '#0A0F15',
-}
+};
 
 const defaultBorderRadiuses = {
   '--rounded_sm': '4px',
@@ -23,86 +21,105 @@ const defaultBorderRadiuses = {
   '--rounded_2xl': '20px',
   '--rounded_3xl': '25px',
   '--rounded_full': '9999px',
-}
+};
 
-const theme = reactive({
-  ...defaultFontFamilies,
-  ...defaultColors,
-  ...defaultBorderRadiuses,
-})
-
-const siteConfig = await getSiteConfig()
+const siteConfig = await getSiteConfig();
 
 const cssVariables = computed(() => {
+  if (!siteConfig.value) {
+    return {
+      ...defaultFontFamilies,
+      ...defaultColors,
+      ...defaultBorderRadiuses,
+    };
+  }
+
+  const theme = {
+    ...defaultFontFamilies,
+    ...defaultColors,
+    ...defaultBorderRadiuses,
+  };
+
   if (siteConfig.value.content.use_custom_fonts) {
     if (siteConfig.value.content.custom_font_display) {
-      theme['--font-family-display'] =
-        siteConfig.value.content.custom_font_display
+      theme['--font-family-display']
+        = siteConfig.value.content.custom_font_display;
     }
     if (siteConfig.value.content.custom_font_body) {
-      theme['--font-family-body'] = siteConfig.value.content.custom_font_body
+      theme['--font-family-body'] = siteConfig.value.content.custom_font_body;
     }
-  } else {
-    Object.assign(theme, defaultFontFamilies)
+  }
+  else {
+    Object.assign(theme, defaultFontFamilies);
   }
   if (siteConfig.value.content.use_custom_colors) {
-    theme['--primary'] = siteConfig.value.content.primary.color
-    theme['--secondary'] = siteConfig.value.content.secondary.color
-    theme['--light'] = siteConfig.value.content.light.color
-    theme['--medium'] = siteConfig.value.content.medium.color
-    theme['--dark'] = siteConfig.value.content.dark.color
+    theme['--primary'] = siteConfig.value.content.primary.color;
+    theme['--secondary'] = siteConfig.value.content.secondary.color;
+    theme['--light'] = siteConfig.value.content.light.color;
+    theme['--medium'] = siteConfig.value.content.medium.color;
+    theme['--dark'] = siteConfig.value.content.dark.color;
     if (siteConfig.value.content.colored_headlines) {
-      theme['--headline-color'] = siteConfig.value.content.primary.color
-    } else {
-      theme['--headline-color'] = siteConfig.value.content.dark.color
+      theme['--headline-color'] = siteConfig.value.content.primary.color;
     }
-  } else {
-    Object.assign(theme, defaultColors)
+    else {
+      theme['--headline-color'] = siteConfig.value.content.dark.color;
+    }
+  }
+  else {
+    Object.assign(theme, defaultColors);
     if (siteConfig.value.content.colored_headlines) {
-      theme['--headline-color'] = defaultColors['--primary']
-    } else {
-      theme['--headline-color'] = defaultColors['--dark']
+      theme['--headline-color'] = defaultColors['--primary'];
+    }
+    else {
+      theme['--headline-color'] = defaultColors['--dark'];
     }
   }
   if (siteConfig.value.content.disable_rounded_corners) {
     for (const key in theme) {
-      if (key.startsWith('--rounded_')) theme[key] = 0
+      if (key.startsWith('--rounded_')) {
+        theme[key] = 0;
+      }
     }
-  } else {
-    Object.assign(theme, defaultBorderRadiuses)
   }
-  return theme
-})
+  else {
+    Object.assign(theme, defaultBorderRadiuses);
+  }
+  return theme;
+});
 
 const autoNavFolder = computed(() => {
-  if (!siteConfig.value.content.header_auto_nav_folder) return ''
-  if (!siteConfig.value.content.header_auto_nav_folder[0]?.slug) return ''
-  return siteConfig.value.content.header_auto_nav_folder[0].slug
-})
+  if (!siteConfig.value.content.header_auto_nav_folder) {
+    return '';
+  }
+  if (!siteConfig.value.content.header_auto_nav_folder[0]?.slug) {
+    return '';
+  }
+  return siteConfig.value.content.header_auto_nav_folder[0].slug;
+});
 
-const defineEnableBreadcrumbsState = useState(
+const _defineEnableBreadcrumbsState = useState(
   'enableBreadcrumbs',
   () => siteConfig.value.content.enable_breadcrumbs,
-)
+);
 
-const defineBreadcrumbsExcludedStoriesState = useState(
+const _defineBreadcrumbsExcludedStoriesState = useState(
   'breadcrumbsExcludedStories',
   () => siteConfig.value.content.breadcrumbs_excluded_stories,
-)
+);
 
-const viewingSiteConfig = useState('viewingSiteConfig')
-const { customParent } = useRuntimeConfig().public
+const viewingSiteConfig = useState('viewingSiteConfig');
+const { customParent } = useRuntimeConfig().public;
 
 onMounted(() => {
   useStoryblokBridge(
     siteConfig.value.id,
-    (evStory) => (siteConfig.value = evStory),
+    evStory => (siteConfig.value = evStory),
     {
       preventClicks: true,
       customParent,
     },
-  )
-})
+  );
+});
 </script>
 
 <template>
@@ -147,7 +164,7 @@ onMounted(() => {
         mollit anim id est laborum.
       </p>
     </div>
-    <slot />
+    <slot></slot>
     <Footer
       :text_color="siteConfig.content.footer_text_color"
       :background_color="siteConfig.content.footer_background_color"
@@ -195,9 +212,7 @@ section.hero-section + section.text-section.overlap-preceding-hero {
   @apply -mb-16 py-0 sm:-mb-20 md:-mb-24 lg:-mb-28;
 }
 
-section.hero-section
-  + section.text-section.overlap-preceding-hero
-  > .container {
+section.hero-section + section.text-section.overlap-preceding-hero > .container {
   @apply -translate-y-24;
 }
 

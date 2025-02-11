@@ -5,10 +5,9 @@
     "dev": "nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepare": "husky"
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@tresjs/cientos": "^4.0.2",
@@ -19,25 +18,19 @@
   "devDependencies": {
     "@marvr/storyblok-rich-text-vue-renderer": "^3.2.1",
     "@nuxtjs/tailwindcss": "^6.12.1",
+    "@storyblok/eslint-config": "^0.3.0",
     "@storyblok/nuxt": "^6.0.10",
     "@storyblok/vue": "^8.0.9",
     "@tailwindcss/typography": "^0.5.15",
     "clone-deep": "^4.0.1",
-    "husky": "^9.1.5",
+    "eslint": "^9.20.0",
+    "husky": "^9.1.7",
+    "i": "^0.3.7",
     "lint-staged": "^15.2.10",
     "nuxt": "^3.13.0",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "shopify-buy": "^2.22.0",
     "swiper": "^11.1.12"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "semi": false,
-    "tabWidth": 2,
-    "htmlWhitespaceSensitivity": "ignore",
-    "plugins": [
-      "prettier-plugin-tailwindcss"
-    ]
   }
 }

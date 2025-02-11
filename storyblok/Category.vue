@@ -1,13 +1,15 @@
 <script setup>
-const props = defineProps({ blok: Object, uuid: String })
+const props = defineProps({ blok: Object, uuid: String });
 
-let { slug } = useRoute().params
-let language = 'default'
+const { slug } = useRoute().params;
+let language = 'default';
 
-if (slug) language = await getLanguage(slug)
+if (slug) {
+  language = await getLanguage(slug);
+}
 
-const articles = ref(null)
-const storyblokApi = useStoryblokApi()
+const articles = ref(null);
+const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get(`cdn/stories/`, {
   version: getVersion(),
   starts_with: 'articles',
@@ -16,15 +18,15 @@ const { data } = await storyblokApi.get(`cdn/stories/`, {
       in_array: props.uuid,
     },
   },
-  language: language,
+  language,
   fallback_lang: 'default',
-})
+});
 
-articles.value = data.stories
+articles.value = data.stories;
 </script>
 
 <template>
-  <main class="container py-12 md:py-16" v-editable="blok">
+  <main v-editable="blok" class="container py-12 md:py-16">
     <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
     <Lead v-if="blok.description">{{ blok.description }}</Lead>
     <div
