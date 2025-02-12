@@ -88,7 +88,7 @@ onMounted(() => {
         />
       </NuxtLink>
       <nav class="main-nav invisible mx-auto hidden lg:visible lg:block">
-        <ul v-if="!auto_nav">
+        <ul v-if="!autoNav">
           <li v-for="item in nav" :key="item._uid">
             <NavItem
               class="nav-item"
@@ -124,12 +124,12 @@ onMounted(() => {
       />
     </div>
   </header>
-  <MobileNav
+  <!-- <MobileNav
     :mobile-nav-open="mobileNavOpen"
     :header-nav="nav"
-    :auto-nav="auto_nav"
+    :auto-nav="autoNav"
     :folder-stories="folderStories"
-  />
+  /> -->
 </template>
 
 <style scoped>

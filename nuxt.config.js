@@ -12,7 +12,6 @@ export default defineNuxtConfig({
       },
     ],
     '@nuxtjs/tailwindcss',
-    '@tresjs/nuxt',
   ],
 
   ssr: false,
@@ -31,5 +30,5 @@ export default defineNuxtConfig({
     optimizeDeps: { exclude: ['fsevents'] },
   },
 
-  compatibilityDate: '2024-07-24',
+  compatibilityDate: '2025-02-12',
 });
