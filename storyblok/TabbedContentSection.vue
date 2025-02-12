@@ -46,7 +46,6 @@ const cssVars = computed(() => {
       <ul class="relative flex flex-col">
         <li v-for="(entry, index) in blok.entries" :key="entry._uid" class="group">
           <button
-            ref="buttonRefs"
             class="border-1 flex w-full cursor-pointer justify-between border-t border-dark py-4 text-left text-lg text-dark group-first:border-0"
             @click.prevent="setActiveTabMobile(index)"
           >
