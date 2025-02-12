@@ -17,6 +17,14 @@ export default defineNuxtConfig({
   ssr: false,
   css: ['@/assets/css/fonts.css'],
 
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      ],
+    },
+  },
+
   runtimeConfig: {
     public: {
       templateToken: process.env.STORYBLOK_TOKEN,
