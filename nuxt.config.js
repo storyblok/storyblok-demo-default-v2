@@ -26,9 +26,5 @@ export default defineNuxtConfig({
     },
   },
 
-  vite: {
-    optimizeDeps: { exclude: ['fsevents'] },
-  },
-
   compatibilityDate: '2025-02-12',
 });
