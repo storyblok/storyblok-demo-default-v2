@@ -1,15 +1,15 @@
 <script setup>
 const defaultFontFamilies = {
-  '--font-family-display': 'Roboto, sans-serif',
-  '--font-family-body': 'Roboto, sans-serif',
+  '--font-family-display': 'ABCMarfa, sans-serif',
+  '--font-family-body': 'ABCMarfa, sans-serif',
 };
 
 const defaultColors = {
-  '--primary': '#395ECE',
-  '--secondary': '#00B3B0',
-  '--light': '#F8F8F8',
+  '--primary': '#9beaaf',
+  '--secondary': '#9987f0',
+  '--light': '#f6f7f8',
   '--medium': '#435366',
-  '--dark': '#0A0F15',
+  '--dark': '#1f1f1f',
 };
 
 const defaultBorderRadiuses = {

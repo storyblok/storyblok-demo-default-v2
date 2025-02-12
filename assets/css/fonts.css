@@ -1,3 +1,36 @@
+/* ABCMarfa */
+@font-face {
+  font-display: swap;
+  font-family: 'ABCMarfa';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/ABCMarfa-Light.woff2') format('woff2');
+}
+/* ABCMarfa */
+@font-face {
+  font-display: swap;
+  font-family: 'ABCMarfa';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/ABCMarfa-Regular.woff2') format('woff2');
+}
+/* ABCMarfa */
+@font-face {
+  font-display: swap;
+  font-family: 'ABCMarfa';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/ABCMarfa-Medium.woff2') format('woff2');
+}
+/* ABCMarfa */
+@font-face {
+  font-display: swap;
+  font-family: 'ABCMarfa';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/ABCMarfa-Bold.woff2') format('woff2');
+}
+
 /* roboto-300 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
