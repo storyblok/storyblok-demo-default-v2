@@ -18,7 +18,7 @@ const optimizedAuthorImage = computed(() =>
         v-if="optimizedArticleImage"
         :src="optimizedArticleImage"
         :alt="blok.image.alt"
-        class="pointer-events-none absolute left-0 top-0 z-0 h-full w-full object-cover"
+        class="pointer-events-none absolute left-0 top-0 z-0 size-full object-cover"
       />
       <div v-if="blok.headline" class="container relative z-10 text-white">
         <h1
@@ -30,7 +30,7 @@ const optimizedAuthorImage = computed(() =>
     </header>
     <main class="container relative z-50">
       <div
-        class="-mt-32 rounded-lg bg-white bg-opacity-80 p-6 backdrop-blur-lg lg:-mt-64 lg:flex lg:items-start lg:p-12"
+        class="bg-opacity-/80 -mt-32 rounded-lg bg-white p-6 backdrop-blur-lg lg:-mt-64 lg:flex lg:items-start lg:p-12"
       >
         <section class="mb-12 w-full lg:mb-0 lg:pr-32">
           <Headline v-if="blok.subheadline" size="small">
@@ -63,7 +63,7 @@ const optimizedAuthorImage = computed(() =>
                 v-if="blok.author.content.profile_picture.filename"
                 :src="optimizedAuthorImage"
                 :alt="blok.author.content.profile_picture.alt"
-                class="pointer-events-none h-24 w-24 rounded-full object-cover"
+                class="pointer-events-none size-24 rounded-full object-cover"
               />
               <div>
                 <h4 class="mb-1.5 font-display text-xl text-dark">Author</h4>

@@ -113,7 +113,7 @@ const showVideo = computed(() => {
           v-if="showVideo"
           :src="blok.background_video.filename"
           :alt="blok.background_video.alt"
-          class="absolute left-0 top-0 z-0 h-full w-full object-cover"
+          class="absolute left-0 top-0 z-0 size-full object-cover"
           autoplay
           muted
           loop
@@ -122,7 +122,7 @@ const showVideo = computed(() => {
           v-else-if="!showVideo && blok.background_image.filename"
           :src="optimizedImage + filters"
           :alt="blok.background_image.alt"
-          class="pointer-events-none absolute left-0 top-0 z-0 h-full w-full object-cover"
+          class="pointer-events-none absolute left-0 top-0 z-0 size-full object-cover"
         />
       </div>
     </div>

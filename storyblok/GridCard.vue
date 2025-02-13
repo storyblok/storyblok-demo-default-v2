@@ -15,7 +15,7 @@ const textColor = computed(() => {
 <template>
   <div
     v-editable="card"
-    class="flex h-full w-full max-w-md flex-col rounded-lg p-6 lg:max-w-none"
+    class="flex size-full max-w-md flex-col rounded-lg p-6 lg:max-w-none"
     :class="card.background_color?.value ? '' : defaultColor"
     :style="
       card.background_color?.value

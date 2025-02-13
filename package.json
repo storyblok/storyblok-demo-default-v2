@@ -7,6 +7,7 @@
     "preview": "nuxt preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:debug": "eslint . --debug",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "clone-deep": "^4.0.1",
     "eslint": "^9.20.1",
+    "eslint-plugin-tailwindcss": "^3.18.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "nuxt": "^3.15.4",

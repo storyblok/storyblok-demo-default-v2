@@ -16,7 +16,7 @@ const componentExists = component =>
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-12 w-12 shrink-0 text-yellow-600"
+        class="size-12 shrink-0 text-yellow-600"
         viewBox="0 0 20 20"
         fill="currentColor"
       >

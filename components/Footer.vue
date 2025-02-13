@@ -65,7 +65,7 @@ const backgroundColor = computed(() => {
     </div>
     <div class="container">
       <div
-        class="h-[1px] w-full bg-medium"
+        class="h-px w-full bg-medium"
       ></div>
       <img
         src="~/assets/images/made-with-love.svg"

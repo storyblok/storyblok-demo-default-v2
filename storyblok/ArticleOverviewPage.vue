@@ -112,7 +112,7 @@ watch(checkedAuthor, () => {
     <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
     <section class="my-16 flex text-dark">
       <aside
-        class="invisible hidden flex-shrink-0 flex-col space-y-6 md:visible md:mr-6 md:flex md:w-[210px] xl:mr-12 xl:w-[240px]"
+        class="invisible hidden shrink-0 flex-col space-y-6 md:visible md:mr-6 md:flex md:w-[210px] xl:mr-12 xl:w-[240px]"
       >
         <div>
           <label for="search" class="mb-3 block text-lg font-medium">

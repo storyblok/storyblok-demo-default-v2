@@ -20,15 +20,15 @@ watch(route, () => {
     @click="toggle"
   >
     <div
-      class="bar1 my-1 h-0.5 w-7 transform transition-all"
+      class="bar1 my-1 h-0.5 w-7 transition-all"
       :class="color"
     ></div>
     <div
-      class="bar2 my-1 h-0.5 w-7 transform transition-all"
+      class="bar2 my-1 h-0.5 w-7 transition-all"
       :class="color"
     ></div>
     <div
-      class="bar3 my-1 h-0.5 w-7 transform transition-all"
+      class="bar3 my-1 h-0.5 w-7 transition-all"
       :class="color"
     ></div>
   </button>

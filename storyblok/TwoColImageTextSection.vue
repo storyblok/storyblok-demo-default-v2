@@ -40,12 +40,12 @@ const optimizedImages2 = computed(() => {
         </div>
       </div>
       <div
-        class="my-12 h-[1px] w-full bg-gradient-to-r from-transparent via-medium to-transparent"
+        class="my-12 h-px w-full bg-gradient-to-r from-transparent via-medium to-transparent"
       ></div>
       <div
         class="flex flex-col items-center space-y-6 md:flex-row md:space-x-12 md:space-y-0"
       >
-        <div class="block h-full w-full md:w-7/12 lg:w-8/12">
+        <div class="block size-full md:w-7/12 lg:w-8/12">
           <img
             v-if="optimizedImages1"
             :src="optimizedImages1.mobile"
@@ -65,7 +65,7 @@ const optimizedImages2 = computed(() => {
             class="pointer-events-none invisible hidden rounded-lg shadow-2xl lg:visible lg:block"
           />
         </div>
-        <div class="block h-full w-full md:w-5/12 lg:w-4/12">
+        <div class="block size-full md:w-5/12 lg:w-4/12">
           <img
             v-if="optimizedImages2"
             :src="optimizedImages2.mobile"

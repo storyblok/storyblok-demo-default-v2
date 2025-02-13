@@ -19,7 +19,7 @@ const url = computed(() => {
   <NuxtLink
     v-editable="item"
     :to="url"
-    class="relative cursor-pointer transition-colors h-full flex items-center text-base"
+    class="relative flex h-full cursor-pointer items-center text-base transition-colors"
     :class="props.reducedFontWeight ? 'font-light' : 'font-medium'"
   >
     {{ item.label }}

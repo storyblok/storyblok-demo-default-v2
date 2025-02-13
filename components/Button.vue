@@ -1,26 +1,16 @@
 <script setup>
 const props = defineProps({ button: Object, link: String });
 
-const { query } = useRoute();
-
-const inEditor = computed(() => {
-  return !!query._storyblok;
-});
-
 const url = computed(() => {
-  if (props.link) {
-    return props.link;
-  }
-  switch (props.button?.link?.linktype) {
+  switch (props.item.link.linktype) {
     case 'story':
-      return `/${props.button.link.story?.full_slug}`;
+      return `/${props.item.link.story?.full_slug}`;
+    case 'email':
+      return `mailto:${props.item.link.email}`;
     case 'url':
     case 'asset':
-      return props.button.link.url;
-    case 'email':
-      return `mailto:${props.button.link.email}`;
     default:
-      return '#';
+      return props.item.link.url;
   }
 });
 
@@ -83,9 +73,9 @@ const classes = computed(() => {
   <button>
     <NuxtLink
       v-editable="button"
-      :to="inEditor ? '' : url"
+      :to="url"
       :class="classes"
-      class="block h-full w-full"
+      class="block size-full"
     >
       {{ button.label }}
       <slot></slot>

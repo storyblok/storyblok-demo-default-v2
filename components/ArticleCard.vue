@@ -16,13 +16,13 @@ const optimizedImage = computed(() =>
   <NuxtLink
     v-if="article"
     :to="inEditor ? '' : `/${slug}`"
-    class="group group flex h-full w-full max-w-md transform flex-col overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg lg:max-w-full"
+    class="group flex size-full max-w-md flex-col overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg lg:max-w-full"
   >
     <div class="h-[210px] w-full overflow-hidden xl:h-[300px]">
       <img
         :src="optimizedImage"
         :alt="article.image && article.image.alt"
-        class="pointer-events-none h-full w-full transform object-cover transition-all duration-700 group-hover:scale-110"
+        class="pointer-events-none size-full object-cover transition-all duration-700 group-hover:scale-110"
       />
     </div>
     <div class="grow p-6 text-left">
@@ -41,7 +41,7 @@ const optimizedImage = computed(() =>
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="h-6 w-6 transition-transform duration-500 group-hover:translate-x-3"
+        class="size-6 transition-transform duration-500 group-hover:translate-x-3"
       >
         <path
           stroke-linecap="round"

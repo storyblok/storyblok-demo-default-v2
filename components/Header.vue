@@ -68,11 +68,11 @@ onMounted(() => {
 
 <template>
   <header
-    class="fixed left-0 top-0 z-[99] w-full transition-all duration-300 border-b border-dark"
+    class="fixed left-0 top-0 z-[99] w-full border-b border-dark transition-all duration-300"
     :class="[headerClasses, headerBg]"
   >
     <div
-      class="mx-auto flex h-full w-full max-w-[1536px] items-center justify-between px-4 lg:justify-start lg:px-8"
+      class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
     >
       <NuxtLink to="/" class="flex shrink-0">
         <img
@@ -82,7 +82,7 @@ onMounted(() => {
           :class="logoScale"
         />
       </NuxtLink>
-      <nav class="main-nav invisible ml-auto mr-12 hidden lg:visible lg:block h-full">
+      <nav class="main-nav invisible ml-auto mr-12 hidden h-full lg:visible lg:block">
         <ul v-if="!autoNav" class="h-full">
           <li v-for="item in nav" :key="item._uid" class="h-full">
             <NavItem
@@ -105,7 +105,7 @@ onMounted(() => {
         </ul>
       </nav>
       <nav
-        class="invisible ml-auto hidden md:visible md:mr-8 md:block lg:ml-0 lg:mr-0"
+        class="invisible ml-auto hidden md:visible md:mr-8 md:block lg:mx-0"
       >
         <ul class="flex items-center space-x-4 xl:space-x-8">
           <li v-for="button in buttons" :key="button._uid">
