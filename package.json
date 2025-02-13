@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "eslint .",
@@ -23,6 +23,7 @@
     "lint-staged": "^15.4.3",
     "nuxt": "^3.15.4",
     "shopify-buy": "^2.22.0",
-    "swiper": "^11.2.2"
+    "swiper": "^11.2.2",
+    "vite-plugin-mkcert": "^1.17.6"
   }
 }

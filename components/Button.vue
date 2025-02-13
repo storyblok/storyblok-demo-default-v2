@@ -2,15 +2,15 @@
 const props = defineProps({ button: Object, link: String });
 
 const url = computed(() => {
-  switch (props.item.link.linktype) {
+  switch (props.button.link.linktype) {
     case 'story':
-      return `/${props.item.link.story?.full_slug}`;
+      return `/${props.button.link.story?.full_slug}`;
     case 'email':
-      return `mailto:${props.item.link.email}`;
+      return `mailto:${props.button.link.email}`;
     case 'url':
     case 'asset':
     default:
-      return props.item.link.url;
+      return props.button.link.url;
   }
 });
 

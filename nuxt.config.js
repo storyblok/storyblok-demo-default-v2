@@ -1,3 +1,5 @@
+import mkcert from 'vite-plugin-mkcert';
+
 export default defineNuxtConfig({
   modules: [
     [
@@ -32,6 +34,13 @@ export default defineNuxtConfig({
       shopifyDomain: process.env.SHOPIFY_DOMAIN,
       shopifyToken: process.env.SHOPIFY_TOKEN,
     },
+  },
+
+  devServer: {
+    https: true,
+  },
+  vite: {
+    plugins: [mkcert()],
   },
 
   compatibilityDate: '2025-02-12',
