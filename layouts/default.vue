@@ -192,7 +192,7 @@ body {
 }
 
 body > div > main {
-  @apply text-medium;
+  @apply text-dark;
 }
 
 section.page-section {
