@@ -33,10 +33,10 @@ const optimizedAuthorImage = computed(() =>
         class="-mt-32 rounded-lg bg-white bg-opacity-80 p-6 backdrop-blur-lg lg:-mt-64 lg:flex lg:items-start lg:p-12"
       >
         <section class="mb-12 w-full lg:mb-0 lg:pr-32">
-          <Headline v-if="blok.subheadline" size="small" class="mb-10">
+          <Headline v-if="blok.subheadline" size="small">
             {{ blok.subheadline }}
           </Headline>
-          <Lead v-if="blok.teaser" class="mb-10">{{ blok.teaser }}</Lead>
+          <Lead v-if="blok.teaser">{{ blok.teaser }}</Lead>
           <RichText :text="blok.text" />
         </section>
         <section

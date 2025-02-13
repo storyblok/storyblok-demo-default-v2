@@ -13,7 +13,6 @@ const url = computed(() => {
   }
   switch (props.button?.link?.linktype) {
     case 'story':
-      // here we need to test if the story object exists because it won't be resolved when the bridge is used on site-config
       return `/${props.button.link.story?.full_slug}`;
     case 'url':
     case 'asset':
@@ -27,7 +26,7 @@ const url = computed(() => {
 
 const classes = computed(() => {
   let classes
-    = `inline-flex items-center tracking-wider cursor-pointer transition-all duration-300 border border-${
+    = `font-semibold inline-flex items-center tracking-wider cursor-pointer transition-all duration-300 border border-${
       props.button.background_color}`;
 
   switch (props.button.border_radius) {
@@ -41,10 +40,10 @@ const classes = computed(() => {
 
   switch (props.button.size) {
     case 'small':
-      classes += ' py-2 px-6 text-sm';
+      classes += ' py-2 px-6';
       break;
     case 'large':
-      classes += ' py-4 px-10 text-xl';
+      classes += ' py-4 px-10';
       break;
     case 'medium':
     default:

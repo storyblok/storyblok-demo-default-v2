@@ -70,7 +70,7 @@ watch(
         class="order-last"
         :class="blok.reverse_layout ? '' : 'lg:order-first'"
       >
-        <Headline v-if="blok.headline" class="mb-4">
+        <Headline v-if="blok.headline">
           {{ blok.headline }}
         </Headline>
         <div

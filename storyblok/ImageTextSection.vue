@@ -28,7 +28,7 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000))
         class="order-last text-left"
         :class="blok.reverse_layout ? '' : 'lg:order-first'"
       >
-        <Headline v-if="blok.headline" size="small" class="mb-2">
+        <Headline v-if="blok.headline" size="small">
           {{ blok.headline }}
         </Headline>
         <RichText :text="blok.text" />

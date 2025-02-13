@@ -15,7 +15,7 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
     :class="`bg-${blok.background_color}`"
   >
     <div class="container text-center">
-      <Headline v-if="blok.headline" class="mb-4">{{ blok.headline }}</Headline>
+      <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
       <Lead v-if="blok.lead">
         {{ blok.lead }}
       </Lead>

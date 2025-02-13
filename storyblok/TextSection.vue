@@ -30,7 +30,7 @@ const containerColor = computed(() => {
           { 'p-12 md:py-24': !blok.single_color_background },
         ]"
       >
-        <Headline v-if="blok.headline" class="mb-4">
+        <Headline v-if="blok.headline">
           {{ blok.headline }}
         </Headline>
         <Lead v-if="blok.lead">

@@ -1,24 +1,16 @@
 <script setup>
-const props = defineProps({ item: Object });
-
-const { query } = useRoute();
-
-const inEditor = computed(() => {
-  return !!query._storyblok;
-});
+const props = defineProps({ item: Object, reducedFontWeight: Boolean });
 
 const url = computed(() => {
   switch (props.item.link.linktype) {
     case 'story':
-      // here we need to test if the story object exists because it won't be resolved when the bridge is used on site-config
       return `/${props.item.link.story?.full_slug}`;
-    case 'url':
-    case 'asset':
-      return props.item.link.url;
     case 'email':
       return `mailto:${props.item.link.email}`;
+    case 'url':
+    case 'asset':
     default:
-      return '#';
+      return props.item.link.url;
   }
 });
 </script>
@@ -26,8 +18,9 @@ const url = computed(() => {
 <template>
   <NuxtLink
     v-editable="item"
-    :to="inEditor ? '' : url"
-    class="cursor-pointer transition-colors"
+    :to="url"
+    class="relative cursor-pointer transition-colors h-full flex items-center text-base"
+    :class="props.reducedFontWeight ? 'font-light' : 'font-medium'"
   >
     {{ item.label }}
   </NuxtLink>

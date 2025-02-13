@@ -1,7 +1,6 @@
 <script setup>
 const props = defineProps({
   logo: Object,
-  disableTransparency: Boolean,
   autoNav: Boolean,
   autoNavFolder: String,
   nav: Object,
@@ -50,21 +49,17 @@ const headerClasses = ref('h-32');
 const logoScale = ref('scale-100');
 
 const headerBg = computed(() => {
-  return props.light ? 'bg-white' : 'bg-neutral-900';
-});
-
-const headerTransparency = computed(() => {
-  return props.disableTransparency ? '' : 'bg-opacity-80 backdrop-blur-lg';
+  return props.light ? 'bg-white' : 'bg-dark';
 });
 
 onMounted(() => {
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      headerClasses.value = ' shadow-md h-20';
-      logoScale.value = 'scale-75';
+    if (window.scrollY > 120) {
+      headerClasses.value = 'h-20 bg-opacity-100';
+      logoScale.value = 'scale-90';
     }
     else {
-      headerClasses.value = 'h-32';
+      headerClasses.value = 'h-32 bg-opacity-0';
       logoScale.value = 'scale-100';
     }
   });
@@ -73,8 +68,8 @@ onMounted(() => {
 
 <template>
   <header
-    class="fixed left-0 top-0 z-[99] w-full transition-all duration-700"
-    :class="[headerClasses, headerBg, headerTransparency]"
+    class="fixed left-0 top-0 z-[99] w-full transition-all duration-300 border-b border-dark"
+    :class="[headerClasses, headerBg]"
   >
     <div
       class="mx-auto flex h-full w-full max-w-[1536px] items-center justify-between px-4 lg:justify-start lg:px-8"
@@ -87,9 +82,9 @@ onMounted(() => {
           :class="logoScale"
         />
       </NuxtLink>
-      <nav class="main-nav invisible mx-auto hidden lg:visible lg:block">
-        <ul v-if="!autoNav">
-          <li v-for="item in nav" :key="item._uid">
+      <nav class="main-nav invisible ml-auto mr-12 hidden lg:visible lg:block h-full">
+        <ul v-if="!autoNav" class="h-full">
+          <li v-for="item in nav" :key="item._uid" class="h-full">
             <NavItem
               class="nav-item"
               :class="light ? 'text-dark' : 'text-white'"
@@ -133,8 +128,8 @@ onMounted(() => {
 </template>
 
 <style scoped>
-header nav.main-nav a.router-link-active {
-  @apply underline decoration-primary decoration-4 underline-offset-4;
+header nav.main-nav a.router-link-exact-active::after {
+  @apply content-[''] absolute bottom-0 left-0 h-[5px] w-full bg-dark;
 }
 
 header nav.main-nav ul {
@@ -143,13 +138,5 @@ header nav.main-nav ul {
 
 header nav.main-nav ul li .nav-item {
   @apply relative text-sm xl:text-base;
-}
-header nav.main-nav ul li .nav-item::after {
-  content: '';
-  @apply absolute -bottom-1 left-0 h-[1px] w-0 bg-white opacity-0 transition-all duration-500;
-}
-
-header nav.main-nav ul li .nav-item:hover::after {
-  @apply w-full opacity-100;
 }
 </style>

@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  twitter: Object,
+  x: Object,
   instagram: Object,
   youtube: Object,
   facebook: Object,
@@ -11,23 +11,13 @@ defineProps({
 <template>
   <ul class="flex space-x-8" :class="textColor">
     <!-- Icons by https://simpleicons.org/ -->
-    <li v-if="twitter.cached_url">
-      <a :href="twitter.cached_url" target="_blank" class="group">
-        <svg
-          role="img"
-          viewBox="0 0 24 24"
-          class="pointer-events-none h-6 w-6 scale-100 fill-current transition-all duration-500 group-hover:scale-110"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Twitter</title>
-          <path
-            d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
-          />
-        </svg>
+    <li v-if="x.url && x.linktype === 'url'">
+      <a :href="x.url" target="_blank" class="group">
+        <svg role="img" viewBox="0 0 24 24" class="pointer-events-none h-6 w-6 scale-100 fill-current transition-all duration-500 group-hover:scale-110" xmlns="http://www.w3.org/2000/svg"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
       </a>
     </li>
-    <li v-if="instagram.cached_url">
-      <a :href="instagram.cached_url" target="_blank" class="group">
+    <li v-if="instagram.url && instagram.linktype === 'url'">
+      <a :href="instagram.url" target="_blank" class="group">
         <svg
           role="img"
           viewBox="0 0 24 24"
@@ -41,8 +31,8 @@ defineProps({
         </svg>
       </a>
     </li>
-    <li v-if="youtube.cached_url">
-      <a :href="youtube.cached_url" target="_blank" class="group">
+    <li v-if="youtube.url && youtube.linktype === 'url'">
+      <a :href="youtube.url" target="_blank" class="group">
         <svg
           role="img"
           viewBox="0 0 24 24"
@@ -56,8 +46,8 @@ defineProps({
         </svg>
       </a>
     </li>
-    <li v-if="facebook.cached_url">
-      <a :href="facebook.cached_url" target="_blank" class="group">
+    <li v-if="facebook.url && facebook.linktype === 'url'">
+      <a :href="facebook.url" target="_blank" class="group">
         <svg
           role="img"
           viewBox="0 0 24 24"

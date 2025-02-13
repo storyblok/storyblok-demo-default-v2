@@ -8,7 +8,7 @@ const defaultColors = {
   '--primary': '#9beaaf',
   '--secondary': '#9987f0',
   '--light': '#f6f7f8',
-  '--medium': '#435366',
+  '--medium': '#DDE3EE',
   '--dark': '#1f1f1f',
 };
 
@@ -126,7 +126,6 @@ onMounted(() => {
   <main :style="cssVariables" class="font-body">
     <Header
       :logo="siteConfig.content.header_logo"
-      :disable_transparency="siteConfig.content.header_disable_transparency"
       :auto_nav="siteConfig.content.header_auto_nav"
       :auto_nav_folder="autoNavFolder"
       :nav="siteConfig.content.header_nav"
@@ -137,7 +136,7 @@ onMounted(() => {
       v-if="viewingSiteConfig && siteConfig.content.use_custom_colors"
       class="container py-12"
     >
-      <Headline class="mb-8">Color Preview</Headline>
+      <Headline>Color Preview</Headline>
       <div
         class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       >
@@ -166,8 +165,9 @@ onMounted(() => {
     </div>
     <slot></slot>
     <Footer
-      :text_color="siteConfig.content.footer_text_color"
-      :background_color="siteConfig.content.footer_background_color"
+      :headline="siteConfig.content.footer_headline"
+      :text-color="siteConfig.content.footer_text_color"
+      :background-color="siteConfig.content.footer_background_color"
       :logo="siteConfig.content.footer_logo"
       :about="siteConfig.content.footer_about"
       :navs="{
@@ -178,7 +178,7 @@ onMounted(() => {
         nav_2: siteConfig.content.footer_nav_2,
         nav_3: siteConfig.content.footer_nav_3,
       }"
-      :twitter="siteConfig.content.twitter"
+      :x="siteConfig.content.x"
       :instagram="siteConfig.content.instagram"
       :youtube="siteConfig.content.youtube"
       :facebook="siteConfig.content.facebook"

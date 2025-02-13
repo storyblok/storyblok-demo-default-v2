@@ -34,7 +34,7 @@ const cssVars = computed(() => {
     class="page-section tabbed-content-section container bg-white"
   >
     <div class="mb-12 text-center">
-      <Headline v-if="blok.headline" class="mb-4">{{ blok.headline }}</Headline>
+      <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
       <Lead v-if="blok.lead">
         {{ blok.lead }}
       </Lead>

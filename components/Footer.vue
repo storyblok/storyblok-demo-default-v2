@@ -1,11 +1,12 @@
 <script setup>
 const props = defineProps({
+  headline: String,
   textColor: String,
   backgroundColor: String,
   logo: Object,
   navs: Object,
   about: Object,
-  twitter: Object,
+  x: Object,
   instagram: Object,
   youtube: Object,
   facebook: Object,
@@ -18,8 +19,6 @@ const textColor = computed(() => {
 const backgroundColor = computed(() => {
   return `bg-${props.backgroundColor}`;
 });
-
-const showSeparator = computed(() => props.backgroundColor === 'dark');
 </script>
 
 <template>
@@ -27,22 +26,16 @@ const showSeparator = computed(() => props.backgroundColor === 'dark');
     <div
       class="container grid gap-12 py-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
     >
-      <div class="flex items-center sm:col-span-2 md:col-span-3 lg:col-span-2">
+      <div class="flex flex-col items-center sm:col-span-2 md:col-span-3 lg:col-span-2">
+        <Headline v-if="headline" size="small" :color="textColor">{{ headline }}</Headline>
         <div>
-          <NuxtLink to="/" class="mb-8 flex">
-            <img
-              :src="logo.filename"
-              :alt="logo.alt"
-              class="pointer-events-none w-[180px] origin-left transition-transform duration-700 sm:w-[250px]"
-            />
-          </NuxtLink>
           <RichText
             :text="about"
             class="mb-8 text-sm lg:text-base"
             :class="textColor"
           />
           <SocialIcons
-            :twitter="twitter"
+            :x="x"
             :instagram="instagram"
             :youtube="youtube"
             :facebook="facebook"
@@ -61,19 +54,18 @@ const showSeparator = computed(() => props.backgroundColor === 'dark');
           <ul class="flex flex-col space-y-3 text-lg">
             <li v-for="item in navs[`nav_${index}`]" :key="item._uid">
               <NavItem
-                class="hover:underline"
                 :class="textColor"
                 :item="item"
+                :reduced-font-weight="true"
               />
             </li>
           </ul>
         </nav>
       </div>
     </div>
-    <div>
+    <div class="container">
       <div
-        v-if="showSeparator"
-        class="h-[1px] w-full bg-gradient-to-r from-dark via-medium to-dark"
+        class="h-[1px] w-full bg-medium"
       ></div>
       <img
         src="~/assets/images/made-with-love.svg"
