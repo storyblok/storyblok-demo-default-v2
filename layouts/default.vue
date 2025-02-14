@@ -187,10 +187,14 @@ onMounted(() => {
 </template>
 
 <style>
-body {
+/* body {
   @apply pt-32;
 }
+ */
 
+html {
+  --nav-background-color: #ffffff;
+}
 body > div > main {
   @apply text-dark;
 }

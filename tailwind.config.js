@@ -39,6 +39,8 @@ module.exports = {
     'items-start',
     'items-center',
     'items-end',
+    'text-center',
+    'text-left',
   ],
   theme: {
     container: {
@@ -70,6 +72,13 @@ module.exports = {
         medium: 'var(--medium)',
         light: 'var(--light)',
         dark: 'var(--dark)',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            lineHeight: '1.625',
+          },
+        },
       },
     },
   },

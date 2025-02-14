@@ -47,7 +47,7 @@ try {
     useStoryblokBridge(story.value?.id, evStory => (story.value = evStory), {
       resolveRelations,
       customParent,
-      preventClicks: false,
+      preventClicks: true,
     });
   });
 }

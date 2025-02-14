@@ -16,7 +16,7 @@ const url = computed(() => {
 
 const classes = computed(() => {
   let classes
-    = `font-semibold inline-flex items-center tracking-wider cursor-pointer transition-all duration-300 border border-${
+    = `font-semibold inline-flex items-center tracking-wider cursor-pointer transition-all duration-300 border border-2 border-${
       props.button.background_color}`;
 
   switch (props.button.border_radius) {
@@ -42,11 +42,6 @@ const classes = computed(() => {
   }
 
   switch (props.button.style) {
-    case 'semi':
-      classes
-        += ` bg-opacity-10 backdrop-blur-lg bg-white hover:bg-opacity-20 text-${
-          props.button.background_color}`;
-      break;
     case 'ghost':
       classes
         += ` bg-transparent text-${

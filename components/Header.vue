@@ -44,32 +44,12 @@ const route = useRoute();
 watch(route, () => {
   mobileNavOpen.value = false;
 });
-
-const headerClasses = ref('h-32');
-const logoScale = ref('scale-100');
-
-const headerBg = computed(() => {
-  return props.light ? 'bg-white' : 'bg-dark';
-});
-
-onMounted(() => {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 120) {
-      headerClasses.value = 'h-20 bg-opacity-100';
-      logoScale.value = 'scale-90';
-    }
-    else {
-      headerClasses.value = 'h-32 bg-opacity-0';
-      logoScale.value = 'scale-100';
-    }
-  });
-});
 </script>
 
 <template>
   <header
-    class="fixed left-0 top-0 z-[99] w-full border-b border-dark transition-all duration-300"
-    :class="[headerClasses, headerBg]"
+    class="fixed left-0 top-0 z-[99] h-32 w-full border-b border-dark transition-all duration-300"
+    :class="{ 'dark-bg': !light }"
   >
     <div
       class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
@@ -128,6 +108,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
+header {
+  @apply bg-[--nav-background-color];
+}
+/* header.bg-dark {
+  @apply bg-dark;
+} */
+
 header nav.main-nav a.router-link-exact-active::after {
   @apply content-[''] absolute bottom-0 left-0 h-[5px] w-full bg-dark;
 }

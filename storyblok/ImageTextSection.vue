@@ -28,11 +28,12 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000))
         class="order-last text-left"
         :class="blok.reverse_layout ? '' : 'lg:order-first'"
       >
+        <Eyebrow>{{ blok.eyebrow }}</Eyebrow>
         <Headline v-if="blok.headline" size="small">
           {{ blok.headline }}
         </Headline>
-        <RichText :text="blok.text" />
-        <div v-if="blok.button.length" class="mt-8">
+        <RichText :text="blok.text" class="mb-6" />
+        <div class="flex gap-4">
           <Button
             v-for="button in blok.button"
             :key="button._uid"
@@ -46,25 +47,25 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000))
             v-if="!fixedHeightImages"
             :src="optimizedImage"
             :alt="blok.image.alt"
-            class="pointer-events-none rounded-lg shadow-2xl"
+            class="pointer-events-none rounded-lg"
           />
           <img
             v-if="fixedHeightImages"
             :src="fixedHeightImages.mobile"
             :alt="blok.image.alt"
-            class="pointer-events-none rounded-lg shadow-2xl md:invisible md:hidden"
+            class="pointer-events-none rounded-lg md:invisible md:hidden"
           />
           <img
             v-if="fixedHeightImages"
             :src="fixedHeightImages.tablet"
             :alt="blok.image.alt"
-            class="pointer-events-none invisible hidden rounded-lg shadow-2xl md:visible md:block lg:invisible lg:hidden"
+            class="pointer-events-none invisible hidden rounded-lg md:visible md:block lg:invisible lg:hidden"
           />
           <img
             v-if="fixedHeightImages"
             :src="fixedHeightImages.desktop"
             :alt="blok.image.alt"
-            class="pointer-events-none invisible hidden rounded-lg shadow-2xl lg:visible lg:block"
+            class="pointer-events-none invisible hidden rounded-lg lg:visible lg:block"
           />
         </div>
       </div>
