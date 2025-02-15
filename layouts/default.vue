@@ -87,6 +87,8 @@ const cssVariables = computed(() => {
   return theme;
 });
 
+const isInEditor = await inEditor();
+
 const viewingSiteConfig = useState('viewingSiteConfig');
 const { customParent } = useRuntimeConfig().public;
 
@@ -103,7 +105,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <main :style="cssVariables" class="font-body">
+  <!-- Apply classes using useHead instead -->
+  <main :style="cssVariables" class="font-body" :class="{ 'in-editor': isInEditor }">
     <Header
       :logo="siteConfig.content.header_logo"
       :nav="siteConfig.content.header_nav"
@@ -175,6 +178,11 @@ html {
 }
 body > div > main {
   @apply text-dark;
+}
+
+main.in-editor a,
+main.in-editor button {
+  @apply pointer-events-none;
 }
 
 section.page-section {

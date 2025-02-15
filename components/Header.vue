@@ -31,7 +31,6 @@ watch(route, () => {
           :src="logo.filename"
           :alt="logo.alt"
           class="pointer-events-none max-h-[80px] w-full max-w-[180px] origin-left object-contain transition-transform duration-700 xl:max-w-[250px]"
-          :class="logoScale"
         />
       </NuxtLink>
       <nav class="main-nav invisible ml-auto mr-12 hidden h-full lg:visible lg:block">

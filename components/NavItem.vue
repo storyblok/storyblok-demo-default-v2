@@ -2,7 +2,7 @@
 const props = defineProps({ item: Object, reducedFontWeight: Boolean });
 
 const url = computed(() => {
-  if (!props.item.link.url) {
+  if (props.item.link.url !== '') {
     return '';
   }
   switch (props.item.link.linktype) {

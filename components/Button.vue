@@ -2,7 +2,7 @@
 const props = defineProps({ button: Object, link: String });
 
 const url = computed(() => {
-  if (!props.button.link.url) {
+  if (props.button.link.url !== '') {
     return '';
   }
   switch (props.button.link.linktype) {
