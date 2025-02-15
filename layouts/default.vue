@@ -87,26 +87,6 @@ const cssVariables = computed(() => {
   return theme;
 });
 
-const autoNavFolder = computed(() => {
-  if (!siteConfig.value.content.header_auto_nav_folder) {
-    return '';
-  }
-  if (!siteConfig.value.content.header_auto_nav_folder[0]?.slug) {
-    return '';
-  }
-  return siteConfig.value.content.header_auto_nav_folder[0].slug;
-});
-
-const _defineEnableBreadcrumbsState = useState(
-  'enableBreadcrumbs',
-  () => siteConfig.value.content.enable_breadcrumbs,
-);
-
-const _defineBreadcrumbsExcludedStoriesState = useState(
-  'breadcrumbsExcludedStories',
-  () => siteConfig.value.content.breadcrumbs_excluded_stories,
-);
-
 const viewingSiteConfig = useState('viewingSiteConfig');
 const { customParent } = useRuntimeConfig().public;
 
@@ -126,8 +106,6 @@ onMounted(() => {
   <main :style="cssVariables" class="font-body">
     <Header
       :logo="siteConfig.content.header_logo"
-      :auto_nav="siteConfig.content.header_auto_nav"
-      :auto_nav_folder="autoNavFolder"
       :nav="siteConfig.content.header_nav"
       :buttons="siteConfig.content.header_buttons"
       :light="siteConfig.content.header_light"

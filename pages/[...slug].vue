@@ -58,44 +58,13 @@ catch (error) {
 const viewingSiteConfig = ref(
   story.value.content.component === 'site-config',
 );
-const _ViewingSiteConfigState = useState(
+const _viewingSiteConfigState = useState(
   'viewingSiteConfig',
   () => viewingSiteConfig.value,
-);
-
-const enableBreadcrumbs = useState('enableBreadcrumbs');
-const breadcrumbsExcludedStories = useState('breadcrumbsExcludedStories');
-const enableBreadcrumbsForStory = computed(() => {
-  if (viewingSiteConfig.value) {
-    return false;
-  }
-  if (error404.value === true) {
-    return false;
-  }
-  if (!enableBreadcrumbs.value) {
-    return false;
-  }
-  const found = breadcrumbsExcludedStories.value.find(
-    storyUuid => storyUuid === story.value.uuid,
-  );
-  if (!found) {
-    return true;
-  }
-  return false;
-});
-const breadCrumbsAltStyle = computed(
-  () => processedSlug.startsWith('articles/') && processedSlug.length > 9,
 );
 </script>
 
 <template>
-  <Error404 v-if="error404">
-    Unfortunately, this page could not be found.
-  </Error404>
-  <Breadcrumbs
-    v-if="enableBreadcrumbsForStory"
-    :slug="processedSlug"
-    :alt-style="breadCrumbsAltStyle"
-  />
+  <Error404 v-if="error404" />
   <StoryblokComponent v-if="story" :blok="story.content" :uuid="story.uuid" />
 </template>

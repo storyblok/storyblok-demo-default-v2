@@ -2,6 +2,9 @@
 const props = defineProps({ item: Object, reducedFontWeight: Boolean });
 
 const url = computed(() => {
+  if (!props.item.link.url) {
+    return '';
+  }
   switch (props.item.link.linktype) {
     case 'story':
       return `/${props.item.link.story?.full_slug}`;

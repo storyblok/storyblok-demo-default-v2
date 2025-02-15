@@ -1,38 +1,10 @@
 <script setup>
-const props = defineProps({
+defineProps({
   logo: Object,
-  autoNav: Boolean,
-  autoNavFolder: String,
   nav: Object,
   buttons: Object,
   light: Boolean,
 });
-
-const folderStories = ref(null);
-
-const getFolderStories = async () => {
-  const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get('cdn/stories', {
-    version: getVersion(),
-    level: props.autoNavFolder ? 2 : 1,
-    excluding_slugs: 'site-config,error-404',
-    excluding_fields: 'body',
-    starts_with: props.autoNavFolder,
-    per_page: 5,
-  });
-  folderStories.value = !props.autoNavFolder
-    ? data.stories.filter(
-        story => story.parent_id === 0 || story.parent_id === null,
-      )
-    : data.stories;
-};
-
-getFolderStories();
-
-watch(
-  () => props.autoNavFolder,
-  () => getFolderStories(),
-);
 
 const mobileNavOpen = ref(false);
 
@@ -63,24 +35,13 @@ watch(route, () => {
         />
       </NuxtLink>
       <nav class="main-nav invisible ml-auto mr-12 hidden h-full lg:visible lg:block">
-        <ul v-if="!autoNav" class="h-full">
+        <ul class="h-full">
           <li v-for="item in nav" :key="item._uid" class="h-full">
             <NavItem
               class="nav-item"
               :class="light ? 'text-dark' : 'text-white'"
               :item="item"
             />
-          </li>
-        </ul>
-        <ul v-else>
-          <li v-for="story in folderStories" :key="story.uuid">
-            <NuxtLink
-              :to="story.full_slug"
-              class="nav-item cursor-pointer transition-colors"
-              :class="light ? 'text-dark' : 'text-white'"
-            >
-              {{ story.name }}
-            </NuxtLink>
           </li>
         </ul>
       </nav>
@@ -102,8 +63,6 @@ watch(route, () => {
   <!-- <MobileNav
     :mobile-nav-open="mobileNavOpen"
     :header-nav="nav"
-    :auto-nav="autoNav"
-    :folder-stories="folderStories"
   /> -->
 </template>
 
