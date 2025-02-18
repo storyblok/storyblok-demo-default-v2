@@ -5,7 +5,7 @@ defineProps({ blok: Object });
 <template>
   <div class="max-w-3xl" :class="blok.text_alignment === 'center' ? 'mx-auto text-center' : ''">
     <Eyebrow>{{ blok.eyebrow }}</Eyebrow>
-    <Headline size="large">{{ blok.headline }}</Headline>
+    <Headline size="large" :headline="blok.headline" />
     <Lead>{{ blok.text }}</Lead>
     <div class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
       <Button

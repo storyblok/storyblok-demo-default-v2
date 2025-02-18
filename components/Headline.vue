@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ color: String, size: String });
+const props = defineProps({ headline: Object, color: String, size: String });
 
 const classes = computed(() => {
   let classes
@@ -28,7 +28,11 @@ const classes = computed(() => {
 
 <template>
   <h2 :class="classes">
-    <slot></slot>
+    <HeadlineSegment
+      v-for="headlineSegment in headline"
+      :key="headlineSegment._uid"
+      :headline-segment="headlineSegment"
+    />
   </h2>
 </template>
 

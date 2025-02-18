@@ -3,7 +3,6 @@ defineProps({ text: Object });
 </script>
 
 <template>
-  <!-- <pre>{{ text }}</pre> -->
   <div class="prose prose-lg">
     <StoryblokRichText :doc="text" />
   </div>
