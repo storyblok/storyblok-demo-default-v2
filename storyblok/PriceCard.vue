@@ -10,12 +10,12 @@ const price = computed(() => {
   return priceArray;
 });
 
-const textBelowPrice = computed(() =>
+/* const textBelowPrice = computed(() =>
   renderCustomRichText(props.card.text_below_price),
 );
 const textBelowButton = computed(() =>
   renderCustomRichText(props.card.text_below_button),
-);
+); */
 
 const currency = computed(() => props.card?.currency || '€');
 </script>
@@ -51,7 +51,7 @@ const currency = computed(() => props.card?.currency || '€');
         .{{ price[1] }}
       </span>
     </span>
-    <div class="prose mx-auto max-w-xs" v-html="textBelowPrice"></div>
+    <!-- <div class="prose mx-auto max-w-xs" v-html="textBelowPrice"></div> -->
     <div v-if="card.button.length" class="my-6">
       <Button
         v-for="button in card.button"
@@ -59,10 +59,10 @@ const currency = computed(() => props.card?.currency || '€');
         :button="button"
       />
     </div>
-    <div
+    <!-- <div
       class="text-below-button prose mx-auto max-w-xs text-left prose-ul:list-none"
       v-html="textBelowButton"
-    ></div>
+    ></div> -->
   </div>
 </template>
 

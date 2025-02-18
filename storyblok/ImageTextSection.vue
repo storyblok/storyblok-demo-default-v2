@@ -32,7 +32,7 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000))
         <Headline v-if="blok.headline" size="small">
           {{ blok.headline }}
         </Headline>
-        <RichText :text="blok.text" class="mb-6" />
+        <Richtext :text="blok.text" class="mb-6" />
         <div class="flex gap-4">
           <Button
             v-for="button in blok.button"

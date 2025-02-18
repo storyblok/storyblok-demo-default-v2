@@ -84,7 +84,7 @@ watch(
         >
           {{ product.description }}
         </div>
-        <RichText
+        <Richtext
           v-if="blok.override_product_description && blok.text"
           :text="blok.text"
         />

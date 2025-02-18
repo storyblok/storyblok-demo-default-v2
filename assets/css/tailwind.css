@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .prose ul {
+    @apply list-none pl-0; /* Remove default bullets */
+  }
+
+  .prose ul li {
+    @apply pl-10 relative;
+  }
+
+  .prose ul li::before {
+    @apply content-[''] absolute top-1/2 -translate-y-1/2 left-0 bg-no-repeat bg-contain w-6 h-6 block;
+    background-image: url('~/assets/images/circle-arrow-right.svg');
+  }
+}

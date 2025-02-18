@@ -1,11 +1,12 @@
 <script setup>
-const props = defineProps({ text: Object });
-
-const richText = computed(() => renderCustomRichText(props.text));
+defineProps({ text: Object });
 </script>
 
 <template>
-  <div class="prose prose-lg" v-html="richText"></div>
+  <!-- <pre>{{ text }}</pre> -->
+  <div class="prose prose-lg">
+    <StoryblokRichText :doc="text" />
+  </div>
 </template>
 
 <style>

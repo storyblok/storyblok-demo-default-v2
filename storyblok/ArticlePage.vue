@@ -37,7 +37,7 @@ const optimizedAuthorImage = computed(() =>
             {{ blok.subheadline }}
           </Headline>
           <Lead v-if="blok.teaser">{{ blok.teaser }}</Lead>
-          <RichText :text="blok.text" />
+          <Richtext :text="blok.text" />
         </section>
         <section
           class="sticky top-32 flex w-full max-w-[300px] shrink-0 flex-col space-y-6"

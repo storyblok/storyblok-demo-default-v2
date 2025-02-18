@@ -31,7 +31,7 @@ const backgroundColor = computed(() => {
     >
       <div class="flex flex-col items-center sm:col-span-2 md:col-span-3 lg:col-span-2">
         <div>
-          <RichText
+          <Richtext
             :text="about"
             class="mb-8 text-sm lg:text-base"
             :class="textColor"

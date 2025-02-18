@@ -36,7 +36,7 @@ const containerColor = computed(() => {
         <Lead v-if="blok.lead">
           {{ blok.lead }}
         </Lead>
-        <RichText
+        <Richtext
           :text="blok.text"
           :class="{ 'mx-auto': blok.alignment === 'center' }"
         />
