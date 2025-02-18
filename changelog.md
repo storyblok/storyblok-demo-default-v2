@@ -14,3 +14,10 @@
 - `image-text-section` now accepts 2 buttons rather than just 1
 - removed breadcrumbs functionality
 - removed auto navigation functionality
+- use `@storyblok/richtext`
+- removed `lead` field from `text-section`
+- removed `single_color_background` field from `text-section`
+- removed `overlap_preceding_hero` field from `text-section`
+- `alignment` field renamed to `text_alignment` in `text-section`
+- added `eyebrow` field to `text-section`
+- `text-section` now accepts 2 buttons rather than just 1

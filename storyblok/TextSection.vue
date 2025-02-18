@@ -1,56 +1,30 @@
 <script setup>
-const props = defineProps({ blok: Object });
-
-const containerColor = computed(() => {
-  if (props.blok.single_color_background) {
-    return `bg-${props.blok.background_color}`;
-  }
-  return props.blok.background_color === 'light' ? 'bg-white' : 'bg-light';
-});
+defineProps({ blok: Object });
 </script>
 
 <template>
   <section
     v-editable="blok"
-    class="page-section text-section relative z-50"
-    :class="[
-      `bg-${blok.background_color}`,
-      {
-        'overlap-preceding-hero':
-          blok.overlap_preceding_hero && !blok.single_color_background,
-      },
-    ]"
+    class="page-section text-section"
   >
-    <div class="container">
-      <div
-        class="mx-auto w-full max-w-7xl rounded-lg"
-        :class="[
-          containerColor,
-          { ' text-center': blok.alignment === 'center' },
-          { 'p-12 md:py-24': !blok.single_color_background },
-        ]"
-      >
-        <Headline v-if="blok.headline">
-          {{ blok.headline }}
-        </Headline>
-        <Lead v-if="blok.lead">
-          {{ blok.lead }}
-        </Lead>
-        <Richtext
-          :text="blok.text"
-          :class="{ 'mx-auto': blok.alignment === 'center' }"
+    <div class="container" :class="{ 'text-center': blok.text_alignment === 'center' }">
+      <Eyebrow v-if="blok.eyebrow">
+        {{ blok.eyebrow }}
+      </Eyebrow>
+      <Headline v-if="blok.headline">
+        {{ blok.headline }}
+      </Headline>
+      <Richtext
+        :text="blok.text"
+        :class="{ 'mx-auto': blok.text_alignment === 'center' }"
+        class="mb-6"
+      />
+      <div class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
+        <Button
+          v-for="button in blok.button"
+          :key="button._uid"
+          :button="button"
         />
-        <div
-          v-if="blok.button.length"
-          class="mt-8 inline-flex gap-6"
-          :class="[{ ' mx-auto': blok.alignment === 'center' }]"
-        >
-          <Button
-            v-for="button in blok.button"
-            :key="button._uid"
-            :button="button"
-          />
-        </div>
       </div>
     </div>
   </section>
