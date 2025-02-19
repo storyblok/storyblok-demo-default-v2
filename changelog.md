@@ -22,3 +22,4 @@
 - added `eyebrow` field to `text-section`
 - `text-section` now accepts 2 buttons rather than just 1
 - `headline` field in all components changed to type blocks to allow easily coloring headline segments
+- removed `text_color` and `background_color` fields from `grid-card`

@@ -1,14 +1,10 @@
 <script setup>
-const props = defineProps({ card: Object, defaultColor: String });
+const props = defineProps({ card: Object, backgroundColor: String });
 
 const optimizedIcon = computed(() => {
   const isSvg = props.card.icon?.filename.slice(-3) === 'svg';
   const optimize = isSvg ? '' : `/m/${props.card?.icon_width}x0`;
   return props.card.icon?.filename + optimize;
-});
-
-const textColor = computed(() => {
-  return props.card.text_color === 'light' ? 'text-white' : 'text-dark';
 });
 </script>
 
@@ -16,23 +12,18 @@ const textColor = computed(() => {
   <div
     v-editable="card"
     class="flex size-full max-w-md flex-col rounded-lg p-6 lg:max-w-none"
-    :class="card.background_color?.value ? '' : defaultColor"
-    :style="
-      card.background_color?.value
-        ? `background-color: ${card.background_color.value}`
-        : ''
-    "
+    :class="backgroundColor"
   >
     <img
       v-if="card.icon.filename"
       :src="optimizedIcon"
       :alt="card.icon.alt"
       :width="card.icon_width"
-      class="pointer-events-none mx-auto mb-6"
+      class="pointer-events-none mb-6"
     />
     <div class="flex grow flex-col">
-      <div class="grow" :class="textColor">
-        <h3 class="mb-3 font-display text-xl font-medium">
+      <div class="grow">
+        <h3 class="mb-3 font-display text-xl font-black">
           {{ card.label }}
         </h3>
         <div class="font-light leading-relaxed">{{ card.text }}</div>
