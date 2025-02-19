@@ -4,10 +4,10 @@ defineProps({ blok: Object });
 
 <template>
   <div class="max-w-3xl" :class="blok.text_alignment === 'center' ? 'mx-auto text-center' : ''">
-    <Eyebrow>{{ blok.eyebrow }}</Eyebrow>
-    <Headline size="large" :headline="blok.headline" />
-    <Lead>{{ blok.text }}</Lead>
-    <div class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
+    <Eyebrow v-if="blok.eyebrow">{{ blok.eyebrow }}</Eyebrow>
+    <Headline v-if="blok.headline" size="large" :headline="blok.headline" />
+    <Lead v-if="blok.text">{{ blok.text }}</Lead>
+    <div v-if="blok.buttons.length" class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
       <Button
         v-for="button in blok.buttons"
         :key="button._uid"

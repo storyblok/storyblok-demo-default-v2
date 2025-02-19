@@ -28,14 +28,12 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000))
         class="order-last text-left"
         :class="blok.reverse_layout ? '' : 'lg:order-first'"
       >
-        <Eyebrow>{{ blok.eyebrow }}</Eyebrow>
-        <Headline v-if="blok.headline" size="small">
-          {{ blok.headline }}
-        </Headline>
+        <Eyebrow v-if="blok.eyebrow">{{ blok.eyebrow }}</Eyebrow>
+        <Headline v-if="blok.headline" size="small" :headline="blok.headline" />
         <Richtext :text="blok.text" class="mb-6" />
-        <div class="flex gap-4">
+        <div v-if="blok.buttons.length" class="flex gap-4">
           <Button
-            v-for="button in blok.button"
+            v-for="button in blok.buttons"
             :key="button._uid"
             :button="button"
           />

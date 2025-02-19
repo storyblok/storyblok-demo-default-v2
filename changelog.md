@@ -21,3 +21,4 @@
 - `alignment` field renamed to `text_alignment` in `text-section`
 - added `eyebrow` field to `text-section`
 - `text-section` now accepts 2 buttons rather than just 1
+- `headline` field in all components changed to type blocks to allow easily coloring headline segments

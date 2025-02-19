@@ -11,17 +11,16 @@ defineProps({ blok: Object });
       <Eyebrow v-if="blok.eyebrow">
         {{ blok.eyebrow }}
       </Eyebrow>
-      <Headline v-if="blok.headline">
-        {{ blok.headline }}
-      </Headline>
+      <Headline v-if="blok.headline" :headline="blok.headline" />
       <Richtext
+        v-if="blok.text"
         :text="blok.text"
         :class="{ 'mx-auto': blok.text_alignment === 'center' }"
         class="mb-6"
       />
-      <div class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
+      <div v-if="blok.buttons.length" class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
         <Button
-          v-for="button in blok.button"
+          v-for="button in blok.buttons"
           :key="button._uid"
           :button="button"
         />
