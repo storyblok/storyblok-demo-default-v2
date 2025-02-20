@@ -8,7 +8,7 @@ const defaultColors = {
   '--primary': '#9beaaf',
   '--secondary': '#9987f0',
   '--light': '#f6f7f8',
-  '--medium': '#DDE3EE',
+  '--medium': '#DBDDE2',
   '--dark': '#1f1f1f',
 };
 

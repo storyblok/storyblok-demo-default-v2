@@ -1,57 +1,25 @@
 <script setup>
-const props = defineProps({ card: Object, defaultColor: String });
-
-const price = computed(() => {
-  const priceText = String(props.card.price);
-  if (!priceText) {
-    return null;
-  }
-  const priceArray = priceText.split('.');
-  return priceArray;
-});
-
-/* const textBelowPrice = computed(() =>
-  renderCustomRichText(props.card.text_below_price),
-);
-const textBelowButton = computed(() =>
-  renderCustomRichText(props.card.text_below_button),
-); */
-
-const currency = computed(() => props.card?.currency || '€');
+defineProps({ card: Object });
 </script>
 
 <template>
   <div
     v-editable="card"
-    class="price-card relative flex w-full max-w-md flex-col rounded-lg px-6 py-12 text-dark lg:max-w-none"
+    class="price-card relative flex w-full max-w-md flex-col rounded-lg border bg-white p-6 text-dark lg:max-w-none"
     :class="[
-      card.background_color?.value ? '' : defaultColor,
-      { 'shadow-xl': card.most_popular },
-    ]"
-    :style="
-      card.background_color?.value
-        ? `background-color: ${card.background_color.value}`
-        : ''
-    "
+      card.most_popular ? 'border-2 border-dark' : 'border-medium']"
   >
     <div
       v-if="card.most_popular"
-      class="absolute left-1/2 top-0 w-full max-w-[200px] -translate-x-1/2 rounded-b-lg bg-dark px-4 py-1 text-sm uppercase text-white"
+      class="absolute right-0 top-0 inline-block -translate-x-4 translate-y-4 rounded-lg bg-[#FFE6AA] px-3 py-1 text-[#913F0F]"
     >
       Most popular
     </div>
-    <h3 class="mb-3 font-display text-2xl font-medium">{{ card.headline }}</h3>
-    <h4 class="mb-6 font-display text-lg">{{ card.subheadline }}</h4>
-    <span v-if="price" class="mx-auto inline-flex items-end">
-      <span class="mr-2 block translate-y-[4px] self-start text-4xl font-bold">
-        {{ currency }}
-      </span>
-      <span class="text-4xl font-bold">{{ price[0] }}</span>
-      <span v-if="price[1]" class="block -translate-y-px text-3xl">
-        .{{ price[1] }}
-      </span>
-    </span>
-    <!-- <div class="prose mx-auto max-w-xs" v-html="textBelowPrice"></div> -->
+    <h3 class="mb-4 font-display text-3xl font-black">{{ card.headline }}</h3>
+    <div v-if="card.text_1" class="prose">
+      <StoryblokRichText :doc="card.text_1" />
+    </div>
+    <span v-if="card.price" class="mt-4 text-4xl font-black">${{ card.price }}<span class="text-2xl font-medium">/month</span></span>
     <div v-if="card.button.length" class="my-6">
       <Button
         v-for="button in card.button"
@@ -59,27 +27,8 @@ const currency = computed(() => props.card?.currency || '€');
         :button="button"
       />
     </div>
-    <!-- <div
-      class="text-below-button prose mx-auto max-w-xs text-left prose-ul:list-none"
-      v-html="textBelowButton"
-    ></div> -->
+    <div v-if="card.text_2" class="prose">
+      <StoryblokRichText :doc="card.text_2" />
+    </div>
   </div>
 </template>
-
-<style>
-.text-below-button ul li {
-  position: relative;
-}
-.text-below-button ul li::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(-18px) translateY(6px);
-  background-image: url('~/assets/images/check.svg');
-  background-size: contain;
-  width: 18px;
-  height: 18px;
-  z-index: 9;
-}
-</style>

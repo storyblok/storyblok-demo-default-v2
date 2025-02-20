@@ -18,6 +18,13 @@ defineProps({ blok: Object });
         :class="{ 'mx-auto': blok.text_alignment === 'center' }"
         class="mb-6"
       />
+      <div
+        v-if="blok.text"
+        :class="{ 'mx-auto': blok.text_alignment === 'center' }"
+        class="prose prose-lg mb-6"
+      >
+        <StoryblokRichText :doc="blok.text" />
+      </div>
       <div v-if="blok.buttons.length" class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
         <Button
           v-for="button in blok.buttons"

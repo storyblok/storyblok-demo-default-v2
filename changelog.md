@@ -12,7 +12,7 @@
 - `link` field set to required in `nav-item`
 - `link` field set to required in `button`
 - `image-text-section` now accepts 2 buttons rather than just 1
-- removed breadcrumbs functionality
+- removed breadcrumb functionality
 - removed auto navigation functionality
 - use `@storyblok/richtext`
 - removed `lead` field from `text-section`
@@ -23,3 +23,5 @@
 - `text-section` now accepts 2 buttons rather than just 1
 - `headline` field in all components changed to type blocks to allow easily coloring headline segments
 - removed `text_color` and `background_color` fields from `grid-card`
+- changed `text_below_button` to `text_2` in `price-card`
+-

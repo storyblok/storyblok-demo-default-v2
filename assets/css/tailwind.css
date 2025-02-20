@@ -15,4 +15,8 @@
     @apply content-[''] absolute top-1/2 -translate-y-1/2 left-0 bg-no-repeat bg-contain w-6 h-6 block;
     background-image: url('~/assets/images/circle-arrow-right.svg');
   }
+
+  .prose ul li p {
+    @apply m-0 p-0;
+  }
 }

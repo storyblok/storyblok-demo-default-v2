@@ -30,7 +30,9 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000))
       >
         <Eyebrow v-if="blok.eyebrow">{{ blok.eyebrow }}</Eyebrow>
         <Headline v-if="blok.headline" size="small" :headline="blok.headline" />
-        <Richtext :text="blok.text" class="mb-6" />
+        <div v-if="blok.text" class="prose prose-lg mb-6">
+          <StoryblokRichText :doc="blok.text" />
+        </div>
         <div v-if="blok.buttons.length" class="flex gap-4">
           <Button
             v-for="button in blok.buttons"

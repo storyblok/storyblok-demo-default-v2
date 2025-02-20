@@ -24,18 +24,18 @@ const backgroundColor = computed(() => {
 <template>
   <footer class="relative w-full" :class="backgroundColor">
     <div class="container grid gap-12 pt-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-      <div class="flex flex-col items-center sm:col-span-2 md:col-span-3 lg:col-span-2">  <Headline v-if="headline" size="small" :color="textColor">{{ headline }}</Headline></div>
+      <div class="flex flex-col items-center sm:col-span-2 md:col-span-3 lg:col-span-2">
+        <Headline v-if="headline" size="small" :color="textColor" :headline="headline" />
+      </div>
     </div>
     <div
       class="container grid gap-12 pb-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
     >
       <div class="flex flex-col items-center sm:col-span-2 md:col-span-3 lg:col-span-2">
         <div>
-          <Richtext
-            :text="about"
-            class="mb-8 text-sm lg:text-base"
-            :class="textColor"
-          />
+          <div v-if="about" class="prose prose-lg mb-8 text-sm lg:text-base" :class="textColor">
+            <StoryblokRichText :doc="about" />
+          </div>
           <SocialIcons
             :x="x"
             :instagram="instagram"
