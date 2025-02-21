@@ -69,6 +69,7 @@ module.exports = {
       colors: {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
+        tertiary: 'var(--tertiary)',
         medium: 'var(--medium)',
         light: 'var(--light)',
         dark: 'var(--dark)',

@@ -16,12 +16,25 @@ const route = useRoute();
 watch(route, () => {
   mobileNavOpen.value = false;
 });
+
+const headerScrollClass = ref('');
+
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      headerScrollClass.value = 'scroll';
+    }
+    else {
+      headerScrollClass.value = '';
+    }
+  });
+});
 </script>
 
 <template>
   <header
     class="fixed left-0 top-0 z-[99] h-32 w-full border-b border-dark transition-all duration-300"
-    :class="{ 'dark-bg': !light }"
+    :class="[headerScrollClass, { 'dark-bg': !light }]"
   >
     <div
       class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
@@ -68,6 +81,9 @@ watch(route, () => {
 <style scoped>
 header {
   @apply bg-[--nav-background-color];
+}
+header.scroll:not(.bg-dark) {
+  @apply bg-white;
 }
 /* header.bg-dark {
   @apply bg-dark;

@@ -7,6 +7,7 @@ const defaultFontFamilies = {
 const defaultColors = {
   '--primary': '#9beaaf',
   '--secondary': '#9987f0',
+  '--tertiary': '#a2954e',
   '--light': '#f6f7f8',
   '--medium': '#DBDDE2',
   '--dark': '#1f1f1f',

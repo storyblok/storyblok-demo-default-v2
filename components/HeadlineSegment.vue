@@ -6,13 +6,13 @@ const classes = computed(() => {
 
   switch (props.headlineSegment.highlight) {
     case 'color_1':
-      classes = 'text-red-500';
+      classes = 'text-primary';
       break;
     case 'color_2':
-      classes = 'text-green-500';
+      classes = 'text-secondary';
       break;
     case 'color_3':
-      classes = 'text-blue-500';
+      classes = 'text-tertiary';
       break;
     case 'none':
     default:
