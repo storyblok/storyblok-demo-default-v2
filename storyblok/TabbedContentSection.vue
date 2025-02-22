@@ -1,31 +1,15 @@
 <script setup>
 const props = defineProps({ blok: Object });
 
-const mobileTabsStates = ref(props.blok.entries.map(() => false));
-
-// Mobile
-const setActiveTabMobile = (index) => {
-  mobileTabsStates.value[index] = !mobileTabsStates.value[index];
-};
-
-// Desktop
 const activeTab = ref(0);
 
 const setActiveTab = (index) => {
   activeTab.value = index;
 };
 
-const tabWidth = computed(() => 100 / props.blok.entries.length);
-
-const cssVars = computed(() => {
-  return {
-    '--indicatorWidth': `${tabWidth.value}%`,
-    '--indicatorMarginLeft': `${activeTab.value * tabWidth.value}%`,
-    '--activeTab': activeTab.value,
-  };
+const tabWidth = computed(() => {
+  return 100 / props.blok.entries.length;
 });
-
-// TODO: use focus point helper function for images, check padding/margin in mobile
 </script>
 
 <template>
@@ -34,72 +18,20 @@ const cssVars = computed(() => {
     class="page-section tabbed-content-section container bg-white"
   >
     <div class="mb-12 text-center">
-      <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
+      <Headline v-if="blok.headline" :headline="blok.headline" />
       <Lead v-if="blok.lead">
         {{ blok.lead }}
       </Lead>
     </div>
-    <div
-      class="tabbed-content-section-mobile"
-      :class="{ 'md:invisible md:hidden': !blok.always_accordion }"
-    >
-      <ul class="relative flex flex-col">
-        <li v-for="(entry, index) in blok.entries" :key="entry._uid" class="group">
-          <button
-            class="border-1 flex w-full cursor-pointer justify-between border-t border-dark py-4 text-left text-lg text-dark group-first:border-0"
-            @click.prevent="setActiveTabMobile(index)"
-          >
-            <span>{{ entry.headline }}</span>
-            <span v-if="mobileTabsStates[index]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19.5 12h-15"
-                />
-              </svg>
-            </span>
-            <span v-else>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 4.5v15m7.5-7.5h-15"
-                />
-              </svg>
-            </span>
-          </button>
-          <StoryblokComponent v-if="mobileTabsStates[index]" :blok="entry" />
-        </li>
-      </ul>
-    </div>
-    <div
-      v-if="!blok.always_accordion"
-      class="tabbed-content-section-desktop invisible hidden md:visible md:block"
-      :style="cssVars"
-    >
-      <ul class="relative mb-8 flex border-b border-gray-900">
+    <div>
+      <ul class="relative mb-8 flex flex-col rounded-lg border border-medium p-1 lg:flex-row" :style="{ '--tab-width': `${tabWidth}%` }">
         <li
           v-for="(entry, index) in blok.entries"
           :key="entry._uid"
-          :style="`width:${tabWidth}%`"
         >
           <button
-            class="w-full cursor-pointer p-3 text-center text-lg text-dark"
+            class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg text-dark"
+            :data-active="index === activeTab"
             @click.prevent="setActiveTab(index)"
           >
             {{ entry.headline }}
@@ -118,15 +50,13 @@ const cssVars = computed(() => {
 </template>
 
 <style scoped>
-@screen md {
-  ul:after {
-    content: '';
-    @apply absolute bottom-0 left-0 h-0.5 bg-gray-900 transition-all duration-500;
-    width: var(--indicatorWidth);
-    margin-left: var(--indicatorMarginLeft);
-    /* TODO: use v-bind once it works reliably */
-    /* width: v-bind(tabWidth + '%');
-    margin-left: v-bind(activeTab * tabWidth + '%'); */
+ul li button[data-active='true'] {
+  @apply bg-dark text-white;
+}
+
+ul li {
+  @screen lg {
+    @apply w-[var(--tab-width)];
   }
 }
 </style>
