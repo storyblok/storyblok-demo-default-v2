@@ -8,6 +8,7 @@ const resolveRelations = [
   'featured-articles-section.articles',
   'article-page.categories',
   'article-page.author',
+  'testimonials-section.testimonials',
 ];
 const story = ref(null);
 const storyblokApi = useStoryblokApi();

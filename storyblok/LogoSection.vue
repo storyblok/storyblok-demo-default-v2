@@ -3,7 +3,6 @@ defineProps({ blok: Object });
 </script>
 
 <template>
-  <!-- <pre>{{ blok }}</pre> -->
   <section
     v-editable="blok"
     class="page-section logos-section"
