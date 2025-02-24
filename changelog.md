@@ -25,3 +25,4 @@
 - removed `text_color` and `background_color` fields from `grid-card`
 - changed `text_below_button` to `text_2` in `price-card`
 - `tabbed_content_section` `entries` field changed to max 3
+- removed `two-col-image-text-section` favor of `two-columns-section`

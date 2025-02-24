@@ -15,7 +15,7 @@ useHead(headConfig);
 <template>
   <section
     v-editable="blok"
-    class="relative"
+    class="relative bg-[--background-color]"
     :class="[`bg-[${blok.background_color.value}]`, blok.layout]"
     :style="[`--background-color: ${blok.background_color.value};`, `--secondary-background-color: ${blok.secondary_background_color.value}`]"
   >
@@ -34,9 +34,6 @@ useHead(headConfig);
 </template>
 
 <style scoped>
-section {
-  @apply bg-[--background-color];
-}
 section.stacked {
   @apply pt-48;
 }

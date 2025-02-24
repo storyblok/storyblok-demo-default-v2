@@ -9,9 +9,9 @@ const optimizedImage = computed(() =>
 <template>
   <section v-editable="blok" class="grid rounded-lg bg-light p-8 text-dark md:grid-cols-2">
     <img
-      v-if="blok?.image?.filename"
+      v-if="blok.image.filename"
       :src="optimizedImage"
-      :alt="blok.image?.alt"
+      :alt="blok.image.alt"
       class="rounded-lg md:order-1"
     />
     <div class="md:order-0 p-4 md:pr-8">
