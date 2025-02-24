@@ -4,13 +4,14 @@ import NewsletterForm from '../components/NewsletterForm.vue';
 
 const props = defineProps({ blok: Object });
 
-const textColor = computed(() => {
-  return props.blok.text_color === 'light' ? 'text-white' : 'text-dark';
-});
+const showMessage = ref(false);
 
-const backgroundColor = computed(() => {
-  return `bg-${props.blok.background_color}`;
-});
+const submit = () => {
+  showMessage.value = true;
+  setTimeout(() => {
+    showMessage.value = false;
+  }, 4000);
+};
 
 const selectedForm = computed(() => {
   switch (props.blok.form) {
@@ -26,29 +27,50 @@ const selectedForm = computed(() => {
 <template>
   <section
     v-editable="blok"
-    class="page-section form-section relative"
+    class="page-section form-section bg-white"
     :class="backgroundColor"
   >
     <div
-      class="container relative z-10 grid place-items-center gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"
+      class="container"
     >
-      <div class="text-center text-white lg:text-left">
-        <Headline
-          v-if="blok.headline"
-          class="mb-4"
-          :color="blok.text_color === 'light' ? 'white' : 'dark'"
-        >
-          {{ blok.headline }}
-        </Headline>
-        <Lead v-if="blok.lead" :class="textColor">{{ blok.lead }}</Lead>
-      </div>
-      <div class="w-full max-w-md">
-        <component
-          :is="selectedForm"
-          :text-color="textColor"
-          :button="blok?.button && blok?.button[0]"
-        />
+      <div class="relative overflow-hidden rounded-xl bg-dark p-24">
+        <div class="relative z-10 flex flex-col items-center space-y-12 text-center">
+          <Headline v-if="blok.headline" color="text-white" :headline="blok.headline" />
+          <div class="relative mx-auto flex items-center space-x-8">
+            <div>
+              <component
+                :is="selectedForm"
+                :text-color="textColor"
+                :button="blok?.button && blok?.button[0]"
+              />
+            </div>
+            <div>
+              <Button v-if="blok.button.length && blok.button[0]" :button="blok.button[0]" @click.prevent="submit" />
+            </div>
+            <Transition name="fade">
+              <div
+                v-if="showMessage"
+                class="absolute left-1/2 top-0 block w-full -translate-x-1/2 -translate-y-12 text-white"
+              >
+                Thank you! We'll be in touch.
+              </div>
+            </Transition>
+          </div>
+        </div>
+        <Decoration3 fill="#D4FF92" class="absolute bottom-0 right-0 z-0" />
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

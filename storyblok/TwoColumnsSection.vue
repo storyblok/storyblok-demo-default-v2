@@ -10,7 +10,7 @@ const optimizedImage = computed(() =>
   <!-- <pre>{{ blok }}</pre> -->
   <section
     v-editable="blok"
-    class="page-section two-columns-section"
+    class="page-section two-columns-section bg-white"
     :class="`bg-${blok.background_color}`"
     :style="[`--column-1-background-color: ${blok.column_1_background_color.value};`, `--column-2-background-color: ${blok.column_2_background_color.value}`]"
   >
