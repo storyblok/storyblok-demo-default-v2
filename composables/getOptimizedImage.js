@@ -1,16 +1,15 @@
-export default function (image, width = 1200, height = 0) {
+export default function (image, width = 1200, height = 0, filters = '') {
   if (!image?.filename) {
     return;
   }
 
-  let imageSource = `${image.filename}/m/${width}x${height}`;
+  const imageSource = `${image.filename}/m/${width}x${height}`;
 
-  if (image.focus) {
-    imageSource += `/filters:focal(${image.focus}):no_upscale()`;
-  }
-  else {
-    imageSource += `/filters:no_upscale()`;
+  let appliedFilters = image.focus ? `/filters:focal(${image.focus}):no_upscale()` : `/filters:no_upscale()`;
+
+  if (filters) {
+    appliedFilters += filters;
   }
 
-  return imageSource;
+  return imageSource + appliedFilters;
 }
