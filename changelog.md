@@ -30,3 +30,9 @@
 - new `testimonials-section`
 - removed `text_color`, `background_color` and `lead` from `form-section`
 - simplified `form_section`
+- removed `full_width` from `banner`
+- removed `text_color` from `banner`
+- removed `background_blur` from `banner`
+- removed `background_brightness` from `banner`
+- removed `overlay` from `banner`
+- removed `enable_background_color` from `banner`
