@@ -41,3 +41,4 @@
 - removed `author` from `article-page`
 - removed `author`
 - removed `headline` from `article-overview-page`
+- removed datasource "Overlays"

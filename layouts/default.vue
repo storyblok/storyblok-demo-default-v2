@@ -181,12 +181,6 @@ body > div > main {
   @apply text-dark;
 }
 
-main.in-editor a,
-main.in-editor button {
-  /* TODO: change to JS */
-  @apply pointer-events-none;
-}
-
 section.page-section {
   @apply py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32;
 }

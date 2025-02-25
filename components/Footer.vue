@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-  headline: String,
+  headline: Array,
   textColor: String,
   backgroundColor: String,
   logo: Object,
@@ -25,7 +25,7 @@ const backgroundColor = computed(() => {
   <footer class="relative w-full" :class="backgroundColor">
     <div class="container grid gap-12 pt-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
       <div class="flex flex-col items-center sm:col-span-2 md:col-span-3 lg:col-span-2">
-        <!-- <Headline v-if="headline" size="small" :color="textColor" :headline="headline" /> -->
+        <Headline v-if="headline" size="small" :color="textColor" :headline="headline" />
       </div>
     </div>
     <div
