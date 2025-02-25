@@ -71,6 +71,8 @@ watch(searchTerm, () => {
 watch(checkedCategory, () => {
   fetchArticles();
 });
+
+const gridClasses = computed(() => getGridClasses(props.blok.cols));
 </script>
 
 <template>
@@ -126,7 +128,7 @@ watch(checkedCategory, () => {
     <main class="pb-24">
       <section
         v-if="!loading && articles.length"
-        class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-12"
+        :class="gridClasses"
       >
         <ArticleCard
           v-for="article in articles"
