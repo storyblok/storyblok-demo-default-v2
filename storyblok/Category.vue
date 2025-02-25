@@ -20,24 +20,29 @@ const { data } = await storyblokApi.get(`cdn/stories/`, {
   },
   language,
   fallback_lang: 'default',
+  resolve_relations: 'article-page.categories',
 });
 
 articles.value = data.stories;
+
+const gridClasses = computed(() => getGridClasses());
 </script>
 
 <template>
   <main v-editable="blok" class="container py-12 md:py-16">
-    <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
-    <Lead v-if="blok.description">{{ blok.description }}</Lead>
+    <H1Headline
+      v-if="blok.headline"
+    >
+      {{ blok.headline }}
+    </H1Headline>
     <div
-      class="my-16 grid place-items-center gap-6 sm:gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-3"
+      :class="gridClasses"
     >
       <ArticleCard
         v-for="article in articles"
         :key="article.uuid"
         :article="article.content"
         :slug="article.full_slug"
-        class="bg-light"
       />
     </div>
   </main>

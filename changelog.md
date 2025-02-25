@@ -42,3 +42,4 @@
 - removed `author`
 - removed `headline` from `article-overview-page`
 - removed datasource "Overlays"
+- removed `single-product-section` (will be replaced with an improved solution soon)

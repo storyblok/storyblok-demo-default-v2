@@ -36,7 +36,7 @@ const fetchArticles = async () => {
     version: getVersion(),
     starts_with: 'articles',
     language,
-    // fallback_lang: 'default',
+    fallback_lang: 'default',
     search_term: searchTerm.value,
     filter_query: filterQuery.value,
     resolve_relations: 'article-page.categories',
@@ -72,18 +72,17 @@ watch(checkedCategory, () => {
   fetchArticles();
 });
 
-const gridClasses = computed(() => getGridClasses(props.blok.cols));
+const gridClasses = computed(() => getGridClasses());
 </script>
 
 <template>
   <section v-editable="blok" class="container">
     <header>
-      <h1
-        class="my-24 text-center text-5xl font-black"
+      <H1Headline
+        v-if="blok.headline"
       >
-        Expert tips and insights
-        on Business growth
-      </h1>
+        {{ blok.headline }}
+      </H1Headline>
       <nav>
         <div class="mb-12 flex justify-center">
           <label for="search" class="sr-only">Search</label>

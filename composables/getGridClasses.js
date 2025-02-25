@@ -1,4 +1,4 @@
-export default function (cols) {
+export default function (cols = '3') {
   let gridClasses
     = 'grid md:grid-cols-2 gap-10 md:gap-12 md:mt-12 place-items-center items-start';
 
@@ -7,8 +7,8 @@ export default function (cols) {
       gridClasses += ' lg:grid-cols-3 xl:grid-cols-4';
       break;
     case '3':
+    default:
       gridClasses += ' lg:grid-cols-3';
-      break;
   }
 
   return gridClasses;
