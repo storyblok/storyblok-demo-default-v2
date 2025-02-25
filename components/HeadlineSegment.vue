@@ -24,5 +24,5 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <span :class="classes">{{ headlineSegment.text }}</span>
+  <span v-editable="headlineSegment" :class="classes">{{ headlineSegment.text }}</span>
 </template>

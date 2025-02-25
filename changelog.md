@@ -29,3 +29,4 @@
 - new `faq-section`
 - new `testimonials-section`
 - removed `text_color`, `background_color` and `lead` from `form-section`
+- simplified `form_section`
