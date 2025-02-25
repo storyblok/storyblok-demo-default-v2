@@ -1,15 +1,11 @@
 <script setup>
-const props = defineProps({ blok: Object });
+defineProps({ blok: Object });
 
 const activeTab = ref(0);
 
 const setActiveTab = (index) => {
   activeTab.value = index;
 };
-
-const tabWidth = computed(() => {
-  return 100 / props.blok.entries.length;
-});
 </script>
 
 <template>
@@ -24,14 +20,15 @@ const tabWidth = computed(() => {
       </Lead>
     </div>
     <div>
-      <ul class="relative mb-8 flex flex-col rounded-lg border border-medium p-1 lg:flex-row" :style="{ '--tab-width': `${tabWidth}%` }">
+      <ul class="relative mb-8 flex w-full flex-col rounded-lg border border-medium p-1 lg:flex-row">
         <li
           v-for="(entry, index) in blok.entries"
           :key="entry._uid"
+          class="w-full"
         >
           <button
-            class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg text-dark"
-            :data-active="index === activeTab"
+            class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg"
+            :class="index === activeTab ? 'bg-dark text-white' : 'text-dark'"
             @click.prevent="setActiveTab(index)"
           >
             {{ entry.headline }}
@@ -48,15 +45,3 @@ const tabWidth = computed(() => {
     </div>
   </section>
 </template>
-
-<style scoped>
-ul li button[data-active='true'] {
-  @apply bg-dark text-white;
-}
-
-ul li {
-  @screen lg {
-    @apply w-[var(--tab-width)];
-  }
-}
-</style>

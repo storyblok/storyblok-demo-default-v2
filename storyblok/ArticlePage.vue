@@ -11,16 +11,7 @@ const optimizedArticleImage = computed(() =>
     <div class="container">
       <header>
         <div class="mx-auto mb-12 max-w-2xl text-center">
-          <ul v-if="blok.categories.length" class="mt-12 flex justify-center space-x-4">
-            <li v-for="cat in blok.categories" :key="cat.uuid">
-              <NuxtLink :to="`/${cat.full_slug}`" class="flex items-center space-x-2">
-                <img v-if="cat.content?.icon?.filename" :src="cat.content?.icon?.filename" :alt="cat.content?.alt" width="24" />
-                <span class="text-dark transition-all hover:text-secondary">
-                  {{ cat.name }}
-                </span>
-              </NuxtLink>
-            </li>
-          </ul>
+          <CategoriesList v-if="blok.categories.length" :categories="blok.categories" class="mt-12 flex justify-center space-x-4" />
           <h1
             v-if="blok.headline"
             class="mb-4 mt-12 font-display text-2xl font-bold leading-tight sm:text-3xl sm:leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight"

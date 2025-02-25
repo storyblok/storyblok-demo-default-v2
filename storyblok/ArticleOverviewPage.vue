@@ -9,21 +9,14 @@ if (slug) {
 }
 
 const searchTerm = ref('');
-const checkedCategories = ref([]);
-const checkedAuthor = ref('');
+const checkedCategory = ref('');
 
 const filterQuery = computed(() => {
   const query = {};
 
-  if (checkedCategories.value.length > 0) {
+  if (checkedCategory.value) {
     query.categories = {
-      in_array: checkedCategories.value.join(','),
-    };
-  }
-
-  if (checkedAuthor.value !== '') {
-    query.author = {
-      in: checkedAuthor.value,
+      in: checkedCategory.value,
     };
   }
 
@@ -43,27 +36,16 @@ const fetchArticles = async () => {
     version: getVersion(),
     starts_with: 'articles',
     language,
-    fallback_lang: 'default',
+    // fallback_lang: 'default',
     search_term: searchTerm.value,
     filter_query: filterQuery.value,
+    resolve_relations: 'article-page.categories',
   });
   articles.value = data.stories.filter(story => story.is_startpage !== true);
   loading.value = false;
 };
 
 fetchArticles();
-
-const authors = ref(null);
-
-const getAuthors = async () => {
-  const { data } = await storyblokApi.get('cdn/stories/', {
-    version: getVersion(),
-    starts_with: 'authors',
-  });
-  authors.value = data.stories;
-};
-
-getAuthors();
 
 const categories = ref(null);
 
@@ -77,20 +59,8 @@ const getCategories = async () => {
 
 getCategories();
 
-const button = {
-  link: {
-    linktype: 'url',
-  },
-  size: 'small',
-  style: 'ghost',
-  text_color: 'light',
-  background_color: 'dark',
-};
-
-const resetFilters = () => {
-  searchTerm.value = '';
-  checkedCategories.value = [];
-  checkedAuthor.value = '';
+const resetCategories = () => {
+  checkedCategory.value = '';
   fetchArticles();
 };
 
@@ -98,88 +68,62 @@ watch(searchTerm, () => {
   fetchArticles();
 });
 
-watch(checkedCategories, () => {
-  fetchArticles();
-});
-
-watch(checkedAuthor, () => {
+watch(checkedCategory, () => {
   fetchArticles();
 });
 </script>
 
 <template>
-  <main v-editable="blok" class="container py-12 md:py-16">
-    <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
-    <section class="my-16 flex text-dark">
-      <aside
-        class="invisible hidden shrink-0 flex-col space-y-6 md:visible md:mr-6 md:flex md:w-[210px] xl:mr-12 xl:w-[240px]"
+  <section v-editable="blok" class="container">
+    <header>
+      <h1
+        class="my-24 text-center text-5xl font-black"
       >
-        <div>
-          <label for="search" class="mb-3 block text-lg font-medium">
-            Search for a term
-          </label>
+        Expert tips and insights
+        on Business growth
+      </h1>
+      <nav>
+        <div class="mb-12 flex justify-center">
+          <label for="search" class="sr-only">Search</label>
           <input
             id="search"
             v-model="searchTerm"
             type="search"
             name="search"
-            class="rounded-full border border-dark px-4 py-2 focus:outline-none"
+            placeholder="Search for anything"
+            class="rounded-lg border-2 border-dark px-12 py-4 text-xl focus:outline-none"
             @keypress.enter="fetchArticles()"
           />
         </div>
-        <fieldset>
-          <legend class="mb-3 text-lg font-medium">Select a category</legend>
-          <div class="flex flex-col space-y-3">
-            <label
-              v-for="category in categories"
-              :key="category.uuid"
-              :for="category.uuid"
-              class="checkbox flex"
-            >
-              <input
-                :id="category.uuid"
-                v-model="checkedCategories"
-                type="checkbox"
-                :name="category.uuid"
-                :value="category.uuid"
-                class="invisible hidden"
-              />
-              <Indicator />
-              <span>{{ category.name }}</span>
-            </label>
-          </div>
-        </fieldset>
-        <div>
-          <fieldset>
-            <legend class="mb-3 text-lg font-medium">Select an author</legend>
-            <div class="flex flex-col space-y-3">
-              <label
-                v-for="author in authors"
-                :key="author.uuid"
-                :for="author.uuid"
-                class="radio flex"
-              >
-                <input
-                  :id="author.uuid"
-                  v-model="checkedAuthor"
-                  type="radio"
-                  name="author"
-                  :value="author.uuid"
-                  class="invisible hidden"
-                />
-                <Indicator />
-                <span>{{ author.name }}</span>
-              </label>
-            </div>
-          </fieldset>
+        <div class="mb-12 flex flex-col rounded-lg border border-medium p-1 lg:flex-row">
+          <button
+            class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg"
+            :class=" !checkedCategory ? 'bg-dark text-white' : 'text-dark'"
+            @click.prevent="resetCategories()"
+          >
+            All
+          </button>
+          <label
+            v-for="category in categories"
+            :key="category.uuid"
+            :for="category.uuid"
+            class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg text-dark"
+            :class=" checkedCategory === category.uuid ? 'bg-dark text-white' : 'text-dark'"
+          >
+            <input
+              :id="category.uuid"
+              v-model="checkedCategory"
+              type="radio"
+              :name="category.uuid"
+              :value="category.uuid"
+              class="sr-only"
+            />
+            <span>{{ category.name }}</span>
+          </label>
         </div>
-        <div>
-          <Button :button="button" class="mt-4" @click.prevent="resetFilters()">
-            Reset filters
-          </Button>
-        </div>
-      </aside>
-
+      </nav>
+    </header>
+    <main class="pb-24">
       <section
         v-if="!loading && articles.length"
         class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-12"
@@ -189,24 +133,12 @@ watch(checkedAuthor, () => {
           :key="article.uuid"
           :article="article.content"
           :slug="article.full_slug"
-          class="bg-light"
         />
       </section>
 
       <section v-else-if="!loading && !articles.length">
         Unfortunately, no articles matched your criteria.
       </section>
-    </section>
-  </main>
+    </main>
+  </section>
 </template>
-
-<style scoped>
-.checkbox :deep(div.indicator > svg),
-.radio :deep(div.indicator > svg) {
-  @apply invisible hidden;
-}
-.checkbox :deep(input:checked + div.indicator > sv)g,
-.radio :deep(input:checked + div.indicator > svg) {
-  @apply visible block;
-}
-</style>
