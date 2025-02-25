@@ -10,27 +10,23 @@ const modules = [Navigation];
 </script>
 
 <template>
-  <section
+  <Swiper
     v-editable="blok"
-    class="page-section banner-reference-section bg-white"
+    :slides-per-view="1"
+    :space-between="50"
+    :navigation="true"
+    :auto-height="true"
+    :modules="modules"
+    class="swiper"
   >
-    <Swiper
-      :slides-per-view="1"
-      :space-between="50"
-      :navigation="true"
-      :auto-height="true"
-      :modules="modules"
-      class="swiper"
-    >
-      <SwiperSlide v-for="banner in blok.banners" :key="banner.uuid">
-        <Banner
-          v-if="banner.content"
-          :blok="banner.content"
-          :referenced="true"
-        />
-      </SwiperSlide>
-    </Swiper>
-  </section>
+    <SwiperSlide v-for="banner in blok.banners" :key="banner.uuid">
+      <Banner
+        v-if="banner.content"
+        :blok="banner.content"
+        :referenced="true"
+      />
+    </SwiperSlide>
+  </Swiper>
 </template>
 
 <style scoped>

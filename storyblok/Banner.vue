@@ -2,6 +2,9 @@
 const props = defineProps({ blok: Object, referenced: Boolean });
 
 const isSvg = computed(() => {
+  if (!props.blok.background_image?.filename) {
+    return false;
+  }
   const detectFileExtension = props.blok.background_image?.filename.split('.');
   return detectFileExtension[detectFileExtension.length - 1] === 'svg';
 });
@@ -20,7 +23,7 @@ const showVideo = computed(() => {
   ) {
     return false;
   }
-  else if (props.blok.background_video.filename) {
+  else if (props.blok.background_video?.filename) {
     return true;
   }
   return false;
@@ -69,13 +72,13 @@ const overlay = computed(() => {
     v-editable="blok"
     class="page-section banner-section relative flex min-h-[600px] items-center  overflow-hidden bg-[--background-color]"
     :class="{ 'pointer-events-none': referenced }"
-    :style="`--background-color: ${blok.background_color.value};`"
+    :style="`--background-color: ${blok.background_color?.value};`"
   >
     <div class="container relative z-20 flex" :class="[{ 'justify-center text-center': blok.text_alignment === 'center' }, { 'text-white': overlay }]">
       <div class="relative z-30 max-w-3xl">
         <Headline v-if="blok.headline" :headline="blok.headline" :color="overlay ?? 'text-white'" />
         <Lead v-if="blok.lead">{{ blok.lead }}</Lead>
-        <div v-if="blok.buttons.length" class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
+        <div v-if="blok?.buttons?.length" class="flex gap-4" :class="blok.text_alignment === 'center' ? 'justify-center' : ''">
           <Button
             v-for="button in blok.buttons"
             :key="button._uid"

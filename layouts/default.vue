@@ -169,20 +169,21 @@ onMounted(() => {
 </template>
 
 <style>
-/* body {
+body {
   @apply pt-32;
 }
- */
 
 html {
   --nav-background-color: #ffffff;
 }
+
 body > div > main {
   @apply text-dark;
 }
 
 main.in-editor a,
 main.in-editor button {
+  /* TODO: change to JS */
   @apply pointer-events-none;
 }
 
@@ -190,46 +191,8 @@ section.page-section {
   @apply py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32;
 }
 
-section.page-section.no-padding {
-  @apply py-0;
-}
-
 section.page-section.bg-white + section.page-section.bg-white,
 section.page-section.bg-light + section.page-section.bg-light {
   @apply pt-0;
-}
-
-section.hero-section + section.text-section.overlap-preceding-hero {
-  @apply -mb-16 py-0 sm:-mb-20 md:-mb-24 lg:-mb-28;
-}
-
-section.hero-section + section.text-section.overlap-preceding-hero > .container {
-  @apply -translate-y-24;
-}
-
-section.banner-section.padding:first-child {
-  @apply pt-0;
-}
-
-.overlay-15::before {
-  content: '';
-  @apply absolute left-0 top-0 z-10 h-full w-full;
-  background-color: rgba(0, 0, 0, 0.15);
-  background-blend-mode: overlay;
-}
-
-.overlay-30::before,
-.overlay-pattern-1::before {
-  content: '';
-  @apply absolute left-0 top-0 z-10 h-full w-full;
-  background-color: rgba(0, 0, 0, 0.3);
-  background-blend-mode: overlay;
-}
-
-.overlay-pattern-1::after {
-  content: '';
-  @apply absolute left-0 top-0 z-20 h-full w-full;
-  background-image: url('~/assets/images/plus-pattern.svg');
-  background-repeat: repeat;
 }
 </style>
