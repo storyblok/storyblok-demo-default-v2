@@ -43,5 +43,4 @@ export default defineNuxtConfig({
     plugins: [mkcert()],
   },
 
-  compatibilityDate: '2025-02-12',
 });
