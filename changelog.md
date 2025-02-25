@@ -36,3 +36,7 @@
 - removed `background_brightness` from `banner`
 - removed `overlay` from `banner`
 - removed `enable_background_color` from `banner`
+- removed `subheadline` from `article-page`
+- removed `teaser` from `article-page`
+- removed `author` from `article-page`
+- removed `author`
