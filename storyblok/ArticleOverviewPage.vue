@@ -129,7 +129,7 @@ const gridClasses = computed(() => getGridClasses());
         v-if="!loading && articles.length"
         :class="gridClasses"
       >
-        <ArticleCard
+        <ArticleCardVertical
           v-for="article in articles"
           :key="article.uuid"
           :article="article.content"

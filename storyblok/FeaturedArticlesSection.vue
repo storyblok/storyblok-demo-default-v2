@@ -9,13 +9,16 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
 <template>
   <section
     v-editable="blok"
-    class="page-section grid-section"
+    class="page-section featured-articles-section"
     :class="`bg-${blok.background_color}`"
   >
     <div class="container">
       <Headline v-if="blok.headline" :headline="blok.headline" class="text-center" />
-      <div :class="gridClasses">
-        <ArticleCard
+      <Lead v-if="blok.lead" class="text-center">
+        {{ blok.lead }}
+      </Lead>
+      <div v-if="blok.articles" :class="gridClasses">
+        <ArticleCardVertical
           v-for="article in blok.articles"
           :key="article.uuid"
           :article="article.content"

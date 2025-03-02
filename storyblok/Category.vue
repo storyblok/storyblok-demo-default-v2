@@ -38,7 +38,7 @@ const gridClasses = computed(() => getGridClasses());
     <div
       :class="gridClasses"
     >
-      <ArticleCard
+      <ArticleCardVertical
         v-for="article in articles"
         :key="article.uuid"
         :article="article.content"
