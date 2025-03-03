@@ -19,7 +19,7 @@ const classes = computed(() => {
     classes += ` ${props.color}`;
   }
   else {
-    classes += ' headline-color';
+    classes += 'text-[--headline-color]';
   }
 
   return classes;

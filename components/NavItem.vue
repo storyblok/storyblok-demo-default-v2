@@ -23,7 +23,7 @@ const url = computed(() => {
     v-editable="item"
     :to="url"
     class="relative flex h-full cursor-pointer items-center text-base transition-colors"
-    :class="props.reducedFontWeight ? 'font-light' : 'font-medium'"
+    :class="props.reducedFontWeight ? 'font-normal' : 'font-medium'"
   >
     {{ item.label }}
   </NuxtLink>

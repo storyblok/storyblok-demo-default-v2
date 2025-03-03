@@ -47,7 +47,7 @@ const backgroundColor = computed(() => {
       </div>
       <div v-for="index in 3" :key="index">
         <h3
-          class="mb-5 font-display text-xl font-medium xl:text-2xl"
+          class="mb-5 font-display text-xl font-semibold xl:text-2xl"
           :class="textColor"
         >
           {{ navs[`nav_${index}_headline`] }}

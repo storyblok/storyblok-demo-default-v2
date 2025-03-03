@@ -21,7 +21,7 @@ const optimizedImage = computed(() =>
     <div class="flex h-full flex-col">
       <div class="flex grow flex-col space-y-4">
         <CategoriesList v-if="article.categories.length" :categories="article.categories" class="flex space-x-4" />
-        <h3 class="text-2xl font-black">
+        <h3 v-if="article.headline" class="font-display text-2xl font-black">
           {{ article.headline }}
         </h3>
       </div>

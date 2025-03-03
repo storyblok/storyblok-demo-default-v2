@@ -26,11 +26,9 @@ const componentExists = component =>
           clip-rule="evenodd"
         />
       </svg>
-      <span class="font-light">
-        Component named
-        <span class="font-medium">{{ blok.component }}</span>
-        is not defined in your frontend framework yet.
-      </span>
+      Component named
+      <span class="font-semibold">{{ blok.component }}</span>
+      is not defined in your frontend framework yet.
     </div>
   </div>
 </template>
