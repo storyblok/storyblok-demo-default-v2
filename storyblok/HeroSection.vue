@@ -35,10 +35,10 @@ useHead(headConfig);
 
 <style scoped>
 section.stacked {
-  @apply pt-48;
+  @apply pt-32;
 }
 section.split {
-  @apply pt-56 pb-16;
+  @apply pt-40 pb-16;
 }
 section.split::after {
   @apply content-[''] absolute pointer-events-none z-10 top-0 left-1/2 w-[50%] h-full bg-[--secondary-background-color];

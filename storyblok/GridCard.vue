@@ -30,7 +30,7 @@ const optimizedImage = getOptimizedImage(props.card?.background_image, 800);
       <h3 v-if="card.label" class="mb-3 font-display text-xl font-black">
         {{ card.label }}
       </h3>
-      <p v-if="card.text" class="font-light leading-relaxed">{{ card.text }}</p>
+      <p v-if="card.text" class="leading-relaxed">{{ card.text }}</p>
       <div v-if="card.button.length" class="mt-4">
         <Button
           v-for="button in card.button"

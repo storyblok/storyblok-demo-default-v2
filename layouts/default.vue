@@ -118,7 +118,6 @@ onMounted(() => {
       v-if="viewingSiteConfig && siteConfig.content.use_custom_colors"
       class="container py-12"
     >
-      <pre>{{ siteConfig.content.colored_headlines }}</pre>
       <h2 class="mb-12 text-5xl font-black text-[--headline-color]">Color Preview</h2>
       <div
         class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"

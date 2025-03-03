@@ -18,7 +18,7 @@ const optimizedImage = computed(() => getOptimizedImage(props.card?.image, 800))
     <h3 class="mb-3 font-display text-xl font-black">
       {{ card.label }}
     </h3>
-    <div class="font-light leading-relaxed">{{ card.text }}</div>
+    <div class="leading-relaxed">{{ card.text }}</div>
   </div>
 </template>
 

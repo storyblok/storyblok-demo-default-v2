@@ -21,8 +21,8 @@ defineProps({ blok: Object });
           <div class="mt-8 flex items-center gap-4">
             <div class="size-16 overflow-hidden rounded-full bg-white"><img v-if="testimonial.content.photo?.filename" :src="getOptimizedImage(testimonial.content.photo, 64, 64)" :alt="testimonial.content.photo?.alt" width="60" height="60" /></div>
             <div>
-              <p class="font-bold">{{ testimonial.content.name }}</p>
-              <p class="font-light">{{ testimonial.content.role }}</p>
+              <p class="font-black">{{ testimonial.content.name }}</p>
+              <p>{{ testimonial.content.role }}</p>
             </div>
           </div>
         </li>
