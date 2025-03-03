@@ -150,6 +150,7 @@ onMounted(() => {
       :headline="siteConfig.content.footer_headline"
       :text-color="siteConfig.content.footer_text_color"
       :background-color="siteConfig.content.footer_background_color"
+      :decoration="siteConfig.content.footer_decoration"
       :logo="siteConfig.content.footer_logo"
       :about="siteConfig.content.footer_about"
       :navs="{

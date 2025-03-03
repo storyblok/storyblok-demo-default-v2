@@ -34,12 +34,12 @@ onMounted(() => {
 <template>
   <header
     class="fixed left-0 top-0 z-[99] h-32 w-full border-b border-dark transition-all duration-300"
-    :class="[headerScrollClass, { 'dark-bg': !light }]"
+    :class="[headerScrollClass, { 'bg-dark': !light }]"
   >
     <div
       class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
     >
-      <NuxtLink to="/" class="flex shrink-0">
+      <NuxtLink v-if="logo?.filename" to="/" class="flex shrink-0">
         <img
           :src="logo.filename"
           :alt="logo.alt"
@@ -79,7 +79,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-header {
+header:not(.bg-dark) {
   @apply bg-[--nav-background-color];
 }
 header.scroll:not(.bg-dark) {
