@@ -43,3 +43,4 @@
 - removed `headline` from `article-overview-page`
 - removed datasource "Overlays"
 - removed `single-product-section` (will be replaced with an improved solution soon)
+- added new `latest-articles-section`

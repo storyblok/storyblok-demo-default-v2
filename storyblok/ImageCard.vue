@@ -15,7 +15,6 @@ const optimizedImage = computed(() => getOptimizedImage(props.card?.image, 800))
     >
       <img v-if="optimizedImage" :src="optimizedImage" :alt="card.image.alt" class="h-[360px] w-full object-cover object-top" />
     </div>
-
     <h3 class="mb-3 font-display text-xl font-black">
       {{ card.label }}
     </h3>
