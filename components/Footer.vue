@@ -1,8 +1,7 @@
 <script setup>
 const props = defineProps({
   headline: Array,
-  textColor: String,
-  backgroundColor: String,
+  footerLight: Boolean,
   decoration: Boolean,
   logo: Object,
   navs: Object,
@@ -14,11 +13,11 @@ const props = defineProps({
 });
 
 const textColor = computed(() => {
-  return props.textColor === 'light' ? 'text-white' : 'text-dark';
+  return props.footerLight ? 'text-primary-dark' : 'text-white';
 });
 
 const backgroundColor = computed(() => {
-  return `bg-${props.backgroundColor}`;
+  return props.footerLight ? 'bg-primary-background' : 'bg-primary-dark';
 });
 </script>
 
@@ -68,7 +67,7 @@ const backgroundColor = computed(() => {
     </div>
     <div v-if="decoration" class="container">
       <div
-        class="h-px w-full bg-medium"
+        class="h-px w-full bg-gray-500"
       ></div>
       <img
         src="~/assets/images/made-with-love.svg"

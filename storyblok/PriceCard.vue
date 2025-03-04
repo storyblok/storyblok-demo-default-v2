@@ -5,7 +5,7 @@ defineProps({ card: Object });
 <template>
   <div
     v-editable="card"
-    class="price-card relative flex w-full max-w-md flex-col rounded-lg border bg-white p-6 text-dark lg:max-w-none"
+    class="price-card relative flex w-full max-w-md flex-col rounded-lg border bg-white p-6 text-primary-dark lg:max-w-none"
     :class="[
       card.most_popular ? 'border-2 border-dark' : 'border-medium']"
   >

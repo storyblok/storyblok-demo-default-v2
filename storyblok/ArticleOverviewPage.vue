@@ -92,14 +92,14 @@ const gridClasses = computed(() => getGridClasses());
             type="search"
             name="search"
             placeholder="Search for anything"
-            class="rounded-lg border-2 border-dark px-12 py-4 text-xl focus:outline-none"
+            class="border-dark rounded-lg border-2 px-12 py-4 text-xl focus:outline-none"
             @keypress.enter="fetchArticles()"
           />
         </div>
-        <div class="mb-12 flex flex-col rounded-lg border border-medium p-1 lg:flex-row">
+        <div class="border-medium mb-12 flex flex-col rounded-lg border p-1 lg:flex-row">
           <button
             class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg"
-            :class=" !checkedCategory ? 'bg-dark text-white' : 'text-dark'"
+            :class=" !checkedCategory ? 'bg-primary-dark text-white' : 'text-primary-dark'"
             @click.prevent="resetCategories()"
           >
             All
@@ -108,8 +108,8 @@ const gridClasses = computed(() => getGridClasses());
             v-for="category in categories"
             :key="category.uuid"
             :for="category.uuid"
-            class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg text-dark"
-            :class=" checkedCategory === category.uuid ? 'bg-dark text-white' : 'text-dark'"
+            class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg text-primary-dark"
+            :class=" checkedCategory === category.uuid ? 'bg-primary-dark text-white' : 'text-primary-dark'"
           >
             <input
               :id="category.uuid"

@@ -6,7 +6,7 @@
       name="email"
       type="email"
       placeholder="Your email"
-      class="rounded-lg bg-white px-6 py-4 text-dark transition-all focus:outline-none"
+      class="rounded-lg bg-white px-6 py-4 text-primary-dark transition-all focus:outline-none"
       required
     />
   </form>

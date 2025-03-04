@@ -7,7 +7,7 @@ const optimizedImage = computed(() =>
 </script>
 
 <template>
-  <section v-editable="blok" class="grid rounded-lg bg-light p-8 text-dark md:grid-cols-2">
+  <section v-editable="blok" class="grid rounded-lg bg-primary-background p-8 text-primary-dark md:grid-cols-2">
     <img
       v-if="blok.image.filename"
       :src="optimizedImage"

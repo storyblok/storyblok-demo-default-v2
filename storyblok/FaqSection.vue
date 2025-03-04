@@ -5,7 +5,7 @@ defineProps({ blok: Object });
 <template>
   <section
     v-editable="blok"
-    class="page-section faq-section relative bg-light"
+    class="page-section faq-section relative bg-primary-background"
   >
     <div class="container relative z-10 grid gap-10 xl:grid-cols-2">
       <div>
@@ -15,7 +15,7 @@ defineProps({ blok: Object });
         </Lead>
       </div>
       <ul v-if="blok.faq_entries.length" class="">
-        <li v-for="entry in blok.faq_entries" :key="entry._uid" class="border-b border-dark py-8 last:border-none">
+        <li v-for="entry in blok.faq_entries" :key="entry._uid" class="border-dark border-b py-8 last:border-none">
           <details class="relative">
             <summary class="cursor-pointer list-none pr-6 text-xl font-medium">{{ entry.question }}</summary>
             <div v-if="entry.answer" class="prose mt-4">

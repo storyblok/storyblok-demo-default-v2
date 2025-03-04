@@ -7,7 +7,7 @@
         name="name"
         type="text"
         placeholder="Your name"
-        class="rounded-lg bg-white px-6 py-4 text-dark transition-all focus:outline-none"
+        class="rounded-lg bg-white px-6 py-4 text-primary-dark transition-all focus:outline-none"
         required
       />
       <label for="email" class="sr-only">Your email</label>
@@ -16,7 +16,7 @@
         name="email"
         type="email"
         placeholder="Your email"
-        class="rounded-lg bg-white px-6 py-4 text-dark transition-all focus:outline-none"
+        class="rounded-lg bg-white px-6 py-4 text-primary-dark transition-all focus:outline-none"
         required
       />
       <label for="message" class="sr-only">Your message</label>
@@ -24,7 +24,7 @@
         id="message"
         name="message"
         placeholder="Your message"
-        class="resize-none rounded-lg bg-white px-6 py-4 text-dark transition-all focus:outline-none"
+        class="resize-none rounded-lg bg-white px-6 py-4 text-primary-dark transition-all focus:outline-none"
         required
       ></textarea>
     </div>

@@ -33,7 +33,7 @@ const selectedForm = computed(() => {
     <div
       class="container"
     >
-      <div class="relative overflow-hidden rounded-xl bg-dark p-24">
+      <div class="relative overflow-hidden rounded-xl bg-primary-dark p-24">
         <div class="relative z-10 flex flex-col items-center space-y-12 text-center">
           <Headline v-if="blok.headline" color="text-white" :headline="blok.headline" />
           <div class="relative mx-auto flex items-center space-x-8">

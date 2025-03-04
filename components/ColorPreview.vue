@@ -8,6 +8,6 @@ defineProps({ color: String });
       class="flex aspect-square w-full items-center justify-center rounded-3xl shadow-sm"
       :class="`bg-${color}`"
     ></div>
-    <span class="text-sm text-dark">{{ color }}</span>
+    <span class="text-sm text-primary-dark">{{ color }}</span>
   </div>
 </template>

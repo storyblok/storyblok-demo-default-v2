@@ -19,17 +19,8 @@ const url = computed(() => {
 
 const classes = computed(() => {
   let classes
-    = `font-semibold inline-flex items-center tracking-wider cursor-pointer transition-all duration-300 border border-2 border-${
+    = `font-semibold inline-flex items-center tracking-wider cursor-pointer transition-all duration-300 rounded-md border border-2 border-${
       props.button.background_color}`;
-
-  switch (props.button.border_radius) {
-    case 'small':
-      classes += ' rounded-md';
-      break;
-    case 'default':
-    default:
-      classes += ' rounded-full';
-  }
 
   switch (props.button.size) {
     case 'small':

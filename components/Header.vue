@@ -33,8 +33,8 @@ onMounted(() => {
 
 <template>
   <header
-    class="fixed left-0 top-0 z-[99] h-32 w-full border-b border-dark transition-all duration-300"
-    :class="[headerScrollClass, { 'bg-dark': !light }]"
+    class="border-dark fixed left-0 top-0 z-[99] h-32 w-full border-b transition-all duration-300"
+    :class="[headerScrollClass, { 'bg-primary-dark': !light }]"
   >
     <div
       class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
@@ -51,7 +51,7 @@ onMounted(() => {
           <li v-for="item in nav" :key="item._uid" class="h-full">
             <NavItem
               class="nav-item"
-              :class="light ? 'text-dark' : 'text-white'"
+              :class="light ? 'text-primary-dark' : 'text-white'"
               :item="item"
             />
           </li>
@@ -67,7 +67,7 @@ onMounted(() => {
         </ul>
       </nav>
       <MobileNavToggle
-        :color="light ? 'bg-dark' : 'bg-light'"
+        :color="light ? 'bg-primary-dark' : 'bg-primary-background'"
         @click="toggleMobileNav"
       />
     </div>
@@ -79,18 +79,18 @@ onMounted(() => {
 </template>
 
 <style scoped>
-header:not(.bg-dark) {
+header:not(.bg-primary-dark) {
   @apply bg-[--nav-background-color];
 }
-header.scroll:not(.bg-dark) {
+header.scroll:not(.bg-primary-dark) {
   @apply bg-white;
 }
-/* header.bg-dark {
-  @apply bg-dark;
+/* header.bg-primary-dark {
+  @apply bg-primary-dark;
 } */
 
 header nav.main-nav a.router-link-exact-active::after {
-  @apply content-[''] absolute bottom-0 left-0 h-[5px] w-full bg-dark;
+  @apply content-[''] absolute bottom-0 left-0 h-[5px] w-full bg-primary-dark;
 }
 
 header nav.main-nav ul {

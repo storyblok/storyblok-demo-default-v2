@@ -6,7 +6,7 @@ export default defineNuxtPlugin(({ vueApp }) => {
   const route = useRoute();
 
   vueApp.use(StoryblokVue, {
-    ...config.storyblok,
+    ...config.public.storyblok,
     accessToken: route.query.token || config.public.templateToken,
     use: [apiPlugin],
   });

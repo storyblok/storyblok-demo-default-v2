@@ -2,7 +2,7 @@
 const props = defineProps({ blok: Object });
 
 const gridCardColor = computed(() => {
-  return props.blok.background_color === 'light' ? 'bg-white' : 'bg-light';
+  return props.blok.background_color === 'light' ? 'bg-white' : 'bg-primary-background';
 });
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols));

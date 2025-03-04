@@ -12,7 +12,7 @@ const componentExists = component =>
   />
   <div v-else class="container flex justify-center">
     <div
-      class="my-16 inline-flex items-center justify-center space-x-2 rounded-lg bg-light p-8 text-xl text-dark"
+      class="my-16 inline-flex items-center justify-center space-x-2 rounded-lg bg-primary-background p-8 text-xl text-primary-dark"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

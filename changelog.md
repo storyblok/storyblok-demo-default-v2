@@ -44,3 +44,7 @@
 - removed datasource "Overlays"
 - removed `single-product-section` (will be replaced with an improved solution soon)
 - added new `latest-articles-section`
+- removed `border_radius` from `button`
+- removed `footer_text_color` from `site-config`
+- removed `footer_background_color` from `site-config`
+- removed `footer_light` to `site-config`

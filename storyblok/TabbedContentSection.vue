@@ -20,7 +20,7 @@ const setActiveTab = (index) => {
       </Lead>
     </div>
     <div>
-      <ul class="relative mb-8 flex w-full flex-col rounded-lg border border-medium p-1 lg:flex-row">
+      <ul class="border-medium relative mb-8 flex w-full flex-col rounded-lg border p-1 lg:flex-row">
         <li
           v-for="(entry, index) in blok.entries"
           :key="entry._uid"
@@ -28,7 +28,7 @@ const setActiveTab = (index) => {
         >
           <button
             class="w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg"
-            :class="index === activeTab ? 'bg-dark text-white' : 'text-dark'"
+            :class="index === activeTab ? 'bg-primary-dark text-white' : 'text-primary-dark'"
             @click.prevent="setActiveTab(index)"
           >
             {{ entry.headline }}

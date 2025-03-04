@@ -67,5 +67,5 @@ const _viewingSiteConfigState = useState(
 
 <template>
   <Error404 v-if="error404" />
-  <StoryblokComponent v-if="story" :blok="story.content" :uuid="story.uuid" />
+  <StoryblokComponent v-if="story && !viewingSiteConfig" :blok="story.content" :uuid="story.uuid" />
 </template>

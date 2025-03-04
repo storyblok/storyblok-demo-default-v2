@@ -5,12 +5,21 @@ const defaultFontFamilies = {
 };
 
 const defaultColors = {
-  '--primary': '#9beaaf',
-  '--secondary': '#9987f0',
-  '--tertiary': '#a2954e',
-  '--light': '#f6f7f8',
-  '--medium': '#DBDDE2',
-  '--dark': '#1f1f1f',
+  '--primary-highlight': '#80EFAC',
+  '--highlight-1': '#D4FF92',
+  '--highlight-2': '#A59441',
+  '--highlight-3': '#8D60FF',
+  '--primary-background': '#F5F5F7',
+  '--background-1': '#D2FEC9',
+  '--background-2': '#D9EEFF',
+  '--background-3': '#F4F2E9',
+  '--background-4': '#D9D4FC',
+  '--background-5': '#D9D4FC',
+  '--background-6': '#D9D4FC',
+  '--background-7': '#D9D4FC',
+  '--background-8': '#D9D4FC',
+  '--background-9': '#D9D4FC',
+  '--primary-dark': '#1F1F1F',
 };
 
 const defaultBorderRadiuses = {
@@ -54,19 +63,30 @@ const cssVariables = computed(() => {
     Object.assign(theme, defaultFontFamilies);
   }
   if (siteConfig.value.content.use_custom_colors) {
-    theme['--primary'] = siteConfig.value.content.primary.color;
-    theme['--secondary'] = siteConfig.value.content.secondary.color;
-    theme['--light'] = siteConfig.value.content.light.color;
-    theme['--medium'] = siteConfig.value.content.medium.color;
-    theme['--dark'] = siteConfig.value.content.dark.color;
+    theme['--primary-highlight'] = siteConfig.value.content.primary_highlight_color?.color;
+    theme['--highlight-1'] = siteConfig.value.content.highlight_1_color?.color;
+    theme['--highlight-2'] = siteConfig.value.content.highlight_2_color?.color;
+    theme['--highlight-3'] = siteConfig.value.content.highlight_3_color?.color;
+    theme['--primary-background'] = siteConfig.value.content.primary_background_color?.color;
+    theme['--background-1'] = siteConfig.value.content.background_1_color?.color;
+    theme['--background-2'] = siteConfig.value.content.background_2_color?.color;
+    theme['--background-3'] = siteConfig.value.content.background_3_color?.color;
+    theme['--background-4'] = siteConfig.value.content.background_4_color?.color;
+    theme['--background-5'] = siteConfig.value.content.background_5_color?.color;
+    theme['--background-6'] = siteConfig.value.content.background_6_color?.color;
+    theme['--background-7'] = siteConfig.value.content.background_7_color?.color;
+    theme['--background-8'] = siteConfig.value.content.background_8_color?.color;
+    theme['--background-9'] = siteConfig.value.content.background_9_color?.color;
+    theme['--primary-dark'] = siteConfig.value.content.primary_dark_color?.color;
     if (siteConfig.value.content.colored_headlines) {
-      theme['--headline-color'] = siteConfig.value.content.primary.color;
+      theme['--headline-color'] = siteConfig.value.content.primary_highlight_color?.color;
     }
     else {
-      theme['--headline-color'] = siteConfig.value.content.dark.color;
+      theme['--headline-color'] = siteConfig.value.content.primary_dark_color?.color;
     }
   }
   else {
+    // TODO: enable colored headlines without changing colors
     Object.assign(theme, defaultColors);
     if (siteConfig.value.content.colored_headlines) {
       theme['--headline-color'] = defaultColors['--primary'];
@@ -122,16 +142,26 @@ onMounted(() => {
       <div
         class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       >
-        <ColorPreview color="primary" />
-        <ColorPreview color="secondary" />
-        <ColorPreview color="light" />
-        <ColorPreview color="medium" />
-        <ColorPreview color="dark" />
+        <ColorPreview color="primary-highlight" />
+        <ColorPreview color="highlight-1" />
+        <ColorPreview color="highlight-2" />
+        <ColorPreview color="highlight-3" />
+        <ColorPreview color="primary-background" />
+        <ColorPreview color="background-1" />
+        <ColorPreview color="background-2" />
+        <ColorPreview color="background-3" />
+        <ColorPreview color="background-4" />
+        <ColorPreview color="background-5" />
+        <ColorPreview color="background-6" />
+        <ColorPreview color="background-7" />
+        <ColorPreview color="background-8" />
+        <ColorPreview color="background-9" />
+        <ColorPreview color="primary-dark" />
       </div>
     </div>
     <div
       v-if="viewingSiteConfig && siteConfig.content.use_custom_fonts"
-      class="container py-12 text-dark"
+      class="container py-12 text-primary-dark"
     >
       <Headline>Typography Preview</Headline>
       <Subheadline class="mb-4">Lorem ipsum dolor sit amet</Subheadline>
@@ -149,7 +179,7 @@ onMounted(() => {
     <Footer
       :headline="siteConfig.content.footer_headline"
       :text-color="siteConfig.content.footer_text_color"
-      :background-color="siteConfig.content.footer_background_color"
+      :footer-light="siteConfig.content.footer_light"
       :decoration="siteConfig.content.footer_decoration"
       :logo="siteConfig.content.footer_logo"
       :about="siteConfig.content.footer_about"
@@ -172,14 +202,11 @@ onMounted(() => {
 <style>
 body {
   @apply pt-32;
+  @apply text-primary-dark;
 }
 
 html {
   --nav-background-color: #ffffff;
-}
-
-body > div > main {
-  @apply text-dark;
 }
 
 section.page-section {
@@ -187,7 +214,7 @@ section.page-section {
 }
 
 section.page-section.bg-white + section.page-section.bg-white,
-section.page-section.bg-light + section.page-section.bg-light {
+section.page-section.bg-primary-background + section.page-section.bg-primary-background {
   @apply pt-0;
 }
 </style>

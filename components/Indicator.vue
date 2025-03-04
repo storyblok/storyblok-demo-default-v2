@@ -1,12 +1,12 @@
 <template>
   <div
-    class="indicator mr-1 flex size-6 items-center justify-center rounded-full border border-dark"
+    class="indicator border-dark mr-1 flex size-6 items-center justify-center rounded-full border"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      class="size-4 text-dark"
+      class="size-4 text-primary-dark"
     >
       <path
         fill-rule="evenodd"

@@ -14,7 +14,7 @@ const optimizedImage = getOptimizedImage(props.card?.background_image, 800);
   <div
     v-editable="card"
     class="grid-card relative flex size-full max-w-md grow flex-col overflow-hidden rounded-lg p-6 lg:max-w-none"
-    :class="[card.border ? 'border border-medium' : backgroundColor, { 'row-span-2': card.row_span === '2' }, card.icon.filename ? 'justify-between' : 'justify-end']"
+    :class="[card.border ? 'border-medium border' : backgroundColor, { 'row-span-2': card.row_span === '2' }, card.icon.filename ? 'justify-between' : 'justify-end']"
   >
     <img v-if="optimizedImage" :src="optimizedImage" :alt="card.background_image.alt" class="absolute left-0 top-0 z-0 size-full object-cover" />
     <div v-if="optimizedImage" class="absolute left-0 top-0 z-10 size-full bg-black/30"></div>
@@ -25,7 +25,7 @@ const optimizedImage = getOptimizedImage(props.card?.background_image, 800);
       :width="card.icon_width"
       class="pointer-events-none relative z-10 mb-6"
     />
-    <div class="relative z-20" :class="{ 'text-light': optimizedImage }">
+    <div class="relative z-20" :class="{ 'text-white': optimizedImage }">
       <p v-if="card.bold_text" class="mb-3 text-4xl font-black">{{ card.bold_text }}</p>
       <h3 v-if="card.label" class="mb-3 font-display text-xl font-black">
         {{ card.label }}
