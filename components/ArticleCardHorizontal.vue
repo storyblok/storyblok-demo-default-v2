@@ -24,7 +24,7 @@ const optimizedImage = computed(() =>
       v-if="optimizedImage"
       :src="optimizedImage"
       :alt="article.image && article.image.alt"
-      class="pointer-events-none max-w-52 rounded-xl"
+      class="max-w-52 rounded-xl"
     />
   </NuxtLink>
 </template>

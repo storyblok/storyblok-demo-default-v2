@@ -7,15 +7,12 @@ const optimizedImage = computed(() =>
 </script>
 
 <template>
-  <!-- <pre>{{ blok }}</pre> -->
   <section
     v-editable="blok"
     class="page-section two-columns-section bg-white"
-    :class="`bg-${blok.background_color}`"
-    :style="[`--column-1-background-color: ${blok.column_1_background_color.value};`, `--column-2-background-color: ${blok.column_2_background_color.value}`]"
   >
     <div class="container grid min-h-[600px] grid-cols-3 gap-12">
-      <div class="relative col-span-2 overflow-hidden rounded-xl bg-[--column-1-background-color]">
+      <div class="relative col-span-2 overflow-hidden rounded-xl" :class="`bg-${blok.column_1_background_color}`">
         <div class="relative z-10 grid h-full grid-cols-2">
           <div class="flex flex-col justify-between p-10">
             <div>
@@ -46,32 +43,26 @@ const optimizedImage = computed(() =>
             />
           </div>
         </div>
-        <Decoration1 class="absolute bottom-0 left-0 z-0" :fill="blok.column_1_decoration_color.value" />
+        <Decoration1 class="absolute bottom-0 left-0 z-0" :fill="blok.column_1_decoration_color" />
       </div>
-      <div class="relative overflow-hidden rounded-xl bg-[--column-2-background-color]">
+      <div class="relative overflow-hidden rounded-xl" :class="`bg-${blok.column_2_background_color}`">
         <div class="relative z-10 flex h-full flex-col justify-between p-10">
           <Headline v-if="blok.column_2_headline" size="small" :headline="blok.column_2_headline" />
           <div>
-            <div v-if="blok.column_1_text_2" class="prose">
-              <StoryblokRichText :doc="blok.column_1_text_2" />
+            <div v-if="blok.column_2_text_1" class="prose">
+              <StoryblokRichText :doc="blok.column_2_text_1" />
             </div>
-            <div v-if="blok.column_1_button.length" class="mt-6">
+            <div v-if="blok.column_2_button.length" class="mt-6">
               <Button
-                v-for="button in blok.column_1_button"
+                v-for="button in blok.column_2_button"
                 :key="button._uid"
                 :button="button"
               />
             </div>
           </div>
         </div>
-        <Decoration1 class="absolute bottom-0 left-0 z-0" :fill="blok.column_2_decoration_color.value" />
+        <Decoration1 class="absolute bottom-0 left-0 z-0" :fill="blok.column_2_decoration_color" />
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-/* section .container div:first-child {
-  @apply bg-[--column-1background-color];
-} */
-</style>

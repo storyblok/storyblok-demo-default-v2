@@ -55,25 +55,25 @@ const blurredImage = computed(() => getOptimizedImage(props.blok.image, 1000, 0,
             v-if="!fixedHeightImages"
             :src="optimizedImage"
             :alt="blok.image.alt"
-            class="pointer-events-none rounded-lg"
+            class="rounded-lg"
           />
           <img
             v-if="fixedHeightImages"
             :src="fixedHeightImages.mobile"
             :alt="blok.image.alt"
-            class="pointer-events-none rounded-lg md:invisible md:hidden"
+            class="rounded-lg md:invisible md:hidden"
           />
           <img
             v-if="fixedHeightImages"
             :src="fixedHeightImages.tablet"
             :alt="blok.image.alt"
-            class="pointer-events-none invisible hidden rounded-lg md:visible md:block lg:invisible lg:hidden"
+            class="invisible hidden rounded-lg md:visible md:block lg:invisible lg:hidden"
           />
           <img
             v-if="fixedHeightImages"
             :src="fixedHeightImages.desktop"
             :alt="blok.image.alt"
-            class="pointer-events-none invisible hidden rounded-lg lg:visible lg:block"
+            class="invisible hidden rounded-lg lg:visible lg:block"
           />
         </div>
       </div>

@@ -16,7 +16,7 @@ const optimizedImage = computed(() =>
       v-if="optimizedImage"
       :src="optimizedImage"
       :alt="article.image && article.image.alt"
-      class="pointer-events-none mb-6 rounded-xl"
+      class="mb-6 rounded-xl"
     />
     <div class="flex h-full flex-col">
       <div class="flex grow flex-col space-y-4">
