@@ -4,7 +4,7 @@ const props = defineProps({ blok: Object, index: Number });
 const headConfig = computed(() => ({
   style: [
     {
-      children: `:root { --nav-background-color: ${props.blok.background_color.value}; }`,
+      children: `:root { --nav-background-color: var(--${props.blok.background_color})};`,
     },
   ],
 }));
@@ -15,9 +15,8 @@ useHead(headConfig);
 <template>
   <section
     v-editable="blok"
-    class="relative bg-[--background-color]"
-    :class="[`bg-[${blok.background_color.value}]`, blok.layout]"
-    :style="[`--background-color: ${blok.background_color.value};`, `--secondary-background-color: ${blok.secondary_background_color.value}`]"
+    class="relative"
+    :class="[`bg-${blok.background_color}`, blok.layout === 'split' ? 'pb-16 pt-40' : ' pt-32']"
   >
     <div
       v-if="blok.layout === 'stacked'"
@@ -30,17 +29,6 @@ useHead(headConfig);
       <HeroContent :blok="blok" />
       <HeroImage :blok="blok" />
     </div>
+    <div v-if="blok.layout === 'split'" class="pointer-events-none absolute left-1/2 top-0 z-10 block h-full w-1/2 content-['']" :class="`bg-${blok.secondary_background_color}`"></div>
   </section>
 </template>
-
-<style scoped>
-section.stacked {
-  @apply pt-32;
-}
-section.split {
-  @apply pt-40 pb-16;
-}
-section.split::after {
-  @apply content-[''] absolute pointer-events-none z-10 top-0 left-1/2 w-[50%] h-full bg-[--secondary-background-color];
-}
-</style>

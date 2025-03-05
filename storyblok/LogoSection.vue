@@ -5,7 +5,7 @@ defineProps({ blok: Object });
 <template>
   <section
     v-editable="blok"
-    class="page-section logos-section"
+    class="page-section logos-section bg-white"
   >
     <div class="container text-center">
       <Lead v-if="blok.lead">

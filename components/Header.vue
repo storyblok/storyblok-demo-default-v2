@@ -85,9 +85,6 @@ header:not(.bg-primary-dark) {
 header.scroll:not(.bg-primary-dark) {
   @apply bg-white;
 }
-/* header.bg-primary-dark {
-  @apply bg-primary-dark;
-} */
 
 header nav.main-nav a.router-link-exact-active::after {
   @apply content-[''] absolute bottom-0 left-0 h-[5px] w-full bg-primary-dark;

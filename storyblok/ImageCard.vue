@@ -10,8 +10,8 @@ const optimizedImage = computed(() => getOptimizedImage(props.card?.image, 800))
     class="image-card flex w-full flex-col"
   >
     <div
-      class="image-card-image-container mb-6 flex w-full justify-center rounded-lg px-3 pb-0 pt-12"
-      :style="`--background-color: ${card.background_color.value};`"
+      class="mb-6 flex w-full justify-center rounded-lg px-3 pb-0 pt-12"
+      :class="`bg-${card.background_color}`"
     >
       <img v-if="optimizedImage" :src="optimizedImage" :alt="card.image.alt" class="h-[360px] w-full object-cover object-top" />
     </div>
@@ -21,9 +21,3 @@ const optimizedImage = computed(() => getOptimizedImage(props.card?.image, 800))
     <div class="leading-relaxed">{{ card.text }}</div>
   </div>
 </template>
-
-<style scoped>
-.image-card-image-container {
-  @apply bg-[--background-color];
-}
-</style>

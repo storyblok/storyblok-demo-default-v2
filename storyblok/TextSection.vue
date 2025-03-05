@@ -13,12 +13,6 @@ defineProps({ blok: Object });
         {{ blok.eyebrow }}
       </Eyebrow>
       <Headline v-if="blok.headline" :headline="blok.headline" />
-      <Richtext
-        v-if="blok.text"
-        :text="blok.text"
-        :class="{ 'mx-auto': blok.text_alignment === 'center' }"
-        class="mb-6"
-      />
       <div
         v-if="blok.text"
         :class="{ 'mx-auto': blok.text_alignment === 'center' }"

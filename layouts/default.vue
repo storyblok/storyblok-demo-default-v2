@@ -105,7 +105,11 @@ const cssVariables = computed(() => {
   else {
     Object.assign(theme, defaultBorderRadiuses);
   }
-  return theme;
+  const formattedVariables = Object.entries(theme)
+    .map(([key, value]) => `${key}: ${value};`)
+    .join('\n');
+
+  return `:root {\n${formattedVariables}\n}`;
 });
 
 const isInEditor = await inEditor();
@@ -123,11 +127,20 @@ onMounted(() => {
     },
   );
 });
+
+const headConfig = computed(() => ({
+  style: [
+    {
+      children: cssVariables.value,
+    },
+  ],
+}));
+
+useHead(headConfig);
 </script>
 
 <template>
-  <!-- Apply classes using useHead instead -->
-  <main :style="cssVariables" class="font-body" :class="{ 'in-editor': isInEditor }">
+  <main :class="{ 'in-editor': isInEditor }">
     <Header
       :logo="siteConfig.content.header_logo"
       :nav="siteConfig.content.header_nav"
@@ -200,13 +213,12 @@ onMounted(() => {
 </template>
 
 <style>
-body {
-  @apply pt-32;
-  @apply text-primary-dark;
+:root {
+  --nav-background-color: #ffffff;
 }
 
-html {
-  --nav-background-color: #ffffff;
+body {
+  @apply pt-32 text-primary-dark font-body;
 }
 
 section.page-section {
