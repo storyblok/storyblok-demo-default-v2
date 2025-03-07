@@ -1,5 +1,5 @@
 <script setup>
-defineProps({ fill: { type: String, required: true } });
+defineProps({ fill: { type: String, default: 'primary-highlight' } });
 </script>
 
 <template>

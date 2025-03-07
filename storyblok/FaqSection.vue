@@ -25,7 +25,7 @@ defineProps({ blok: Object });
         </li>
       </ul>
     </div>
-    <Decoration2 class="absolute bottom-0 left-0 z-0" fill="#9987f0" />
+    <Decoration2 class="absolute bottom-0 left-0 z-0" />
   </section>
 </template>
 
@@ -33,7 +33,7 @@ defineProps({ blok: Object });
 details::after {
   content: '';
   @apply absolute top-0 right-0 inline-block w-8 h-8 bg-no-repeat bg-contain;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none"><path d="M12 14.5123L16 18.5123L20 14.5123" stroke="%231B243F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-image: url('~/assets/images/chevron-down.svg');
 }
 details[open]::after {
   transform: rotate(180deg);

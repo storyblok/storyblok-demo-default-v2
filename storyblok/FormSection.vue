@@ -57,7 +57,7 @@ const selectedForm = computed(() => {
             </Transition>
           </div>
         </div>
-        <Decoration3 fill="#D4FF92" class="absolute bottom-0 right-0 z-0" />
+        <Decoration3 fill="highlight-1" class="absolute bottom-0 right-0 z-0" />
       </div>
     </div>
   </section>
