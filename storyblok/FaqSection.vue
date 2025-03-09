@@ -15,7 +15,7 @@ defineProps({ blok: Object });
         </Lead>
       </div>
       <ul v-if="blok.faq_entries.length" class="">
-        <li v-for="entry in blok.faq_entries" :key="entry._uid" class="border-dark border-b py-8 last:border-none">
+        <li v-for="entry in blok.faq_entries" :key="entry._uid" class="border-b border-primary-dark py-8 last:border-none">
           <details class="relative">
             <summary class="cursor-pointer list-none pr-6 text-xl font-medium">{{ entry.question }}</summary>
             <div v-if="entry.answer" class="prose mt-4">
