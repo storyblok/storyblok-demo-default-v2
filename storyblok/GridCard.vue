@@ -7,7 +7,7 @@ const optimizedIcon = computed(() => {
   return props.blok.icon?.filename + optimize;
 });
 
-const optimizedImage = getOptimizedImage(props.blok?.background_image, 800);
+const optimizedImage = computed(() => getOptimizedImage(props.blok?.image, 800));
 </script>
 
 <template>

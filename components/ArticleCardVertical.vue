@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ article: Object, slug: String });
+const props = defineProps({ article: Object, slug: String, layout: String });
 
 const optimizedImage = computed(() =>
   getOptimizedImage(props.article?.image, 800, 600),
@@ -16,7 +16,7 @@ const optimizedImage = computed(() =>
       v-if="optimizedImage"
       :src="optimizedImage"
       :alt="article.image && article.image.alt"
-      class="mb-6 rounded-xl"
+      class="mb-6 max-w-sm rounded-xl md:max-w-full"
     />
     <div class="flex h-full flex-col">
       <div class="flex grow flex-col space-y-4">
