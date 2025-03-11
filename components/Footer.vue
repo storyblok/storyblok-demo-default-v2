@@ -65,7 +65,7 @@ const backgroundColor = computed(() => {
         </nav>
       </div>
     </div>
-    <div v-if="decoration" class="container">
+    <div v-if="decoration" class="container relative z-10">
       <div
         class="h-px w-full bg-gray-500"
       ></div>
@@ -76,6 +76,6 @@ const backgroundColor = computed(() => {
         alt="Made with love by the Storyblok team!"
       />
     </div>
-    <Decoration3 v-if="decoration" fill="highlight-1" class="pointer-events-none absolute bottom-0 right-0" />
+    <Decoration3 v-if="decoration" fill="highlight-1" class="pointer-events-none absolute bottom-0 right-0 z-0" />
   </footer>
 </template>

@@ -30,13 +30,12 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
           />
         </div>
       </div>
-      <div :class="[gridClasses, { 'lg:!mt-0': !blok.headline && !blok.lead }]">
+      <div v-if="blok.cards.length" :class="[gridClasses, { 'lg:!mt-0': !blok.headline && !blok.lead }]">
         <StoryblokComponent
           v-for="card in blok.cards"
           :key="card._uid"
-          :card="card"
-          :background-color="gridCardColor"
           :blok="card"
+          :background-color="gridCardColor"
         />
       </div>
     </div>

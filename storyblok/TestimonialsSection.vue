@@ -1,5 +1,6 @@
 <script setup>
 defineProps({ blok: Object });
+const gridClasses = getGridClasses();
 </script>
 
 <template>
@@ -14,12 +15,11 @@ defineProps({ blok: Object });
           {{ blok.lead }}
         </Lead>
       </div>
-      <ul v-if="blok.testimonials.length" class="mt-12 grid gap-12 xl:grid-cols-3">
-        <!-- {{ blok.testimonials }} -->
-        <li v-for="testimonial in blok.testimonials" :key="testimonial._uid" class="max-w-sm rounded-lg bg-primary-background p-12 xl:max-w-none">
+      <ul v-if="blok.testimonials.length" :class="gridClasses">
+        <li v-for="testimonial in blok.testimonials" :key="testimonial._uid" class="max-w-sm rounded-lg bg-primary-background p-6 xl:max-w-none xl:p-12">
           <blockquote class="text-lg">{{ testimonial.content.quote }}</blockquote>
           <div class="mt-8 flex items-center gap-4">
-            <div class="size-16 overflow-hidden rounded-full bg-white"><img v-if="testimonial.content.photo?.filename" :src="getOptimizedImage(testimonial.content.photo, 64, 64)" :alt="testimonial.content.photo?.alt" width="60" height="60" /></div>
+            <div class="aspect-square size-16 shrink-0 overflow-hidden rounded-full bg-white"><img v-if="testimonial.content.photo?.filename" :src="getOptimizedImage(testimonial.content.photo, 64, 64)" :alt="testimonial.content.photo?.alt" width="60" height="60" /></div>
             <div>
               <p class="font-black">{{ testimonial.content.name }}</p>
               <p>{{ testimonial.content.role }}</p>

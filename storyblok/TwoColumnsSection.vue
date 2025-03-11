@@ -39,7 +39,7 @@ const optimizedImage = computed(() =>
               v-if="blok.column_1_image?.filename"
               :src="optimizedImage"
               :alt="blok.column_1_image?.alt"
-              class="rounded-tl-xl"
+              class="max-w-sm rounded-tl-xl lg:max-w-full"
             />
           </div>
         </div>

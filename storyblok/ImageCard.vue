@@ -1,23 +1,23 @@
 <script setup>
-const props = defineProps({ card: Object });
+const props = defineProps({ blok: Object });
 
-const optimizedImage = computed(() => getOptimizedImage(props.card?.image, 800));
+const optimizedImage = computed(() => getOptimizedImage(props.blok?.image, 800));
 </script>
 
 <template>
   <div
-    v-editable="card"
-    class="image-card flex size-full flex-col"
+    v-editable="blok"
+    class="image-blok flex size-full flex-col"
   >
     <div
-      class="mb-6 flex size-full max-w-sm grow justify-center rounded-lg px-3 pb-0 pt-12 lg:max-w-none"
-      :class="`bg-${card.background_color}`"
+      class="mb-6 max-w-sm justify-center rounded-lg pb-0 pt-12 lg:max-w-none"
+      :class="`bg-${blok.background_color}`"
     >
-      <img v-if="optimizedImage" :src="optimizedImage" :alt="card.image.alt" class="h-[360px] w-full object-cover object-top" />
+      <img v-if="optimizedImage" :src="optimizedImage" :alt="blok.image.alt" class="h-[360px] w-full object-cover object-top" />
     </div>
     <h3 class="mb-3 font-display text-xl font-black">
-      {{ card.label }}
+      {{ blok.label }}
     </h3>
-    <div class="leading-relaxed">{{ card.text }}</div>
+    <div class="leading-relaxed">{{ blok.text }}</div>
   </div>
 </template>
