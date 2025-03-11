@@ -8,6 +8,7 @@ const resolveRelations = [
   'featured-articles-section.articles',
   'article-page.categories',
   'article-page.author',
+  'article-page.call_to_action',
   'testimonials-section.testimonials',
 ];
 const story = ref(null);

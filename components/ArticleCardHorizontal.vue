@@ -10,16 +10,18 @@ const optimizedImage = computed(() =>
   <NuxtLink
     v-if="article"
     :to="`/${slug}`"
-    class="article-card border-medium flex flex-col space-y-6 border-b pb-12 md:grow md:flex-row md:justify-between md:space-x-12 md:space-y-0"
+    class="article-card border-medium flex flex-col gap-6 border-b pb-12 md:grow md:flex-row md:justify-between"
   >
     <img
       v-if="optimizedImage"
       :src="optimizedImage"
       :alt="article.image && article.image.alt"
-      class="max-w-52 rounded-xl md:order-1"
+      width="200"
+      height="200"
+      class="aspect-square size-[200px] rounded-xl md:order-1"
     />
     <div>
-      <CategoriesList v-if="article.categories.length" :categories="article.categories" class="mb-4 flex space-x-4" />
+      <CategoriesList v-if="article.categories.length" :categories="article.categories" class="mb-4 flex gap-4 lg:flex-col xl:flex-row" />
       <h3 v-if="article.headline" class="font-display text-2xl font-black">
         {{ article.headline }}
       </h3>
@@ -30,6 +32,10 @@ const optimizedImage = computed(() =>
 
 <style scoped>
 .article-card:nth-child(odd):nth-last-child(2),
+.article-card:last-child {
+  @apply lg:border-none;
+}
+
 .article-card:last-child {
   @apply border-none;
 }

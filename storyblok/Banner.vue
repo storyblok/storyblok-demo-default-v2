@@ -72,7 +72,7 @@ const overlay = computed(() => {
   <section
     v-editable="blok"
     class="page-section banner-section relative flex min-h-[600px] items-center  overflow-hidden"
-    :class="[`bg-${blok.background_color}`, { 'pointer-events-none': referenced }]"
+    :class="[`bg-${blok?.background_color}`, { 'pointer-events-none': referenced }]"
   >
     <div class="container relative z-20 flex" :class="[{ 'justify-center text-center': blok.text_alignment === 'center' }, { 'text-white': overlay }]">
       <div class="relative z-30 max-w-3xl">

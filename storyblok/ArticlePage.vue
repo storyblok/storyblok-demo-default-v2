@@ -18,19 +18,26 @@ const optimizedArticleImage = computed(() =>
             {{ blok.headline }}
           </H1Headline>
         </div>
-        <div class="relative">
-          <DecorationImageTopRight class="absolute right-0 top-0 translate-x-[40px] translate-y-[-50px]" />
-          <img
-            v-if="optimizedArticleImage"
-            :src="optimizedArticleImage"
-            :alt="blok.image.alt"
-            class="h-auto w-full rounded-xl"
-          />
+        <div class="px-4 lg:px-0">
+          <div class="relative">
+            <DecorationImageTopRight class="absolute right-0 top-0 translate-x-[35px] translate-y-[-35px] scale-50 md:translate-x-[40px] md:translate-y-[-50px] md:scale-100" />
+            <img
+              v-if="optimizedArticleImage"
+              :src="optimizedArticleImage"
+              :alt="blok.image.alt"
+              class="h-auto w-full rounded-xl"
+            />
+          </div>
         </div>
       </header>
       <main class="prose prose-lg mx-auto my-12">
         <StoryblokRichText :doc="blok.text" />
       </main>
     </div>
+    <Banner
+      v-if="blok.call_to_action.length"
+      :blok="blok.call_to_action[0].content"
+      :referenced="true"
+    />
   </article>
 </template>
