@@ -10,7 +10,7 @@ const optimizedImage = computed(() =>
   <NuxtLink
     v-if="article"
     :to="`/${slug}`"
-    class="article-card border-medium flex grow justify-between space-x-12 border-b pb-12"
+    class="article-card border-medium flex flex-col space-y-6 border-b pb-12 lg:grow lg:flex-row lg:justify-between lg:space-x-12 lg:space-y-0"
   >
     <div>
       <CategoriesList v-if="article.categories.length" :categories="article.categories" class="mb-4 flex space-x-4" />

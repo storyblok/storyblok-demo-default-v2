@@ -48,3 +48,4 @@
 - removed `footer_text_color` from `site-config`
 - removed `footer_background_color` from `site-config`
 - removed `footer_light` to `site-config`
+- removed `always_accordion` from `tabbed-content-section`

@@ -2,7 +2,7 @@
 const props = defineProps({ blok: Object });
 
 const gridCardColor = computed(() => {
-  return props.blok.background_color === 'light' ? 'bg-white' : 'bg-primary-background';
+  return props.blok.background_color === 'primary-background' ? 'bg-white' : 'bg-primary-background';
 });
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols));
@@ -15,14 +15,14 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
     :class="`bg-${blok.background_color}`"
   >
     <div class="container">
-      <div class="grid grid-cols-2 md:grid-cols-4">
-        <div class="md:col-span-3">
+      <div class="mb-12 grid lg:mb-0 lg:grid-cols-4 lg:gap-12">
+        <div class="lg:col-span-3">
           <Headline v-if="blok.headline" :headline="blok.headline" />
           <Lead v-if="blok.lead">
             {{ blok.lead }}
           </Lead>
         </div>
-        <div v-if="blok.button.length" class="text-right">
+        <div v-if="blok.button.length" class="shrink-0 lg:text-right">
           <Button
             v-for="button in blok.button"
             :key="button._uid"
@@ -30,7 +30,7 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
           />
         </div>
       </div>
-      <div :class="[gridClasses, { 'md:!mt-0': !blok.headline && !blok.lead }]">
+      <div :class="[gridClasses, { 'lg:!mt-0': !blok.headline && !blok.lead }]">
         <StoryblokComponent
           v-for="card in blok.cards"
           :key="card._uid"

@@ -11,9 +11,9 @@ const optimizedImage = computed(() =>
     v-editable="blok"
     class="page-section two-columns-section bg-white"
   >
-    <div class="container grid min-h-[600px] grid-cols-3 gap-12">
-      <div class="relative col-span-2 overflow-hidden rounded-xl" :class="`bg-${blok.column_1_background_color}`">
-        <div class="relative z-10 grid h-full grid-cols-2">
+    <div class="container grid gap-12 lg:min-h-[600px] lg:grid-cols-3">
+      <div class="relative overflow-hidden rounded-xl lg:col-span-2" :class="`bg-${blok.column_1_background_color}`">
+        <div class="relative z-10 grid h-full md:grid-cols-2">
           <div class="flex flex-col justify-between p-10">
             <div>
               <Headline v-if="blok.column_1_headline" size="small" :headline="blok.column_1_headline" />
@@ -34,12 +34,12 @@ const optimizedImage = computed(() =>
               </div>
             </div>
           </div>
-          <div class="flex items-end justify-end ">
+          <div class="flex items-end justify-end pt-10">
             <img
               v-if="blok.column_1_image?.filename"
               :src="optimizedImage"
               :alt="blok.column_1_image?.alt"
-              class="w-10/12 rounded-tl-xl"
+              class="rounded-tl-xl"
             />
           </div>
         </div>

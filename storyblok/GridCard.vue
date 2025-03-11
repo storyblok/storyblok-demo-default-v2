@@ -13,11 +13,11 @@ const optimizedImage = getOptimizedImage(props.card?.background_image, 800);
 <template>
   <div
     v-editable="card"
-    class="grid-card relative flex size-full max-w-md grow flex-col overflow-hidden rounded-lg p-6 lg:max-w-none"
+    class="grid-card relative flex size-full max-w-sm grow flex-col overflow-hidden rounded-lg p-6 lg:max-w-none"
     :class="[card.border ? 'border-medium border' : backgroundColor, { 'row-span-2': card.row_span === '2' }, card.icon.filename ? 'justify-between' : 'justify-end']"
   >
     <img v-if="optimizedImage" :src="optimizedImage" :alt="card.background_image.alt" class="absolute left-0 top-0 z-0 size-full object-cover" />
-    <div v-if="optimizedImage" class="absolute left-0 top-0 z-10 size-full bg-black/30"></div>
+    <div v-if="optimizedImage" class="absolute left-0 top-0 z-10 size-full bg-black/40"></div>
     <img
       v-if="card.icon.filename"
       :src="optimizedIcon"

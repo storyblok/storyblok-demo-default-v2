@@ -28,7 +28,6 @@ const selectedForm = computed(() => {
   <section
     v-editable="blok"
     class="page-section form-section bg-white"
-    :class="backgroundColor"
   >
     <div
       class="container"
@@ -40,7 +39,6 @@ const selectedForm = computed(() => {
             <div>
               <component
                 :is="selectedForm"
-                :text-color="textColor"
                 :button="blok?.button && blok?.button[0]"
               />
             </div>

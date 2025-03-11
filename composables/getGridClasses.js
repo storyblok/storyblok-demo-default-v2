@@ -1,6 +1,6 @@
 export default function (cols = '3') {
   let gridClasses
-    = 'grid md:grid-cols-2 gap-10 md:gap-12 md:mt-12 place-items-center items-start';
+    = 'grid md:grid-cols-2 gap-10 md:gap-12 md:mt-12 md:place-items-center items-start';
 
   switch (cols) {
     case '4':

@@ -33,7 +33,7 @@ onMounted(() => {
 
 <template>
   <header
-    class="border-dark fixed left-0 top-0 z-[99] h-32 w-full border-b transition-all duration-300"
+    class="fixed left-0 top-0 z-[99] h-32 w-full border-b border-primary-dark transition-all duration-300"
     :class="[headerScrollClass, { 'bg-primary-dark': !light }]"
   >
     <div

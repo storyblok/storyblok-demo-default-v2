@@ -43,8 +43,8 @@ const blurredImage = computed(() => getOptimizedImage(props.blok.image, 1000, 0,
         </div>
       </div>
       <div>
-        <div v-if="blok.image.filename" class="relative rounded-xl bg-cover bg-center bg-no-repeat p-16" :style="`background: url('${blurredImage}');`">
-          <DecorationImageTopLeft class="absolute left-0 top-0 translate-x-[20px] translate-y-[15px]" />
+        <div v-if="blok.image.filename" class="relative rounded-xl bg-cover bg-center bg-no-repeat p-8 md:p-16" :style="`background: url('${blurredImage}');`">
+          <DecorationImageTopLeft class="absolute left-0 top-0 translate-x-[-5px] translate-y-[-5px] scale-50 md:translate-x-[25px] md:translate-y-[20px] md:scale-100" />
           <img
             v-if="!fixedHeightImages"
             :src="optimizedImage"

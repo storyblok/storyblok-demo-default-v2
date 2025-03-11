@@ -3,20 +3,20 @@ const props = defineProps({ headline: Object, color: String, size: String });
 
 const classes = computed(() => {
   let classes
-    = 'font-display font-black mb-3 md:mb-6 leading-tight sm:leading-tight lg:leading-tight';
+    = 'font-display font-black mb-3 md:mb-6 text-3xl ';
 
   if (props.size === 'small') {
-    classes += ' text-2xl sm:text-3xl lg:text-4xl';
+    classes += 'sm:text-3xl lg:text-4xl ';
   }
   else if (props.size === 'large') {
-    classes += ' text-5xl sm:text-5xl lg:text-6xl';
+    classes += 'sm:text-5xl lg:text-6xl ';
   }
   else {
-    classes += ' text-3xl sm:text-4xl lg:text-5xl';
+    classes += ' sm:text-4xl lg:text-5xl ';
   }
 
   if (props.color) {
-    classes += ` ${props.color}`;
+    classes += `${props.color}`;
   }
   else {
     classes += 'text-[--headline-color]';

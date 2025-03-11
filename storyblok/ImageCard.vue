@@ -7,10 +7,10 @@ const optimizedImage = computed(() => getOptimizedImage(props.card?.image, 800))
 <template>
   <div
     v-editable="card"
-    class="image-card flex w-full flex-col"
+    class="image-card flex size-full flex-col"
   >
     <div
-      class="mb-6 flex w-full justify-center rounded-lg px-3 pb-0 pt-12"
+      class="mb-6 flex size-full max-w-sm grow justify-center rounded-lg px-3 pb-0 pt-12 lg:max-w-none"
       :class="`bg-${card.background_color}`"
     >
       <img v-if="optimizedImage" :src="optimizedImage" :alt="card.image.alt" class="h-[360px] w-full object-cover object-top" />
