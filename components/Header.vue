@@ -6,16 +6,7 @@ defineProps({
   light: Boolean,
 });
 
-const mobileNavOpen = ref(false);
-
-const toggleMobileNav = () => {
-  mobileNavOpen.value = !mobileNavOpen.value;
-};
-
-const route = useRoute();
-watch(route, () => {
-  mobileNavOpen.value = false;
-});
+defineEmits(['toggleMobileNav']);
 
 const headerScrollClass = ref('');
 
@@ -68,14 +59,10 @@ onMounted(() => {
       </nav>
       <MobileNavToggle
         :color="light ? 'bg-primary-dark' : 'bg-primary-background'"
-        @click="toggleMobileNav"
+        @click="$emit('toggleMobileNav')"
       />
     </div>
   </header>
-  <!-- <MobileNav
-    :mobile-nav-open="mobileNavOpen"
-    :header-nav="nav"
-  /> -->
 </template>
 
 <style scoped>

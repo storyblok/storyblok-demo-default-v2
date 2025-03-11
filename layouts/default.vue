@@ -137,6 +137,13 @@ const headConfig = computed(() => ({
 }));
 
 useHead(headConfig);
+
+const mobileNavOpen = ref(false);
+
+const route = useRoute();
+watch(route, () => {
+  mobileNavOpen.value = false;
+});
 </script>
 
 <template>
@@ -146,7 +153,9 @@ useHead(headConfig);
       :nav="siteConfig.content.header_nav"
       :buttons="siteConfig.content.header_buttons"
       :light="siteConfig.content.header_light"
+      @toggle-mobile-nav="mobileNavOpen = !mobileNavOpen"
     />
+    <MobileNav :mobile-nav="siteConfig.content.header_nav" :mobile-nav-open="mobileNavOpen" />
     <div
       v-if="viewingSiteConfig && siteConfig.content.use_custom_colors"
       class="container py-12"
