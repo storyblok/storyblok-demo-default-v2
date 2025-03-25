@@ -19,7 +19,7 @@ const gridClasses = getGridClasses();
         <li v-for="testimonial in blok.testimonials" :key="testimonial._uid" class="max-w-sm rounded-lg bg-primary-background p-6 xl:max-w-none xl:p-12">
           <blockquote class="text-lg">{{ testimonial.content.quote }}</blockquote>
           <div class="mt-8 flex items-center gap-4">
-            <div class="aspect-square size-16 shrink-0 overflow-hidden rounded-full bg-white"><img v-if="testimonial.content.photo?.filename" :src="getOptimizedImage(testimonial.content.photo, 64, 64)" :alt="testimonial.content.photo?.alt" width="60" height="60" /></div>
+            <div class="aspect-square size-16 shrink-0 overflow-hidden rounded-full bg-white"><img v-if="testimonial.content.photo?.filename" :src="getOptimizedImage(testimonial.content.photo, 128, 128)" :alt="testimonial.content.photo?.alt" width="64" height="64" /></div>
             <div>
               <p class="font-black">{{ testimonial.content.name }}</p>
               <p>{{ testimonial.content.role }}</p>
