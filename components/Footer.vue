@@ -4,7 +4,12 @@ const props = defineProps({
   footerLight: Boolean,
   decoration: Boolean,
   logo: Object,
-  navs: Object,
+  nav1Headline: String,
+  nav1: Object,
+  nav2Headline: String,
+  nav2: Object,
+  nav3Headline: String,
+  nav3: Object,
   about: Object,
   x: Object,
   instagram: Object,
@@ -45,25 +50,9 @@ const backgroundColor = computed(() => {
           />
         </div>
       </div>
-      <div v-for="index in 3" :key="index">
-        <h3
-          class="mb-5 font-display text-xl font-semibold xl:text-2xl"
-          :class="textColor"
-        >
-          {{ navs[`nav_${index}_headline`] }}
-        </h3>
-        <nav>
-          <ul class="flex flex-col space-y-3 text-lg">
-            <li v-for="item in navs[`nav_${index}`]" :key="item._uid">
-              <NavItem
-                :class="textColor"
-                :item="item"
-                :reduced-font-weight="true"
-              />
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <FooterNav v-if="nav1.length" :nav="nav1" :headline="nav1Headline" :text-color="textColor" />
+      <FooterNav v-if="nav2.length" :nav="nav2" :headline="nav2Headline" :text-color="textColor" />
+      <FooterNav v-if="nav3.length" :nav="nav3" :headline="nav3Headline" :text-color="textColor" />
     </div>
     <div v-if="decoration" class="container relative z-10">
       <div

@@ -205,14 +205,12 @@ watch(route, () => {
       :decoration="siteConfig.content.footer_decoration"
       :logo="siteConfig.content.footer_logo"
       :about="siteConfig.content.footer_about"
-      :navs="{
-        nav_1_headline: siteConfig.content.footer_nav_1_headline,
-        nav_2_headline: siteConfig.content.footer_nav_2_headline,
-        nav_3_headline: siteConfig.content.footer_nav_3_headline,
-        nav_1: siteConfig.content.footer_nav_1,
-        nav_2: siteConfig.content.footer_nav_2,
-        nav_3: siteConfig.content.footer_nav_3,
-      }"
+      :nav-1-headline="siteConfig.content.footer_nav_1_headline"
+      :nav-2-headline="siteConfig.content.footer_nav_2_headline"
+      :nav-3-headline="siteConfig.content.footer_nav_3_headline"
+      :nav-1="siteConfig.content.footer_nav_1"
+      :nav-2="siteConfig.content.footer_nav_2"
+      :nav-3="siteConfig.content.footer_nav_3"
       :x="siteConfig.content.x"
       :instagram="siteConfig.content.instagram"
       :youtube="siteConfig.content.youtube"

@@ -104,6 +104,7 @@ module.exports = {
     'items-end',
     'text-center',
     'text-left',
+    'prose-invert',
   ],
   theme: {
     container: {

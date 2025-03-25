@@ -34,7 +34,7 @@ const blurredImage = computed(() => getOptimizedImage(props.blok.image, 1000, 0,
         <div v-if="blok.text" class="prose prose-lg mb-6">
           <StoryblokRichText :doc="blok.text" />
         </div>
-        <div v-if="blok.buttons.length" class="flex gap-4">
+        <div v-if="blok?.buttons?.length" class="flex flex-col items-start justify-start gap-4 sm:flex-row">
           <Button
             v-for="button in blok.buttons"
             :key="button._uid"

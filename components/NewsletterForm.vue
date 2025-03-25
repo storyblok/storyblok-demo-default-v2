@@ -5,7 +5,7 @@
       id="email"
       name="email"
       type="email"
-      placeholder="Your email"
+      placeholder="enjoy@storyblok.com"
       class="rounded-lg bg-white px-6 py-4 text-primary-dark transition-all focus:outline-none"
       required
     />
