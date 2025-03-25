@@ -3,15 +3,15 @@ const props = defineProps({ blok: Object, layout: String, backgroundColor: Strin
 
 const desktopImage = computed(() => {
   if (props.blok.layout === 'stacked') {
-    return getOptimizedImage(props.blok?.image, 2000, 750);
+    return getOptimizedImage(props.blok?.image, 2000, props.blok.preserve_image_aspect_ratio ? 0 : 750);
   }
   else {
-    return getOptimizedImage(props.blok?.image, 1000, 800);
+    return getOptimizedImage(props.blok?.image, 1000, props.blok.preserve_image_aspect_ratio ? 0 : 800);
   }
 },
 );
 
-const mobileImage = computed(() => getOptimizedImage(props.blok?.image, 600, 400));
+const mobileImage = computed(() => getOptimizedImage(props.blok?.image, 672, props.blok.preserve_image_aspect_ratio ? 0 : 448));
 </script>
 
 <template>

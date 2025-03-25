@@ -1,18 +1,14 @@
 <script setup>
 const props = defineProps({ blok: Object });
 
-const fixedHeightImages = computed(() => {
-  if (props.blok.image_layout !== 'fixed-height') {
-    return false;
-  }
+const optimizedImages = computed(() => {
   return {
-    mobile: getOptimizedImage(props.blok.image, 600, 300),
-    tablet: getOptimizedImage(props.blok.image, 1000, 500),
-    desktop: getOptimizedImage(props.blok.image, 1000, 1250),
+    mobile: getOptimizedImage(props.blok.image, 600, props.blok.preserve_image_aspect_ratio ? 0 : 300),
+    tablet: getOptimizedImage(props.blok.image, 1000, props.blok.preserve_image_aspect_ratio ? 0 : 500),
+    desktop: getOptimizedImage(props.blok.image, 1000, props.blok.preserve_image_aspect_ratio ? 0 : 1250),
   };
 });
 
-const optimizedImage = computed(() => getOptimizedImage(props.blok.image, 1000));
 const blurredImage = computed(() => getOptimizedImage(props.blok.image, 1000, 0, ':blur(60):brightness(20)'));
 </script>
 
@@ -46,26 +42,20 @@ const blurredImage = computed(() => getOptimizedImage(props.blok.image, 1000, 0,
         <div v-if="blok.image.filename" class="relative rounded-xl bg-cover bg-center bg-no-repeat p-8 md:p-16" :style="`background: url('${blurredImage}');`">
           <DecorationImageTopLeft class="absolute left-0 top-0 translate-x-[-5px] translate-y-[-5px] scale-50 md:translate-x-[25px] md:translate-y-[20px] md:scale-100" />
           <img
-            v-if="!fixedHeightImages"
-            :src="optimizedImage"
-            :alt="blok.image.alt"
-            class="rounded-lg"
-          />
-          <img
-            v-if="fixedHeightImages"
-            :src="fixedHeightImages.mobile"
+            v-if="optimizedImages"
+            :src="optimizedImages.mobile"
             :alt="blok.image.alt"
             class="rounded-lg md:invisible md:hidden"
           />
           <img
-            v-if="fixedHeightImages"
-            :src="fixedHeightImages.tablet"
+            v-if="optimizedImages"
+            :src="optimizedImages.tablet"
             :alt="blok.image.alt"
             class="invisible hidden rounded-lg md:visible md:block lg:invisible lg:hidden"
           />
           <img
-            v-if="fixedHeightImages"
-            :src="fixedHeightImages.desktop"
+            v-if="optimizedImages"
+            :src="optimizedImages.desktop"
             :alt="blok.image.alt"
             class="invisible hidden rounded-lg lg:visible lg:block"
           />
