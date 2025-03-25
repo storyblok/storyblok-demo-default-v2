@@ -30,7 +30,7 @@ const showVideo = computed(() => {
 });
 
 const imageClasses = computed(() => {
-  let output = 'pointer-events-none absolute bottom-0 z-0';
+  let output = 'absolute bottom-0 z-0';
   if (props.blok.background_image_cover) {
     output += ' left-0 size-full object-cover';
     return output;
@@ -71,8 +71,8 @@ const overlay = computed(() => {
 <template>
   <section
     v-editable="blok"
-    class="page-section banner-section relative flex min-h-[600px] items-center  overflow-hidden"
-    :class="[`bg-${blok?.background_color}`, { 'pointer-events-none': referenced }]"
+    class="page-section banner-section relative flex min-h-[600px] items-center overflow-hidden"
+    :class="[`bg-${blok?.background_color}`]"
   >
     <div class="container relative z-20 flex" :class="[{ 'justify-center text-center': blok.text_alignment === 'center' }, { 'text-white': overlay }]">
       <div class="relative z-30 max-w-3xl">
