@@ -14,7 +14,7 @@ const submit = () => {
 <template>
   <section
     v-editable="blok"
-    class="page-section form-section bg-white"
+    class="page-section newsletter-form-section bg-white"
   >
     <div
       class="container"
