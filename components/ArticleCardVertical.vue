@@ -24,7 +24,7 @@ const optimizedImage = computed(() =>
           {{ article.headline }}
         </h3>
       </div>
-      <ReadMoreLink :href="`/${slug}`" />
+      <ReadMoreLink :href="`/${slug}`" :title="article.headline" />
     </div>
   </div>
 </template>

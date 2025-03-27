@@ -24,7 +24,7 @@ const optimizedImage = computed(() =>
       <h3 v-if="article.headline" class="font-display text-2xl font-black">
         {{ article.headline }}
       </h3>
-      <ReadMoreLink :href="`/${slug}`" />
+      <ReadMoreLink :href="`/${slug}`" :title="article.headline" />
     </div>
   </div>
 </template>
