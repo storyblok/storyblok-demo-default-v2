@@ -5,21 +5,22 @@ const defaultFontFamilies = {
 };
 
 const defaultColors = {
-  '--primary-highlight': '#80EFAC',
-  '--highlight-1': '#D4FF92',
-  '--highlight-2': '#786B2B',
-  '--highlight-3': '#8D60FF',
+  '--primary-highlight': '#8d60ff',
+  '--highlight_1_color': '#80efac',
+  '--highlight_2_color': '#786b2b',
+  '--highlight_3_color': '#d4ff92',
   '--primary-background': '#F5F5F7',
-  '--background-1': '#D2FEC9',
-  '--background-2': '#D9EEFF',
-  '--background-3': '#F4F2E9',
-  '--background-4': '#D9D4FC',
-  '--background-5': '#D7E4F2',
-  '--background-6': '#FFE7D3',
-  '--background-7': '#F2F1D7',
-  '--background-8': '#E0F0D2',
-  '--background-9': '#FFD5D3',
-  '--primary-dark': '#1F1F1F',
+  '--background_1_color': '#F4F2E9',
+  '--background_2_color': '#e4ddb9',
+  '--background_3_color': '#D9EEFF',
+  '--background_4_color': '#D7E4F2',
+  '--background_5_color': '#D9D4FC',
+  '--background_6_color': '#F2F1D7',
+  '--background_7_color': '#E0F0D2',
+  '--background_8_color': '#FFE7D3',
+  '--background_9_color': '#FFD5D3',
+  '--background_10_color': '#D2FEC9',
+  '--primary_dark_color': '#1F1F1F',
 };
 
 const defaultBorderRadiuses = {
