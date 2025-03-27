@@ -10,7 +10,7 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok?.image, 800))
     class="image-blok flex size-full flex-col"
   >
     <div
-      class="mb-6 max-w-sm justify-center rounded-lg pb-0 pt-12 lg:max-w-none"
+      class="mb-6 max-w-sm justify-center overflow-hidden rounded-lg pb-0 pt-12 lg:max-w-none"
       :class="`bg-${blok.background_color}`"
     >
       <img v-if="optimizedImage" :src="optimizedImage" :alt="blok.image.alt" class="h-[360px] w-full object-cover object-top" />

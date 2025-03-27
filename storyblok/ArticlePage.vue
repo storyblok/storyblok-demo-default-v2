@@ -20,7 +20,7 @@ const optimizedArticleImage = computed(() =>
         </div>
         <div class="px-4 lg:px-0">
           <div class="relative">
-            <DecorationImageTopRight class="absolute right-0 top-0 translate-x-[35px] translate-y-[-35px] scale-50 md:translate-x-[40px] md:translate-y-[-50px] md:scale-100" />
+            <DecorationImageTopRight class="absolute right-0 top-0 origin-top-right translate-x-[20px] translate-y-[25px]  scale-50 md:translate-x-[40px] md:translate-y-[-50px] md:scale-100" />
             <img
               v-if="optimizedArticleImage"
               :src="optimizedArticleImage"

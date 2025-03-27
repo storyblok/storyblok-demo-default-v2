@@ -15,27 +15,23 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
     :class="`bg-${blok.background_color}`"
   >
     <div class="container">
-      <div class="mb-12 grid lg:mb-0 lg:grid-cols-4 lg:gap-12">
-        <div class="lg:col-span-3">
-          <Headline v-if="blok.headline" :headline="blok.headline" />
-          <Lead v-if="blok.lead">
-            {{ blok.lead }}
-          </Lead>
-        </div>
-        <div v-if="blok.button.length" class="shrink-0 lg:text-right">
-          <Button
-            v-for="button in blok.button"
-            :key="button._uid"
-            :button="button"
-          />
-        </div>
-      </div>
-      <div v-if="blok.cards.length" :class="[gridClasses, { 'lg:!mt-0': !blok.headline && !blok.lead }]">
+      <Headline v-if="blok.headline" :headline="blok.headline" class="text-center" />
+      <Lead v-if="blok.lead" class="text-center">
+        {{ blok.lead }}
+      </Lead>
+      <div v-if="blok.cards.length" :class="[gridClasses, { 'lg:!mt-0': !blok.headline && !blok.lead }]" class="place-items-center">
         <StoryblokComponent
           v-for="card in blok.cards"
           :key="card._uid"
           :blok="card"
           :background-color="gridCardColor"
+        />
+      </div>
+      <div v-if="blok.button.length" class="mt-12 flex justify-center">
+        <Button
+          v-for="button in blok.button"
+          :key="button._uid"
+          :button="button"
         />
       </div>
     </div>

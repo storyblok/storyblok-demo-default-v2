@@ -1,8 +1,5 @@
 <script setup>
-import ContactForm from '../components/ContactForm.vue';
-import NewsletterForm from '../components/NewsletterForm.vue';
-
-const props = defineProps({ blok: Object });
+defineProps({ blok: Object });
 
 const showMessage = ref(false);
 
@@ -12,16 +9,6 @@ const submit = () => {
     showMessage.value = false;
   }, 4000);
 };
-
-const selectedForm = computed(() => {
-  switch (props.blok.form) {
-    case 'newsletter':
-      return NewsletterForm;
-    case 'contact':
-    default:
-      return ContactForm;
-  }
-});
 </script>
 
 <template>
@@ -34,17 +21,20 @@ const selectedForm = computed(() => {
     >
       <div class="relative overflow-hidden rounded-xl bg-primary-dark p-8 md:p-12 xl:p-24">
         <div class="relative z-10 flex flex-col items-center space-y-6 text-center lg:space-y-12">
-          <Headline v-if="blok.headline" color="text-white" :headline="blok.headline" />
+          <Headline v-if="blok.headline" color="text-white" :headline="blok.headline" size="small" />
           <div class="relative mx-auto flex flex-col items-center gap-8 md:flex-row">
-            <div>
-              <component
-                :is="selectedForm"
-                :button="blok?.button && blok?.button[0]"
+            <form action="" class="flex flex-col gap-4 md:flex-row">
+              <label for="email" class="sr-only">Your email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="enjoy@storyblok.com"
+                class="rounded-lg bg-white px-6 py-4 text-primary-dark transition-all focus:outline-none"
+                required
               />
-            </div>
-            <div>
               <Button v-if="blok.button.length && blok.button[0]" :button="blok.button[0]" @click.prevent="submit" />
-            </div>
+            </form>
             <Transition name="fade">
               <div
                 v-if="showMessage"

@@ -7,9 +7,8 @@ const optimizedImage = computed(() =>
 </script>
 
 <template>
-  <NuxtLink
+  <div
     v-if="article"
-    :to="`/${slug}`"
     class="article-card border-medium flex flex-col gap-6 border-b pb-12 md:grow md:flex-row md:justify-between"
   >
     <img
@@ -25,9 +24,9 @@ const optimizedImage = computed(() =>
       <h3 v-if="article.headline" class="font-display text-2xl font-black">
         {{ article.headline }}
       </h3>
-      <ReadMoreButton />
+      <ReadMoreLink :href="`/${slug}`" />
     </div>
-  </NuxtLink>
+  </div>
 </template>
 
 <style scoped>

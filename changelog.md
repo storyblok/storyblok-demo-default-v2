@@ -49,3 +49,5 @@
 - removed `footer_background_color` from `site-config`
 - removed `footer_light` to `site-config`
 - removed `always_accordion` from `tabbed-content-section`
+- removed `form_select` from `form-section`
+- renamed `form-section` to `newsletter-form-section`

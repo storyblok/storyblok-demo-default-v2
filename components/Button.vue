@@ -19,7 +19,7 @@ const url = computed(() => {
 
 const classes = computed(() => {
   let classes
-    = `font-semibold inline-flex w-full sm:w-auto items-center tracking-wider cursor-pointer transition-all duration-300 rounded-md border border-2 border-${
+    = `font-semibold inline-flex w-full sm:w-auto items-center justify-center tracking-wider cursor-pointer transition-all duration-300 rounded-md border border-2 border-${
       props.button.background_color}`;
 
   switch (props.button.size) {
@@ -65,6 +65,5 @@ const classes = computed(() => {
     :class="classes"
   >
     {{ button.label }}
-    <slot></slot>
   </NuxtLink>
 </template>

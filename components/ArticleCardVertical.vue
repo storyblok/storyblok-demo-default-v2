@@ -7,16 +7,15 @@ const optimizedImage = computed(() =>
 </script>
 
 <template>
-  <NuxtLink
+  <div
     v-if="article"
-    :to="`/${slug}`"
     class="flex h-full flex-col"
   >
     <img
       v-if="optimizedImage"
       :src="optimizedImage"
       :alt="article.image && article.image.alt"
-      class="mb-6 max-w-sm rounded-xl md:max-w-full"
+      class="mb-6 rounded-xl sm:max-w-sm md:max-w-full"
     />
     <div class="flex h-full flex-col">
       <div class="flex grow flex-col space-y-4">
@@ -25,7 +24,7 @@ const optimizedImage = computed(() =>
           {{ article.headline }}
         </h3>
       </div>
-      <ReadMoreButton />
+      <ReadMoreLink :href="`/${slug}`" />
     </div>
-  </NuxtLink>
+  </div>
 </template>

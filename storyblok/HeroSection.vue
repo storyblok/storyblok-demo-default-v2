@@ -16,7 +16,7 @@ useHead(headConfig);
   <section
     v-editable="blok"
     class="relative"
-    :class="[`bg-${blok.background_color}`, blok.layout === 'split' ? 'overflow-hidden pt-20 lg:pb-16 lg:pt-40' : 'pt-16 lg:pt-32']"
+    :class="[`bg-${blok.background_color}`, blok.layout === 'split' ? 'overflow-hidden pt-20 lg:pb-16 lg:pt-20' : 'pt-16 lg:pt-32']"
   >
     <div
       v-if="blok.layout === 'stacked'"
