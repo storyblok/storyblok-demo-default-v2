@@ -11,7 +11,7 @@ defineProps({ blok: Object });
   >
     <div
       v-if="blok.most_popular"
-      class="absolute right-0 top-0 inline-block -translate-x-4 translate-y-4 rounded-lg bg-[#FFE6AA] px-3 py-1 text-[#913F0F]"
+      class="absolute right-0 top-0 inline-block -translate-x-4 translate-y-4 rounded-lg bg-[#FFE6AA] px-3 py-1 text-sm text-[#913F0F]"
     >
       Most popular
     </div>
