@@ -6,7 +6,7 @@ const desktopImage = computed(() => {
     return getOptimizedImage(props.blok?.image, 2000, props.blok.preserve_image_aspect_ratio ? 0 : 750);
   }
   else {
-    return getOptimizedImage(props.blok?.image, 1000, props.blok.preserve_image_aspect_ratio ? 0 : 800);
+    return getOptimizedImage(props.blok?.image, 1000, props.blok.preserve_image_aspect_ratio ? 0 : 1200);
   }
 },
 );
