@@ -27,7 +27,7 @@ const componentExists = component =>
         />
       </svg>
       Component named
-      <span class="font-semibold">{{ blok.component }}</span>
+      <span class="font-semibold">{{ blok.component }}&nbsp;</span>
       is not defined in your frontend framework yet.
     </div>
   </div>
