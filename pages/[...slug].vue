@@ -64,6 +64,13 @@ const _viewingSiteConfigState = useState(
   'viewingSiteConfig',
   () => viewingSiteConfig.value,
 );
+
+useHead({
+  title: story.value.content.meta_title ?? 'Brand New Day',
+  meta: [
+    { name: 'description', content: story.value.content.meta_title ?? 'A Demo Day for Your New Storyblok Project.' },
+  ],
+});
 </script>
 
 <template>
