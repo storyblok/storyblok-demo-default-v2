@@ -51,3 +51,5 @@
 - removed `always_accordion` from `tabbed-content-section`
 - removed `form_select` from `form-section`
 - renamed `form-section` to `newsletter-form-section`
+- renamed `reverse_layout` to `reverse_desktop_layout` in `image-text-section`
+- added `reverse_mobile_layout` to `image-text-section`
