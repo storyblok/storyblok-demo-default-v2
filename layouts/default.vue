@@ -237,4 +237,7 @@ section.page-section.bg-white + section.page-section.bg-white,
 section.page-section.bg-primary-background + section.page-section.bg-primary-background {
   @apply pt-0;
 }
+section.page-section.contact-form-section:last-child {
+  @apply pb-0;
+}
 </style>
