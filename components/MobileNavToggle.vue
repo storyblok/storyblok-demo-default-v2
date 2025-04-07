@@ -19,6 +19,7 @@ watch(route, () => {
     :class="{ active }"
     @click="toggle"
   >
+    <span class="sr-only">Toggle navigation</span>
     <div
       class="bar1 my-1 h-0.5 w-7 transition-all"
       :class="color"

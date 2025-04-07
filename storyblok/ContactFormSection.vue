@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ blok: Object });
+const props = defineProps({ blok: Object, index: Number });
 
 const optimizedImage = computed(() => getOptimizedImage(props.blok?.image, 1200));
 
@@ -20,7 +20,7 @@ const submit = () => {
   >
     <div class="container relative z-10 grid items-center gap-12 lg:min-h-[600px] lg:grid-cols-2 lg:gap-32">
       <div class="relative">
-        <Headline v-if="blok.headline" :headline="blok.headline" />
+        <Headline v-if="blok.headline" :index="index" :headline="blok.headline" />
         <div
           v-if="blok.text"
           class="prose prose-lg mb-6"

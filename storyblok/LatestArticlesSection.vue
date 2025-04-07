@@ -1,5 +1,5 @@
 <script setup>
-defineProps({ blok: Object });
+defineProps({ blok: Object, index: Number });
 
 const { slug } = useRoute().params;
 let language = 'default';
@@ -29,7 +29,7 @@ articles.value = data.stories;
     class="page-section latest-articles-section bg-white"
   >
     <div class="container">
-      <Headline v-if="blok.headline" :headline="blok.headline" class="text-center" />
+      <Headline v-if="blok.headline" :headline="blok.headline" :index="index" class="text-center" />
       <Lead v-if="blok.lead" class="text-center">
         {{ blok.lead }}
       </Lead>

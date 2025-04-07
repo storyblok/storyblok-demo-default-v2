@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ blok: Object });
+const props = defineProps({ blok: Object, index: Number });
 
 const optimizedImage = computed(() =>
   getOptimizedImage(props.blok.column_1_image, 800, 1000),
@@ -16,7 +16,7 @@ const optimizedImage = computed(() =>
         <div class="relative z-10 grid h-full md:grid-cols-2">
           <div class="flex flex-col justify-between p-10">
             <div>
-              <Headline v-if="blok.column_1_headline" size="small" :headline="blok.column_1_headline" />
+              <Headline v-if="blok.column_1_headline" size="small" :headline="blok.column_1_headline" :index="index" />
               <div v-if="blok.column_1_text_1" class="prose flex grow">
                 <StoryblokRichText :doc="blok.column_1_text_1" />
               </div>

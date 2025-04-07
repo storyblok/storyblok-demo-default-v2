@@ -1,5 +1,5 @@
 <script setup>
-defineProps({ blok: Object });
+defineProps({ blok: Object, index: Number });
 </script>
 
 <template>
@@ -12,7 +12,7 @@ defineProps({ blok: Object });
       <Eyebrow v-if="blok.eyebrow">
         {{ blok.eyebrow }}
       </Eyebrow>
-      <Headline v-if="blok.headline" :headline="blok.headline" />
+      <Headline v-if="blok.headline" :headline="blok.headline" :index="index" />
       <div
         v-if="blok.text"
         :class="{ 'mx-auto': blok.text_alignment === 'center' }"

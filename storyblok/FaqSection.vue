@@ -1,5 +1,5 @@
 <script setup>
-defineProps({ blok: Object });
+defineProps({ blok: Object, index: Number });
 </script>
 
 <template>
@@ -9,7 +9,7 @@ defineProps({ blok: Object });
   >
     <div class="container relative z-10 grid gap-10 xl:grid-cols-2">
       <div>
-        <Headline v-if="blok.headline" size="small" :headline="blok.headline" />
+        <Headline v-if="blok.headline" :index="index" size="small" :headline="blok.headline" />
         <Lead v-if="blok.lead">
           {{ blok.lead }}
         </Lead>

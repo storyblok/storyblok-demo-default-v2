@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ blok: Object });
+const props = defineProps({ blok: Object, index: Number });
 
 const optimizedImages = computed(() => {
   return {
@@ -49,7 +49,7 @@ const blurredImage = computed(() => getOptimizedImage(props.blok.image, 1000, 0,
         :class="[blok.reverse_mobile_layout ? 'order-first' : '', blok.reverse_desktop_layout ? 'lg:order-last' : 'lg:order-first']"
       >
         <Eyebrow v-if="blok.eyebrow">{{ blok.eyebrow }}</Eyebrow>
-        <Headline v-if="blok.headline" size="small" :headline="blok.headline" />
+        <Headline v-if="blok.headline" size="small" :headline="blok.headline" :index="index" />
         <div v-if="blok.text" class="prose prose-lg mb-6">
           <StoryblokRichText :doc="blok.text" />
         </div>

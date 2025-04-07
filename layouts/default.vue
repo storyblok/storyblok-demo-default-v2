@@ -135,6 +135,9 @@ const headConfig = computed(() => ({
       children: cssVariables.value,
     },
   ],
+  htmlAttrs: {
+    lang: 'en',
+  },
 }));
 
 useHead(headConfig);

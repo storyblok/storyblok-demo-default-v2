@@ -1,5 +1,5 @@
 <script setup>
-defineProps({ blok: Object });
+defineProps({ blok: Object, index: Number });
 const gridClasses = getGridClasses();
 </script>
 
@@ -10,7 +10,7 @@ const gridClasses = getGridClasses();
   >
     <div class="container ">
       <div class="text-center">
-        <Headline v-if="blok.headline" :headline="blok.headline" />
+        <Headline v-if="blok.headline" :headline="blok.headline" :index="index" />
         <Lead v-if="blok.lead">
           {{ blok.lead }}
         </Lead>

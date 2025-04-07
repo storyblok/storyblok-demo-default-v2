@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ headline: Object, color: String, size: String });
+const props = defineProps({ headline: Object, color: String, size: String, index: Number });
 
 const classes = computed(() => {
   let classes
@@ -24,19 +24,24 @@ const classes = computed(() => {
 
   return classes;
 });
+
+const tag = computed(() => {
+  return props.index === 0 ? 'h1' : 'h2';
+});
 </script>
 
 <template>
-  <h2 :class="classes">
+  <component :is="tag" :class="classes">
     <HeadlineSegment
       v-for="headlineSegment in headline"
       :key="headlineSegment._uid"
       :headline-segment="headlineSegment"
     />
-  </h2>
+  </component>
 </template>
 
 <style scoped>
+h1.headline-color,
 h2.headline-color {
   color: var(--headline-color);
 }

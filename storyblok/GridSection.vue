@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({ blok: Object });
+const props = defineProps({ blok: Object, index: Number });
 
 const gridCardColor = computed(() => {
   return props.blok.background_color === 'primary-background' ? 'bg-white' : 'bg-primary-background';
@@ -15,7 +15,7 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
     :class="`bg-${blok.background_color}`"
   >
     <div class="container">
-      <Headline v-if="blok.headline" :headline="blok.headline" class="text-center" />
+      <Headline v-if="blok.headline" :headline="blok.headline" :index="index" class="text-center" />
       <Lead v-if="blok.lead" class="text-center">
         {{ blok.lead }}
       </Lead>
