@@ -78,6 +78,7 @@ const cssVariables = computed(() => {
     theme['--background-7'] = siteConfig.value.content.background_7_color?.color;
     theme['--background-8'] = siteConfig.value.content.background_8_color?.color;
     theme['--background-9'] = siteConfig.value.content.background_9_color?.color;
+    theme['--background-10'] = siteConfig.value.content.background_10_color?.color;
     theme['--primary-dark'] = siteConfig.value.content.primary_dark_color?.color;
     if (siteConfig.value.content.colored_headlines) {
       theme['--headline-color'] = siteConfig.value.content.primary_highlight_color?.color;
@@ -182,6 +183,7 @@ watch(route, () => {
         <ColorPreview color="background-7" />
         <ColorPreview color="background-8" />
         <ColorPreview color="background-9" />
+        <ColorPreview color="background-10" />
         <ColorPreview color="primary-dark" />
       </div>
     </div>

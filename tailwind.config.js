@@ -148,6 +148,7 @@ module.exports = {
         'background-7': 'var(--background-7)',
         'background-8': 'var(--background-8)',
         'background-9': 'var(--background-9)',
+        'background-10': 'var(--background-10)',
         'primary-dark': 'var(--primary-dark)',
       },
       typography: {
