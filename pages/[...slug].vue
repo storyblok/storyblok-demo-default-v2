@@ -23,14 +23,10 @@ const apiParams = {
   from_release: releaseId,
 };
 
-const error404 = ref(false);
 const { customParent } = useRuntimeConfig().public;
 
 try {
   try {
-    if (processedSlug === 'error-404') {
-      error404.value = true;
-    }
     const { data } = await storyblokApi.get(
       `cdn/stories/${processedSlug}`,
       apiParams,
@@ -39,10 +35,9 @@ try {
   }
   catch (error) {
     if (error.status === 404) {
-      error404.value = true;
+      const { data } = await storyblokApi.get('cdn/stories/error-404', apiParams);
+      story.value = data.story;
     }
-    const { data } = await storyblokApi.get('cdn/stories/error-404', apiParams);
-    story.value = data.story;
   }
 
   onMounted(() => {
@@ -74,6 +69,5 @@ useHead({
 </script>
 
 <template>
-  <Error404 v-if="error404" />
   <StoryblokComponent v-if="story && !viewingSiteConfig" :blok="story.content" :uuid="story.uuid" />
 </template>
