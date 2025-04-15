@@ -66,43 +66,43 @@ const submit = () => {
               <div class="flex flex-wrap gap-4">
                 <label class="cursor-pointer">
                   <input type="checkbox" name="options" value="option1" class="peer hidden" />
-                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
+                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
                     Brand
                   </div>
                 </label>
                 <label class="cursor-pointer">
                   <input type="checkbox" name="options" value="option2" class="peer hidden" />
-                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
+                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
                     Strategy
                   </div>
                 </label>
                 <label class="cursor-pointer">
                   <input type="checkbox" name="options" value="option3" class="peer hidden" />
-                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
+                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
                     Website
                   </div>
                 </label>
                 <label class="cursor-pointer">
                   <input type="checkbox" name="options" value="option1" class="peer hidden" />
-                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
+                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
                     Marketing
                   </div>
                 </label>
                 <label class="cursor-pointer">
                   <input type="checkbox" name="options" value="option2" class="peer hidden" />
-                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
+                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
                     Design
                   </div>
                 </label>
                 <label class="cursor-pointer">
                   <input type="checkbox" name="options" value="option3" class="peer hidden" />
-                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
+                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
                     Development
                   </div>
                 </label>
                 <label class="cursor-pointer">
                   <input type="checkbox" name="options" value="option3" class="peer hidden" />
-                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
+                  <div class="rounded-lg border border-gray-300  px-6 py-4 text-primary-dark transition hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white">
                     Partnership
                   </div>
                 </label>
