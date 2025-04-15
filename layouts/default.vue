@@ -114,8 +114,6 @@ const cssVariables = computed(() => {
   return `:root {\n${formattedVariables}\n}`;
 });
 
-const isInEditor = await inEditor();
-
 const viewingSiteConfig = useState('viewingSiteConfig');
 const { customParent } = useRuntimeConfig().public;
 
@@ -152,7 +150,7 @@ watch(route, () => {
 </script>
 
 <template>
-  <main :class="{ 'in-editor': isInEditor }">
+  <main>
     <Header
       :logo="siteConfig.content.header_logo"
       :nav="siteConfig.content.header_nav"
