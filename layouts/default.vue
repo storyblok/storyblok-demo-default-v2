@@ -5,7 +5,7 @@ const defaultFontFamilies = {
 };
 
 const defaultColors = {
-  '--primary-highlight': '#8d60ff',
+  '--primary-highlight': '#6251B8',
   '--highlight-1': '#80efac',
   '--highlight-2': '#786b2b',
   '--highlight-3': '#d4ff92',
