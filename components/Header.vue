@@ -30,7 +30,7 @@ onMounted(() => {
     <div
       class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
     >
-      <NuxtLink v-if="logo?.filename" to="/" class="flex shrink-0">
+      <NuxtLink v-if="logo?.filename" to="/" class="flex shrink-0" aria-label="Return to homepage">
         <img
           :src="logo.filename"
           :alt="logo.alt"
