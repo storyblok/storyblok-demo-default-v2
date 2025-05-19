@@ -23,7 +23,7 @@ const optimizedArticleImage = computed(() =>
             <DecorationImageTopRight class="absolute right-0 top-0 origin-top-right translate-x-[20px] translate-y-[25px]  scale-50 md:translate-x-[40px] md:translate-y-[-50px] md:scale-100" />
             <img
               :src="optimizedArticleImage"
-              :alt="blok.image.alt"
+              :alt="blok.image?.alt"
               class="h-auto w-full rounded-xl"
             />
           </div>

@@ -20,3 +20,9 @@
     @apply m-0 p-0;
   }
 }
+
+@layer components {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2;
+  }
+}
