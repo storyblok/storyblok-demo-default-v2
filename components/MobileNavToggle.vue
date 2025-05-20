@@ -15,7 +15,7 @@ watch(route, () => {
 
 <template>
   <button
-    class="cursor-pointer lg:invisible lg:hidden"
+    class="focus-ring cursor-pointer lg:invisible lg:hidden"
     :class="{ active }"
     @click="toggle"
   >
