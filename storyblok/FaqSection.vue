@@ -17,7 +17,7 @@ defineProps({ blok: Object, index: Number });
       <ul v-if="blok.faq_entries.length" class="">
         <li v-for="entry in blok.faq_entries" :key="entry._uid" class="border-b border-primary-dark py-8 last:border-none last:pb-0 last:pt-8">
           <details class="relative">
-            <summary class="cursor-pointer list-none pr-6 text-xl font-medium">{{ entry.question }}</summary>
+            <summary class="focus-ring cursor-pointer list-none pr-6 text-xl font-medium">{{ entry.question }}</summary>
             <div v-if="entry.answer" class="prose mt-4">
               <StoryblokRichText :doc="entry.answer" />
             </div>
