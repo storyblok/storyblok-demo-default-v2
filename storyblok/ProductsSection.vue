@@ -14,7 +14,7 @@ const gridClasses = computed(() => getGridClasses());
       <Lead v-if="blok.lead" class="text-center">
         {{ blok.lead }}
       </Lead>
-      <div v-if="blok.plugin.items.length" :class="[gridClasses, { 'lg:!mt-0': !blok.headline && !blok.lead }]" class="place-items-center">
+      <div v-if="blok.plugin?.items?.length" :class="[gridClasses, { 'lg:!mt-0': !blok.headline && !blok.lead }]" class="place-items-center">
         <Product
           v-for="product in blok.plugin.items"
           :key="product.id"
