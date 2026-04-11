@@ -1,18 +1,11 @@
-import { storyblokLintConfig } from '@storyblok/eslint-config';
-import tailwind from 'eslint-plugin-tailwindcss';
+import withNuxt from './.nuxt/eslint.config.mjs'
 
-export default storyblokLintConfig(
-  {
-    rules: {
-      'no-undef': 'off', // TODO: find a solution for Nuxt composables
-      'no-console': 'off',
-      'tailwindcss/no-custom-classname': 'off',
-    },
+// TODO: TYPESCRIPT SUPPORT
+export default withNuxt({
+  rules: {
+    'no-undef': 'off', // TODO: find a solution for Nuxt composables
+    'no-console': 'off',
+    'tailwindcss/no-custom-classname': 'off',
+    'vue/multi-word-component-names': 'off',
   },
-  ...tailwind.configs['flat/recommended'],
-  {
-    rules: {
-      'tailwindcss/no-custom-classname': 'off',
-    },
-  },
-);
+})

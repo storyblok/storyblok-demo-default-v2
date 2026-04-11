@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+/* Safelisting variants */
+@source inline("{bg,text,border,fill}-{primary-highlight,highlight-1,highlight-2,highlight-3,primary-background,background-1,background-2,background-3,background-4,background-5,background-6,background-7,background-8,background-9,background-10,primary-dark,white}");
+@source inline("hover:{bg,text}-{primary-highlight,highlight-1,highlight-2,highlight-3,primary-background,background-1,background-2,background-3,background-4,background-5,background-6,background-7,background-8,background-9,background-10,primary-dark,white}");
+@source inline("items-{start,center,end} text-{center,left} prose-invert");
+
+@theme {
+  --font-family-body: 'ABCMarfa', sans-serif;
+  --font-family-display: 'ABCMarfa', sans-serif;
+
+  --nav-background-color: #ffffff;
+
+  --color-primary-highlight: #6251b8;
+  --color-highlight-1: #80efac;
+  --color-highlight-2: #786b2b;
+  --color-highlight-3: #d4ff92;
+  --color-primary-background: #f5f5f7;
+  --color-background-1: #f4f2e9;
+  --color-background-2: #e4ddb9;
+  --color-background-3: #d9eeff;
+  --color-background-4: #d7e4f2;
+  --color-background-5: #d9d4fc;
+  --color-background-6: #f2f1d7;
+  --color-background-7: #e0f0d2;
+  --color-background-8: #ffe7d3;
+  --color-background-9: #ffd5d3;
+  --color-background-10: #d2fec9;
+  --color-primary-dark: #1f1f1f;
+
+  --radius-none: 0;
+  --radius-sm: var(--rounded_sm, 4px);
+  --radius: var(--rounded_default, 6px);
+  --radius-md: var(--rounded_md, 8px);
+  --radius-lg: var(--rounded_lg, 10px);
+  --radius-xl: var(--rounded_xl, 15px);
+  --radius-2xl: var(--rounded_2xl, 20px);
+  --radius-3xl: var(--rounded_3xl, 25px);
+  --radius-full: var(--rounded_full, 9999px);
+}
+
+@layer base {
+  body {
+    @apply pt-32 text-primary-dark;
+    font-family: var(--font-family-body);
+  }
+
+  .prose {
+    line-height: 1.625;
+  }
+}
+
+@layer components {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-family-display);
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @variant lg {
+    padding-inline: 2rem;
+  }
+}
+
+/* Overides lists; outside any layer guarantees it wins over the typography plugin. */
+.prose ul {
+  @apply list-none pl-0;
+}
+.prose ul li {
+  @apply pl-10 relative;
+}
+.prose ul li::before {
+  @apply content-[''] absolute top-1/2 -translate-y-1/2 left-0 bg-no-repeat bg-contain w-6 h-6 block;
+  background-image: url('/assets/images/circle-arrow-right.svg');
+}
+.prose ul li p {
+  @apply m-0 p-0;
+}
