@@ -12,3 +12,4 @@ localhost.pem
 .DS_Store
 .prettierignore
 .vscode
+.storyblok

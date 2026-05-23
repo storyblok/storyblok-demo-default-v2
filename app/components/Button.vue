@@ -1,0 +1,55 @@
+<script setup lang="ts">
+import type { Button } from '#storyblok'
+
+const props = defineProps<{ button: Button }>()
+
+const url = computed(() => {
+  const link = props.button.link
+
+  if (link.linktype === 'story') {
+    return `/${(link.story as { full_slug?: string })?.full_slug ?? ''}`
+  }
+
+  return link.url ?? ''
+})
+
+const classes = computed(() => {
+  let classes = `focus-ring font-semibold inline-flex w-full sm:w-auto items-center justify-center tracking-wider cursor-pointer transition-all duration-300 rounded-md border border-2 border-${
+    props.button.background_color
+  }`
+
+  switch (props.button.size) {
+    case 'small':
+      classes += ' py-2 px-6'
+      break
+    case 'large':
+      classes += ' py-4 px-10'
+      break
+    case 'medium':
+    default:
+      classes += ' py-3 px-8'
+      break
+  }
+
+  switch (props.button.style) {
+    case 'ghost':
+      classes += ` bg-transparent text-${props.button.background_color} hover:bg-${
+        props.button.background_color
+      } hover:text-${props.button.text_color}`
+      break
+    case 'default':
+    default:
+      classes += ` hover:scale-105 will-change-transform bg-${props.button.background_color} text-${
+        props.button.text_color
+      }`
+  }
+
+  return classes
+})
+</script>
+
+<template>
+  <NuxtLink v-editable="button" :to="url" :class="classes">
+    {{ button.label }}
+  </NuxtLink>
+</template>

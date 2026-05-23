@@ -1,6 +1,6 @@
 # Storyblok Default Demo
 
-This frontend is used when you [create a new demo space in Storyblok](https://app.storyblok.com/#/me/spaces/new?tab=experience-demo). It is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
+This frontend is used when you [create a new demo space in Storyblok](https://app.storyblok.com/#/me/spaces/new?tab=experience-demo). It is built using [Nuxt 4](https://nuxt.com) and [TailwindCSS](https://tailwindcss.com/).
 
 Feel free to explore and reuse the code, but please be aware of the [demo-specific implementation practices](#demo-specific-implementation-notes), which deviate from the most common implementation practices.
 
