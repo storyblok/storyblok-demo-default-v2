@@ -27,6 +27,8 @@ const setActiveTab = (index) => {
           class="w-full"
         >
           <button
+            v-editable="entry"
+            v-field="'headline'"
             class="focus-ring w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg"
             :class="i === activeTab ? 'bg-primary-dark text-white' : 'text-primary-dark'"
             @click.prevent="setActiveTab(i)"
