@@ -11,7 +11,7 @@ const gridClasses = getGridClasses();
     <div class="container ">
       <div class="text-center">
         <Headline v-if="blok.headline" :headline="blok.headline" :index="index" />
-        <Lead v-if="blok.lead">
+        <Lead v-if="blok.lead" v-field="'lead'">
           {{ blok.lead }}
         </Lead>
       </div>

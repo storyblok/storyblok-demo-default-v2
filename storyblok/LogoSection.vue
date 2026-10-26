@@ -8,7 +8,7 @@ defineProps({ blok: Object });
     class="page-section logos-section bg-white"
   >
     <div class="container text-center">
-      <Lead v-if="blok.lead">
+      <Lead v-if="blok.lead" v-field="'lead'">
         {{ blok.lead }}
       </Lead>
       <ul v-if="blok.logos.length" class="mt-8 flex flex-wrap items-center justify-center gap-8 md:mt-16 md:gap-16">

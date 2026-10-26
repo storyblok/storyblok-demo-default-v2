@@ -9,7 +9,7 @@ defineProps({ blok: Object, index: Number });
     :class="`bg-${blok.background_color}`"
   >
     <div class="container" :class="{ 'text-center': blok.text_alignment === 'center' }">
-      <Eyebrow v-if="blok.eyebrow">
+      <Eyebrow v-if="blok.eyebrow" v-field="'eyebrow'">
         {{ blok.eyebrow }}
       </Eyebrow>
       <Headline v-if="blok.headline" :headline="blok.headline" :index="index" />

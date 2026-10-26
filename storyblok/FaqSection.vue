@@ -10,7 +10,7 @@ defineProps({ blok: Object, index: Number });
     <div class="container relative z-10 grid gap-10 xl:grid-cols-2">
       <div>
         <Headline v-if="blok.headline" :index="index" size="small" :headline="blok.headline" />
-        <Lead v-if="blok.lead">
+        <Lead v-if="blok.lead" v-field="'lead'">
           {{ blok.lead }}
         </Lead>
       </div>

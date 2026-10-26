@@ -15,7 +15,7 @@ defineProps({ blok: Object });
     >
       Most popular
     </div>
-    <h3 class="mb-4 font-display text-3xl font-black">{{ blok.headline }}</h3>
+    <h3 v-field="'headline'" class="mb-4 font-display text-3xl font-black">{{ blok.headline }}</h3>
     <div v-if="blok.text_1" class="prose">
       <StoryblokRichText :doc="blok.text_1" />
     </div>

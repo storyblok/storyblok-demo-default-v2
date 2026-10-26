@@ -15,9 +15,9 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok?.image, 800))
     >
       <img v-if="optimizedImage" :src="optimizedImage" :alt="blok.image.alt" class="h-[360px] w-full object-cover object-top" />
     </div>
-    <h3 class="mb-3 font-display text-xl font-black">
+    <h3 v-field="'label'" class="mb-3 font-display text-xl font-black">
       {{ blok.label }}
     </h3>
-    <div class="leading-relaxed">{{ blok.text }}</div>
+    <div v-field="'text'" class="leading-relaxed">{{ blok.text }}</div>
   </div>
 </template>

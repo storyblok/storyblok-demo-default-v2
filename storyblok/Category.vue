@@ -32,6 +32,7 @@ const gridClasses = computed(() => getGridClasses());
   <main v-editable="blok" class="container py-12 md:py-16">
     <H1Headline
       v-if="blok.headline"
+      v-field="'headline'"
     >
       {{ blok.headline }}
     </H1Headline>
