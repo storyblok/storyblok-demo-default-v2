@@ -31,7 +31,7 @@ const optimizedArticleImage = computed(() =>
         </div>
       </header>
       <main v-if="blok.text" class="prose prose-lg mx-auto my-12">
-        <StoryblokRichText :doc="blok.text" />
+        <StoryblokRichText :document="blok.text" />
       </main>
     </div>
     <Banner

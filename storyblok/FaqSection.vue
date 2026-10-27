@@ -19,7 +19,7 @@ defineProps({ blok: Object, index: Number });
           <details class="relative">
             <summary v-field="'question'" class="focus-ring cursor-pointer list-none pr-6 text-xl font-medium">{{ entry.question }}</summary>
             <div v-if="entry.answer" class="prose mt-4">
-              <StoryblokRichText :doc="entry.answer" />
+              <StoryblokRichText :document="entry.answer" />
             </div>
           </details>
         </li>

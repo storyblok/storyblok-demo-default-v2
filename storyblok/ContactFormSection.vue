@@ -25,7 +25,7 @@ const submit = () => {
           v-if="blok.text"
           class="prose prose-lg mb-6"
         >
-          <StoryblokRichText :doc="blok.text" />
+          <StoryblokRichText :document="blok.text" />
         </div>
         <form action="" class="flex flex-col gap-6">
           <div class="grid grid-cols-2 gap-8">
