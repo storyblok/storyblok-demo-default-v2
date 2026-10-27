@@ -25,7 +25,7 @@ const submit = () => {
           v-if="blok.text"
           class="prose prose-lg mb-6"
         >
-          <StoryblokRichText :doc="blok.text" />
+          <StoryblokRichText :document="blok.text" />
         </div>
         <form action="" class="flex flex-col gap-6">
           <div class="grid grid-cols-2 gap-8">
@@ -122,9 +122,9 @@ const submit = () => {
       </div>
       <div class="invisible hidden h-full items-end text-white lg:visible lg:flex">
         <div>
-          <p v-if="blok.quote" class="text-xl font-semibold lg:text-2xl xl:text-3xl 2xl:text-4xl">{{ blok.quote }}</p>
-          <p v-if="blok.name" class="mt-6 text-xl font-semibold">{{ blok.name }}</p>
-          <p v-if="blok.position" class="text-xl">{{ blok.position }}</p>
+          <p v-if="blok.quote" v-field="'quote'" class="text-xl font-semibold lg:text-2xl xl:text-3xl 2xl:text-4xl">{{ blok.quote }}</p>
+          <p v-if="blok.name" v-field="'name'" class="mt-6 text-xl font-semibold">{{ blok.name }}</p>
+          <p v-if="blok.position" v-field="'position'" class="text-xl">{{ blok.position }}</p>
         </div>
       </div>
     </div>
@@ -133,9 +133,9 @@ const submit = () => {
     </div>
     <div class="overflow-none relative mt-12 flex min-h-[600px] items-end py-12 lg:invisible lg:hidden">
       <div class="container relative z-10 text-white">
-        <p v-if="blok.quote" class="text-xl font-semibold lg:text-2xl xl:text-3xl 2xl:text-4xl">{{ blok.quote }}</p>
-        <p v-if="blok.name" class="mt-6 text-xl font-semibold">{{ blok.name }}</p>
-        <p v-if="blok.position" class="text-xl">{{ blok.position }}</p>
+        <p v-if="blok.quote" v-field="'quote'" class="text-xl font-semibold lg:text-2xl xl:text-3xl 2xl:text-4xl">{{ blok.quote }}</p>
+        <p v-if="blok.name" v-field="'name'" class="mt-6 text-xl font-semibold">{{ blok.name }}</p>
+        <p v-if="blok.position" v-field="'position'" class="text-xl">{{ blok.position }}</p>
       </div>
       <div class="absolute left-0 top-0 z-0 size-full before:absolute before:top-0 before:size-full before:bg-black/40 before:content-['']">
         <img v-if="optimizedImage" class="size-full object-cover" :src="optimizedImage" :alt="blok.image.alt" />

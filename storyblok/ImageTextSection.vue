@@ -48,10 +48,10 @@ const blurredImage = computed(() => getOptimizedImage(props.blok.image, 1000, 0,
         class="text-left"
         :class="[blok.reverse_mobile_layout ? 'order-first' : '', blok.reverse_desktop_layout ? 'lg:order-last' : 'lg:order-first']"
       >
-        <Eyebrow v-if="blok.eyebrow">{{ blok.eyebrow }}</Eyebrow>
+        <Eyebrow v-if="blok.eyebrow" v-field="'eyebrow'">{{ blok.eyebrow }}</Eyebrow>
         <Headline v-if="blok.headline" size="small" :headline="blok.headline" :index="index" />
         <div v-if="blok.text" class="prose prose-lg mb-6">
-          <StoryblokRichText :doc="blok.text" />
+          <StoryblokRichText :document="blok.text" />
         </div>
         <div v-if="blok?.buttons?.length" class="flex flex-col items-start justify-start gap-4 sm:flex-row">
           <Button

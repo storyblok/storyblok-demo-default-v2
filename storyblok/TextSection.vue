@@ -9,7 +9,7 @@ defineProps({ blok: Object, index: Number });
     :class="`bg-${blok.background_color}`"
   >
     <div class="container" :class="{ 'text-center': blok.text_alignment === 'center' }">
-      <Eyebrow v-if="blok.eyebrow">
+      <Eyebrow v-if="blok.eyebrow" v-field="'eyebrow'">
         {{ blok.eyebrow }}
       </Eyebrow>
       <Headline v-if="blok.headline" :headline="blok.headline" :index="index" />
@@ -18,7 +18,7 @@ defineProps({ blok: Object, index: Number });
         :class="{ 'mx-auto': blok.text_alignment === 'center' }"
         class="prose prose-lg mb-6"
       >
-        <StoryblokRichText :doc="blok.text" />
+        <StoryblokRichText :document="blok.text" />
       </div>
       <div v-if="blok?.buttons?.length" class="flex flex-col gap-4 sm:flex-row" :class="blok.text_alignment === 'center' ? 'justify-center' : 'justify-start items-start'">
         <Button

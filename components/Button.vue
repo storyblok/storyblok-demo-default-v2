@@ -61,6 +61,7 @@ const classes = computed(() => {
 <template>
   <NuxtLink
     v-editable="button"
+    v-field="'label'"
     :to="url"
     :class="classes"
   >

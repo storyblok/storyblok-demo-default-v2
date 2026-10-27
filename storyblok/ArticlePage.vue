@@ -14,6 +14,7 @@ const optimizedArticleImage = computed(() =>
           <CategoriesList v-if="blok?.categories?.length" :categories="blok.categories" class="mt-12 flex justify-center space-x-4" />
           <H1Headline
             v-if="blok.headline"
+            v-field="'headline'"
           >
             {{ blok.headline }}
           </H1Headline>
@@ -30,7 +31,7 @@ const optimizedArticleImage = computed(() =>
         </div>
       </header>
       <main v-if="blok.text" class="prose prose-lg mx-auto my-12">
-        <StoryblokRichText :doc="blok.text" />
+        <StoryblokRichText :document="blok.text" />
       </main>
     </div>
     <Banner

@@ -30,7 +30,7 @@ articles.value = data.stories;
   >
     <div class="container">
       <Headline v-if="blok.headline" :headline="blok.headline" :index="index" class="text-center" />
-      <Lead v-if="blok.lead" class="text-center">
+      <Lead v-if="blok.lead" v-field="'lead'" class="text-center">
         {{ blok.lead }}
       </Lead>
       <div v-if="articles" class="mt-24 grid gap-x-24 gap-y-12 lg:grid-cols-2">
