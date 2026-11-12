@@ -1,0 +1,5 @@
+# Learn more about CODEOWNERS:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# The documentation team owns the whole repository.
+* @storyblok/documentation-technical-content
