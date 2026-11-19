@@ -21,6 +21,7 @@ const url = computed(() => {
 <template>
   <NuxtLink
     v-editable="item"
+    v-field="'label'"
     :to="url"
     class="focus-ring relative flex h-full cursor-pointer items-center text-base transition-colors"
     :class="props.reducedFontWeight ? 'font-normal' : 'font-medium'"

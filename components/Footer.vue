@@ -39,7 +39,7 @@ const backgroundColor = computed(() => {
       <div class="flex flex-col items-start sm:col-span-2 md:col-span-3 lg:col-span-2">
         <div>
           <div v-if="about" class="prose prose-lg mb-8 text-sm lg:text-base" :class="textColor">
-            <StoryblokRichText :doc="about" />
+            <StoryblokRichText :document="about" />
           </div>
           <SocialIcons
             :x="x"

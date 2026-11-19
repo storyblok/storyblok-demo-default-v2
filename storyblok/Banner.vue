@@ -77,7 +77,7 @@ const overlay = computed(() => {
     <div class="container relative z-20 flex" :class="[{ 'justify-center text-center': blok.text_alignment === 'center' }, { 'text-white': overlay }]">
       <div class="relative z-30 max-w-3xl">
         <Headline v-if="blok.headline" :index="index" :headline="blok.headline" :color="overlay ? 'text-white' : ''" />
-        <Lead v-if="blok.lead">{{ blok.lead }}</Lead>
+        <Lead v-if="blok.lead" v-field="'lead'">{{ blok.lead }}</Lead>
         <div v-if="blok?.buttons?.length" class="flex flex-col gap-4 sm:flex-row" :class="blok.text_alignment === 'center' ? 'justify-center' : 'justify-start items-start'">
           <Button
             v-for="button in blok.buttons"

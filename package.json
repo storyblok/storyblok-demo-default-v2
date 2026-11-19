@@ -13,9 +13,9 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@storyblok/eslint-config": "^0.4.0",
-    "@storyblok/nuxt": "^8.0.1",
+    "@storyblok/nuxt": "^11.3.0",
     "@storyblok/richtext": "^3.5.0",
-    "@storyblok/vue": "^9.2.1",
+    "@storyblok/vue": "^11.4.0",
     "@tailwindcss/typography": "^0.5.16",
     "clone-deep": "^4.0.1",
     "eslint": "^9.31.0",

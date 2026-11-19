@@ -16,7 +16,7 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
   >
     <div class="container">
       <Headline v-if="blok.headline" :headline="blok.headline" :index="index" class="text-center" />
-      <Lead v-if="blok.lead" class="text-center">
+      <Lead v-if="blok.lead" v-field="'lead'" class="text-center">
         {{ blok.lead }}
       </Lead>
       <div v-if="blok.cards.length" :class="[gridClasses, { 'lg:!mt-0': !blok.headline && !blok.lead }]" class="place-items-center">

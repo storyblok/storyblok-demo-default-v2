@@ -15,9 +15,9 @@ defineProps({ blok: Object });
     >
       Most popular
     </div>
-    <h3 class="mb-4 font-display text-3xl font-black">{{ blok.headline }}</h3>
+    <h3 v-field="'headline'" class="mb-4 font-display text-3xl font-black">{{ blok.headline }}</h3>
     <div v-if="blok.text_1" class="prose">
-      <StoryblokRichText :doc="blok.text_1" />
+      <StoryblokRichText :document="blok.text_1" />
     </div>
     <span v-if="blok.price" class="mt-4 text-4xl font-black">${{ blok.price }}<span class="text-2xl font-medium">/month</span></span>
     <div v-if="blok.button.length" class="my-6">
@@ -28,7 +28,7 @@ defineProps({ blok: Object });
       />
     </div>
     <div v-if="blok.text_2" class="prose">
-      <StoryblokRichText :doc="blok.text_2" />
+      <StoryblokRichText :document="blok.text_2" />
     </div>
   </div>
 </template>

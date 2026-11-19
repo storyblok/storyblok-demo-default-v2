@@ -26,11 +26,11 @@ const optimizedImage = computed(() => getOptimizedImage(props.blok?.image, 800))
       class="pointer-events-none relative z-10 mb-6"
     />
     <div class="relative z-20" :class="{ 'text-white': optimizedImage }">
-      <p v-if="blok.bold_text" class="mb-3 text-4xl font-black">{{ blok.bold_text }}</p>
-      <h3 v-if="blok.label" class="mb-3 font-display text-xl font-black">
+      <p v-if="blok.bold_text" v-field="'bold_text'" class="mb-3 text-4xl font-black">{{ blok.bold_text }}</p>
+      <h3 v-if="blok.label" v-field="'label'" class="mb-3 font-display text-xl font-black">
         {{ blok.label }}
       </h3>
-      <p v-if="blok.text" class="leading-relaxed">{{ blok.text }}</p>
+      <p v-if="blok.text" v-field="'text'" class="leading-relaxed">{{ blok.text }}</p>
       <div v-if="blok.button.length" class="mt-4">
         <Button
           v-for="button in blok.button"

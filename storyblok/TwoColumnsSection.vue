@@ -18,12 +18,12 @@ const optimizedImage = computed(() =>
             <div>
               <Headline v-if="blok.column_1_headline" size="small" :headline="blok.column_1_headline" :index="index" />
               <div v-if="blok.column_1_text_1" class="prose flex grow">
-                <StoryblokRichText :doc="blok.column_1_text_1" />
+                <StoryblokRichText :document="blok.column_1_text_1" />
               </div>
             </div>
             <div>
               <div v-if="blok.column_1_text_2" class="prose">
-                <StoryblokRichText :doc="blok.column_1_text_2" />
+                <StoryblokRichText :document="blok.column_1_text_2" />
               </div>
               <div v-if="blok.column_1_button.length" class="mt-6">
                 <Button
@@ -50,7 +50,7 @@ const optimizedImage = computed(() =>
           <Headline v-if="blok.column_2_headline" size="small" :headline="blok.column_2_headline" />
           <div>
             <div v-if="blok.column_2_text_1" class="prose">
-              <StoryblokRichText :doc="blok.column_2_text_1" />
+              <StoryblokRichText :document="blok.column_2_text_1" />
             </div>
             <div v-if="blok.column_2_button.length" class="mt-6">
               <Button

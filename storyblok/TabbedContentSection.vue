@@ -15,7 +15,7 @@ const setActiveTab = (index) => {
   >
     <div class="mb-12 text-center">
       <Headline v-if="blok.headline" :headline="blok.headline" :index="index" />
-      <Lead v-if="blok.lead">
+      <Lead v-if="blok.lead" v-field="'lead'">
         {{ blok.lead }}
       </Lead>
     </div>
@@ -27,6 +27,8 @@ const setActiveTab = (index) => {
           class="w-full"
         >
           <button
+            v-editable="entry"
+            v-field="'headline'"
             class="focus-ring w-full cursor-pointer rounded-md px-6 py-3 text-center text-lg"
             :class="i === activeTab ? 'bg-primary-dark text-white' : 'text-primary-dark'"
             @click.prevent="setActiveTab(i)"

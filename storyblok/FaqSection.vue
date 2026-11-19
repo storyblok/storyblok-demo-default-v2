@@ -10,16 +10,16 @@ defineProps({ blok: Object, index: Number });
     <div class="container relative z-10 grid gap-10 xl:grid-cols-2">
       <div>
         <Headline v-if="blok.headline" :index="index" size="small" :headline="blok.headline" />
-        <Lead v-if="blok.lead">
+        <Lead v-if="blok.lead" v-field="'lead'">
           {{ blok.lead }}
         </Lead>
       </div>
       <ul v-if="blok.faq_entries.length" class="">
-        <li v-for="entry in blok.faq_entries" :key="entry._uid" class="border-b border-primary-dark py-8 last:border-none last:pb-0 last:pt-8">
+        <li v-for="entry in blok.faq_entries" :key="entry._uid" v-editable="entry" class="border-b border-primary-dark py-8 last:border-none last:pb-0 last:pt-8">
           <details class="relative">
-            <summary class="focus-ring cursor-pointer list-none pr-6 text-xl font-medium">{{ entry.question }}</summary>
+            <summary v-field="'question'" class="focus-ring cursor-pointer list-none pr-6 text-xl font-medium">{{ entry.question }}</summary>
             <div v-if="entry.answer" class="prose mt-4">
-              <StoryblokRichText :doc="entry.answer" />
+              <StoryblokRichText :document="entry.answer" />
             </div>
           </details>
         </li>

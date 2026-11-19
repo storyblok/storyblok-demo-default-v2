@@ -80,6 +80,7 @@ const gridClasses = computed(() => getGridClasses());
     <header>
       <H1Headline
         v-if="blok.headline"
+        v-field="'headline'"
       >
         {{ blok.headline }}
       </H1Headline>
